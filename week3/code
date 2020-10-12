@@ -138,3 +138,180 @@ int main()
 asddsadsadsaadsdas asfkhsafkjh123adsf32s1adfsadfsaf
 
 python@ubuntu:~/week3$ 
+python@ubuntu:~/week3$ cp 3-2-3.c 3-2-4.c
+python@ubuntu:~/week3$ vi 3-2-4.c
+python@ubuntu:~/week3$ gcc -g -Wall 3-2-4.c -o 3-2-4
+3-2-4.c: In function ‘main’:
+3-2-4.c:7:11: warning: passing argument 1 of ‘fgets’ from incompatible pointer type [-Wincompatible-pointer-types]
+     fgets(argv,argc,stdin);
+           ^
+In file included from ch02.h:1:0,
+                 from 3-2-4.c:1:
+/usr/include/stdio.h:622:14: note: expected ‘char * restrict’ but argument is of type ‘char **’
+ extern char *fgets (char *__restrict __s, int __n, FILE *__restrict __stream)
+              ^
+3-2-4.c:8:12: warning: format ‘%s’ expects argument of type ‘char *’, but argument 2 has type ‘char **’ [-Wformat=]
+     printf("Content is %s\n",argv);
+            ^
+python@ubuntu:~/week3$ ./3-2-4
+Content is 
+python@ubuntu:~/week3$ ./3-2-4 12 a b c
+
+Content is 
+
+python@ubuntu:~/week3$ vi 3-2-4.c
+python@ubuntu:~/week3$ gcc -g -Wall 3-2-4.c -o 3-2-4
+3-2-4.c: In function ‘main’:
+3-2-4.c:7:11: warning: passing argument 1 of ‘fgets’ from incompatible pointer type [-Wincompatible-pointer-types]
+     fgets(argv,argc,stdin);
+           ^
+In file included from ch02.h:1:0,
+                 from 3-2-4.c:1:
+/usr/include/stdio.h:622:14: note: expected ‘char * restrict’ but argument is of type ‘char **’
+ extern char *fgets (char *__restrict __s, int __n, FILE *__restrict __stream)
+              ^
+3-2-4.c:8:12: warning: format ‘%s’ expects argument of type ‘char *’, but argument 2 has type ‘char **’ [-Wformat=]
+     printf("Content is %s\n",argv);
+            ^
+python@ubuntu:~/week3$ vi 3-2-4.c
+python@ubuntu:~/week3$ gcc -g -Wall 3-2-4.c -o 3-2-4
+3-2-4.c: In function ‘main’:
+3-2-4.c:7:11: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+     fgets((char)argv,argc,stdin);
+           ^
+3-2-4.c:7:11: warning: passing argument 1 of ‘fgets’ makes pointer from integer without a cast [-Wint-conversion]
+In file included from ch02.h:1:0,
+                 from 3-2-4.c:1:
+/usr/include/stdio.h:622:14: note: expected ‘char * restrict’ but argument is of type ‘char’
+ extern char *fgets (char *__restrict __s, int __n, FILE *__restrict __stream)
+              ^
+3-2-4.c:8:12: warning: format ‘%s’ expects argument of type ‘char *’, but argument 2 has type ‘char **’ [-Wformat=]
+     printf("Content is %s\n",argv);
+            ^
+3-2-4.c:9:12: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+     fwrite((char)argv,argc,1,fp);
+            ^
+3-2-4.c:9:12: warning: passing argument 1 of ‘fwrite’ makes pointer from integer without a cast [-Wint-conversion]
+In file included from ch02.h:1:0,
+                 from 3-2-4.c:1:
+/usr/include/stdio.h:715:15: note: expected ‘const void * restrict’ but argument is of type ‘char’
+ extern size_t fwrite (const void *__restrict __ptr, size_t __size,
+               ^
+python@ubuntu:~/week3$ vi 3-2-4.c
+python@ubuntu:~/week3$ gcc -g -Wall 3-2-4.c -o 3-2-4
+3-2-4.c: In function ‘main’:
+3-2-4.c:7:11: warning: passing argument 1 of ‘fgets’ from incompatible pointer type [-Wincompatible-pointer-types]
+     fgets(argv,argc,stdin);
+           ^
+In file included from ch02.h:1:0,
+                 from 3-2-4.c:1:
+/usr/include/stdio.h:622:14: note: expected ‘char * restrict’ but argument is of type ‘char **’
+ extern char *fgets (char *__restrict __s, int __n, FILE *__restrict __stream)
+              ^
+3-2-4.c:8:12: warning: format ‘%s’ expects argument of type ‘char *’, but argument 2 has type ‘char **’ [-Wformat=]
+     printf("Content is %s\n",argv);
+            ^
+python@ubuntu:~/week3$ ./3-2-4 12 a b c
+
+Content is 
+
+python@ubuntu:~/week3$ vi 3-2-4.c
+python@ubuntu:~/week3$ gcc -g -Wall 3-2-4.c -o 3-2-4
+3-2-4.c: In function ‘main’:
+3-2-4.c:7:11: warning: passing argument 1 of ‘fgets’ from incompatible pointer type [-Wincompatible-pointer-types]
+     fgets(argv,argc,stdin);
+           ^
+In file included from ch02.h:1:0,
+                 from 3-2-4.c:1:
+/usr/include/stdio.h:622:14: note: expected ‘char * restrict’ but argument is of type ‘char **’
+ extern char *fgets (char *__restrict __s, int __n, FILE *__restrict __stream)
+              ^
+3-2-4.c:8:12: warning: format ‘%s’ expects argument of type ‘char *’, but argument 2 has type ‘char **’ [-Wformat=]
+     printf("Content is %s\n",argv);
+            ^
+python@ubuntu:~/week3$ vi 3-2-4.c
+python@ubuntu:~/week3$ gcc -g -Wall 3-2-4.c -o 3-2-4
+3-2-4.c: In function ‘main’:
+3-2-4.c:7:11: warning: passing argument 1 of ‘fgets’ from incompatible pointer type [-Wincompatible-pointer-types]
+     fgets(argv,argc,stdin);
+           ^
+In file included from ch02.h:1:0,
+                 from 3-2-4.c:1:
+/usr/include/stdio.h:622:14: note: expected ‘char * restrict’ but argument is of type ‘char **’
+ extern char *fgets (char *__restrict __s, int __n, FILE *__restrict __stream)
+              ^
+python@ubuntu:~/week3$ vi 3-2-4.c
+python@ubuntu:~/week3$ ./3-2-4 12 a b c
+asdsa
+python@ubuntu:~/week3$ ./3-2-4 12 a b c
+
+python@ubuntu:~/week3$ vi 3-2-4.c
+python@ubuntu:~/week3$ vi 3-2-4.c
+python@ubuntu:~/week3$ gcc -g -Wall 3-2-4.c -o 3-2-4
+3-2-4.c: In function ‘main’:
+3-2-4.c:7:12: warning: format ‘%s’ expects argument of type ‘char *’, but argument 2 has type ‘char **’ [-Wformat=]
+     printf("Content is %s\n",argv);
+            ^
+python@ubuntu:~/week3$ vi 3-2-4.c
+python@ubuntu:~/week3$ gcc -g -Wall 3-2-4.c -o 3-2-4
+python@ubuntu:~/week3$ ./3-2-4 12 a b c
+python@ubuntu:~/week3$ test1.txt
+test1.txt：未找到命令
+python@ubuntu:~/week3$ cat test1.txt
+A(��python@ubuntu:~/week3$ vi test1.txt
+python@ubuntu:~/week3$ vi 3-2-4.c
+python@ubuntu:~/week3$ ./3-2-4 12 a b c
+python@ubuntu:~/week3$ vi 3-2-4.c
+python@ubuntu:~/week3$ gcc -g -Wall 3-2-4.c -o 3-2-4
+3-2-4.c: In function ‘main’:
+3-2-4.c:7:35: error: expected expression before ‘]’ token
+     printf("Content is %s\n",argv[]);
+                                   ^
+python@ubuntu:~/week3$ vi 3-2-4.c
+python@ubuntu:~/week3$ gcc -g -Wall 3-2-4.c -o 3-2-4
+python@ubuntu:~/week3$ ./3-2-4 12 a b c
+[1] : 	 12  	2byte
+[2] : 	 a  	1byte
+[3] : 	 b  	1byte
+[4] : 	 c  	1byte
+python@ubuntu:~/week3$ cp 3-2-4.c 3-2-5.c
+python@ubuntu:~/week3$ vi 3-2-5.c
+python@ubuntu:~/week3$ gcc -g -Wall 3-2-5.c -o 3-2-5
+^[[Apython@ubuntu:~/wee./3-2-5 12 a b c-2-5
+[1] : 	 12  	2byte
+[2] : 	 a  	1byte
+[3] : 	 b  	1byte
+[4] : 	 c  	1byte
+python@ubuntu:~/week3$ cat 3-2-4.c 3-2-5.c
+#include "ch02.h"
+int main(int argc, char *argv[])
+{
+    FILE *fp;
+    if((fp = fopen("./test1.txt","w"))==NULL)
+        perror("open failed!\n");
+    int i;
+    for(i=1;i<argc;i++)
+    {
+        fprintf(fp,"%s",argv[i]);
+        printf("[%d] : \t %s  \t%ldbyte\n",i,argv[i],strlen(argv[i]));
+    }
+    fclose(fp);
+    return 0;
+}
+#include "ch02.h"
+int main(int argc, char *argv[])
+{
+    FILE *fp;
+    if((fp = fopen("./test1.txt","w"))==NULL)
+        perror("open failed!\n");
+    int i;
+    for(i=1;i<argc;i++)
+    {
+        fwrite(argv[i],1,strlen(argv[i]),fp);
+        printf("[%d] : \t %s  \t%ldbyte\n",i,argv[i],strlen(argv[i]));
+    }
+    fclose(fp);
+    return 0;
+}
+python@ubuntu:~/week3$ 
+
