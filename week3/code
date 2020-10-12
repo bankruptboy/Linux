@@ -1,0 +1,59 @@
+python@ubuntu:~$ pwd
+/home/python
+python@ubuntu:~$ mkdir week3
+python@ubuntu:~$ cd week3
+python@ubuntu:~/week3$ vi 3-2-1.c
+python@ubuntu:~/week3$ gcc -g -Wall 3-2-1.c -0 3-2-2
+gcc: error: 3-2-2: 没有那个文件或目录
+gcc: error: unrecognized command line option ‘-0’
+python@ubuntu:~/week3$ gcc -g -Wall 3-2-1.c -0 3-2-2
+gcc: error: 3-2-2: 没有那个文件或目录
+gcc: error: unrecognized command line option ‘-0’
+python@ubuntu:~/week3$ gcc -g -Wall 3-2-1.c -o 3-2-2
+3-2-1.c: In function ‘main’:
+3-2-1.c:10:29: error: invalid suffix "_CREAT" on integer constant
+     fd = open("./test1.txt",0_CREAT,0644);
+                             ^
+python@ubuntu:~/week3$ vi test1.txt
+python@ubuntu:~/week3$ gcc -g -Wall 3-2-1.c -o 3-2-2
+3-2-1.c: In function ‘main’:
+3-2-1.c:10:29: error: invalid suffix "_CREAT" on integer constant
+     fd = open("./test1.txt",0_CREAT,0644);
+                             ^
+python@ubuntu:~/week3$ vi 3-2-1.c
+python@ubuntu:~/week3$ gcc -g -Wall 3-2-1.c -o 3-2-2
+python@ubuntu:~/week3$ ./3-2-2
+file fd - 3
+python@ubuntu:~/week3$ vi 3-2-1.c
+python@ubuntu:~/week3$ gcc -g -Wall 3-2-1.c -o 3-2-2
+python@ubuntu:~/week3$ ./3-2-2
+file fd = 3
+python@ubuntu:~/week3$ cp 3-2-1.c 3-2-2.c
+python@ubuntu:~/week3$ vi 3-2-2.c
+python@ubuntu:~/week3$ gcc -g -Wall 3-2-2.c -o 3-2-3
+3-2-2.c: In function ‘main’:
+3-2-2.c:10:5: error: ‘fd’ undeclared (first use in this function)
+     fd = fopen("./test1.txt","w");
+     ^
+3-2-2.c:10:5: note: each undeclared identifier is reported only once for each function it appears in
+3-2-2.c:12:11: warning: passing argument 1 of ‘close’ makes integer from pointer without a cast [-Wint-conversion]
+     close(fp);
+           ^
+In file included from 3-2-2.c:4:0:
+/usr/include/unistd.h:356:12: note: expected ‘int’ but argument is of type ‘FILE * {aka struct _IO_FILE *}’
+ extern int close (int __fd);
+            ^
+python@ubuntu:~/week3$ ./3-2-3
+bash: ./3-2-3: 没有那个文件或目录
+python@ubuntu:~/week3$ vi 3-2-2.c
+python@ubuntu:~/week3$ gcc -g -Wall 3-2-2.c -o 3-2-3
+3-2-2.c: In function ‘main’:
+3-2-2.c:10:5: error: ‘fd’ undeclared (first use in this function)
+     fd = fopen("./test1.txt","w");
+     ^
+3-2-2.c:10:5: note: each undeclared identifier is reported only once for each function it appears in
+python@ubuntu:~/week3$ vi 3-2-2.c
+python@ubuntu:~/week3$ gcc -g -Wall 3-2-2.c -o 3-2-3
+python@ubuntu:~/week3$ ./3-2-3
+file fd = 3
+python@ubuntu:~/week3$ 
