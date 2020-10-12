@@ -87,3 +87,54 @@ int main()
     return 0;
 }
 python@ubuntu:~/week3$ 
+python@ubuntu:~/week3$ cp 3-2-2.c ch02.h
+python@ubuntu:~/week3$ vi ch02.h
+python@ubuntu:~/week3$ pwd
+/home/python/week3
+python@ubuntu:~/week3$ ls
+3-2-1.c  3-2-2  3-2-2.c  3-2-3  ch02.h  test1.txt
+python@ubuntu:~/week3$ vi 3-2-3.c
+python@ubuntu:~/week3$ gcc -g -Wall 3-2-3.c -o 3-2-1
+3-2-3.c: In function ‘main’:
+3-2-3.c:9:5: error: ‘ret’ undeclared (first use in this function)
+     ret =  fgets(buf,sizeof(buf),stdin);
+     ^
+3-2-3.c:9:5: note: each undeclared identifier is reported only once for each function it appears in
+python@ubuntu:~/week3$ vi 3-2-3.c
+python@ubuntu:~/week3$ gcc -g -Wall 3-2-3.c -o 3-2-1
+python@ubuntu:~/week3$ ./3-2-1
+i2123 asdasdas asdasdasdasdzxczxc
+Content is i2123 asdasdas asdasdasdasdzxczxc
+
+python@ubuntu:~/week3$ vi 3-2-3.c
+python@ubuntu:~/week3$ gcc -g -Wall 3-2-3.c -o 3-2-1
+python@ubuntu:~/week3$ ./3-2-1
+1as2d132asd32as14d5
+Content is 1as2d132asd32as14d5
+
+python@ubuntu:~/week3$ vi 3-2-3.c
+python@ubuntu:~/week3$ vi test1.txt
+python@ubuntu:~/week3$ vi 3-2-3.c
+python@ubuntu:~/week3$ ./3-2-1
+asddsadsadsaadsdas asfkhsafkjh123adsf32s1adfsadfsaf
+Content is asddsadsadsaadsdas asfkhsafkjh123adsf32s1adfsadfsaf
+
+python@ubuntu:~/week3$ vi test1.txt
+python@ubuntu:~/week3$ cat 3-2-3.c test1.txt
+#include "ch02.h"
+int main()
+{
+    FILE *fp;
+    char buf[80];
+    memset(buf,0,sizeof(buf));
+    if((fp = fopen("./test1.txt","w"))==NULL)
+        perror("open failed!\n");
+    fgets(buf,sizeof(buf),stdin);
+    printf("Content is %s\n",buf);
+    fwrite(buf,sizeof(buf),1,fp);
+    fclose(fp);
+    return 0;
+}
+asddsadsadsaadsdas asfkhsafkjh123adsf32s1adfsadfsaf
+
+python@ubuntu:~/week3$ 
