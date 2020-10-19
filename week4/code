@@ -1,0 +1,209 @@
+python@ubuntu:~$ pwd
+/home/python
+python@ubuntu:~$ ls
+dbs      Documents  dump.rdb          Music     practice  Templates  week3
+Desktop  Downloads  examples.desktop  Pictures  Public    Videos     workspace
+python@ubuntu:~$ ls -a
+.                 .gnome2             Public
+..                .gnome2_private     .PyCharm2016.3
+.bash_history     .gnupg              .python_history
+.bash_logout      .ICEauthority       .ssh
+.bashrc           .idea               .stardict
+.cache            .ipython            .sudo_as_admin_successful
+.codeintel        .java               .sunpinyin
+.config           .local              Templates
+dbs               .mongorc.js         Videos
+.dbshell          .mozilla            .vim
+.dbus             Music               .viminfo
+Desktop           .mysql_history      .vimrc
+.dmrc             .nano               .virtualenvs
+Documents         .node_repl_history  week3
+Downloads         .pam_environment    .wget-hsts
+dump.rdb          Pictures            workspace
+examples.desktop  .pki                .Xauthority
+.gconf            practice            .xinputrc
+.git              .presage            .xsession-errors
+.gitconfig        .profile            .xsession-errors.old
+.gnome            .psql_history
+python@ubuntu:~$ mkdir week4
+python@ubuntu:~$ cd week4
+python@ubuntu:~/week4$ vi 4-1-1
+python@ubuntu:~/week4$ gcc -g -Wall 4-1-1.c -o 4-1-1
+gcc: error: 4-1-1.c: 没有那个文件或目录
+gcc: fatal error: no input files
+compilation terminated.
+python@ubuntu:~/week4$ cat 4-1-1.c
+cat: 4-1-1.c: 没有那个文件或目录
+python@ubuntu:~/week4$ cat 4.1.1
+cat: 4.1.1: 没有那个文件或目录
+python@ubuntu:~/week4$ cat 4-1-1
+#include "ch02.h"
+int main(int argc, char **argv)
+{
+    int n,from,to;
+    char buf[1024];
+    if(argc !=3)
+    {
+        printf("Usage : %s from-file to-file\n",argv[0]);
+        exit(1);
+    }
+    if((from = open (argv[1],O_RDONLY))<0)
+        err_exit(argv[1]);
+    if((to = open(argv[2], O_WRONLY|O_CREAT|O_APPEND,0644))<0)
+        err_exit(argv[2]);
+    while((n = read(from, buf,sizeof(buf)))>0)
+        write(to,buf,n);
+    close(from);
+    close(to);
+}
+python@ubuntu:~/week4$ cp 4-1-1 4-1-1.c
+python@ubuntu:~/week4$ cat 4-1-1.c
+#include "ch02.h"
+int main(int argc, char **argv)
+{
+    int n,from,to;
+    char buf[1024];
+    if(argc !=3)
+    {
+        printf("Usage : %s from-file to-file\n",argv[0]);
+        exit(1);
+    }
+    if((from = open (argv[1],O_RDONLY))<0)
+        err_exit(argv[1]);
+    if((to = open(argv[2], O_WRONLY|O_CREAT|O_APPEND,0644))<0)
+        err_exit(argv[2]);
+    while((n = read(from, buf,sizeof(buf)))>0)
+        write(to,buf,n);
+    close(from);
+    close(to);
+}
+python@ubuntu:~/week4$ rm 4-1-1
+python@ubuntu:~/week4$ gcc -g -Wall 4-1-1.c -o 4-1-1
+4-1-1.c: In function ‘main’:
+4-1-1.c:9:9: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+         exit(1);
+         ^
+4-1-1.c:9:9: warning: incompatible implicit declaration of built-in function ‘exit’
+4-1-1.c:9:9: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+4-1-1.c:12:9: warning: implicit declaration of function ‘err_exit’ [-Wimplicit-function-declaration]
+         err_exit(argv[1]);
+         ^
+/tmp/cc8OM8pg.o：在函数‘main’中：
+/home/python/week4/4-1-1.c:12：对‘err_exit’未定义的引用
+/home/python/week4/4-1-1.c:14：对‘err_exit’未定义的引用
+collect2: error: ld returned 1 exit status
+python@ubuntu:~/week4$ vi 4-1-1.c
+python@ubuntu:~/week4$ gcc -g -Wall 4-1-1.c -o 4-1-1
+4-1-1.c: In function ‘main’:
+4-1-1.c:9:9: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+         exit(1);
+         ^
+4-1-1.c:9:9: warning: incompatible implicit declaration of built-in function ‘exit’
+4-1-1.c:9:9: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+4-1-1.c:12:9: warning: incompatible implicit declaration of built-in function ‘exit’
+         exit(argv[1]);
+         ^
+4-1-1.c:12:9: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+4-1-1.c:12:14: warning: passing argument 1 of ‘exit’ makes integer from pointer without a cast [-Wint-conversion]
+         exit(argv[1]);
+              ^
+4-1-1.c:12:14: note: expected ‘int’ but argument is of type ‘char *’
+4-1-1.c:14:9: warning: incompatible implicit declaration of built-in function ‘exit’
+         exit(argv[2]);
+         ^
+4-1-1.c:14:9: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+4-1-1.c:14:14: warning: passing argument 1 of ‘exit’ makes integer from pointer without a cast [-Wint-conversion]
+         exit(argv[2]);
+              ^
+4-1-1.c:14:14: note: expected ‘int’ but argument is of type ‘char *’
+python@ubuntu:~/week4$ vi 4-1-1.c
+python@ubuntu:~/week4$ gcc -g -Wall 4-1-1.c -o 4-1-1
+4-1-1.c: In function ‘main’:
+4-1-1.c:9:9: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+         exit(1);
+         ^
+4-1-1.c:9:9: warning: incompatible implicit declaration of built-in function ‘exit’
+4-1-1.c:9:9: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+4-1-1.c:12:9: warning: incompatible implicit declaration of built-in function ‘exit’
+         exit(1);
+         ^
+4-1-1.c:12:9: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+4-1-1.c:14:9: warning: incompatible implicit declaration of built-in function ‘exit’
+         exit(1);
+         ^
+4-1-1.c:14:9: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+python@ubuntu:~/week4$ vi ch02.h
+python@ubuntu:~/week4$ gcc -g -Wall 4-1-1.c -o 4-1-1
+python@ubuntu:~/week4$ ./4-1-1
+Usage : ./4-1-1 from-file to-file
+python@ubuntu:~/week4$ cat 4-1-1.c
+#include "ch02.h"
+int main(int argc, char **argv)
+{
+    int n,from,to;
+    char buf[1024];
+    if(argc !=3)
+    {
+        printf("Usage : %s from-file to-file\n",argv[0]);
+        exit(1);
+    }
+    if((from = open (argv[1],O_RDONLY))<0)
+        exit(1);
+    if((to = open(argv[2], O_WRONLY|O_CREAT|O_APPEND,0644))<0)
+        exit(1);
+    while((n = read(from, buf,sizeof(buf)))>0)
+        write(to,buf,n);
+    close(from);
+    close(to);
+    return 0;
+}
+python@ubuntu:~/week4$ ./4-1-1
+Usage : ./4-1-1 from-file to-file
+python@ubuntu:~/week4$ ./4-1-1 1 2 3 
+Usage : ./4-1-1 from-file to-file
+python@ubuntu:~/week4$ vi 4-1-1.c
+python@ubuntu:~/week4$ gcc -g -Wall 4-1-1.c -o 4-1-1
+python@ubuntu:~/week4$ ./4-1-1 1 2 3 
+Usage : ./4-1-1 from-file to-file
+python@ubuntu:~/week4$ ./4-1-1 123456 123 123
+Usage : ./4-1-1 from-file to-file
+python@ubuntu:~/week4$ cat 4-1-1.c
+#include "ch02.h"
+int main(int argc, char **argv)
+{
+    int n,from,to;
+    char buf[1024];
+    if(argc !=3)
+    {
+        printf("Usage : %s from-file to-file\n",argv[0]);
+        exit(1);
+    }
+    if((from = open (argv[1],O_RDONLY))<0)
+    {
+        printf("Usage : %s from-file to-file\n",argv[1]);
+        exit(1);
+    }
+    if((to = open(argv[2], O_WRONLY|O_CREAT|O_APPEND,0644))<0)
+    {
+        printf("Usage : %s from-file to-file\n",argv[2]);
+        exit(1);
+    }
+    while((n = read(from, buf,sizeof(buf)))>0)
+        write(to,buf,n);
+    close(from);
+    close(to);
+    return 0;
+}
+python@ubuntu:~/week4$ ./4-1-1 123456 123 123
+Usage : ./4-1-1 from-file to-file
+python@ubuntu:~/week4$ ls
+4-1-1  4-1-1.c  ch02.h
+python@ubuntu:~/week4$ ./4-1-1 /proc/cpuinfo ./cpu.bak
+python@ubuntu:~/week4$ ls
+4-1-1  4-1-1.c  ch02.h  cpu.bak
+python@ubuntu:~/week4$ time ./4-1-1 /proc/cpuinfo ./cpu.bak
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+python@ubuntu:~/week4$ 
