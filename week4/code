@@ -441,4 +441,65 @@ python@ubuntu:~/week4$ ./4-4
 d1=3,d2=4
 buf:abcd
 python@ubuntu:~/week4$ 
+python@ubuntu:~/week4$ ^C
+python@ubuntu:~/week4$ cat 4-2.c 4-3.c 4-4.c ch02.h
+#include "ch02.h"
+char buf1[]="abcdefghij";
+char buf2[]="0123456789";
+int main(void)
+{
+    int fd;
+    if((fd=open("file.hole",O_WRONLY|O_CREAT,0644))<0)
+        err_exit("Creat error!");
+    if(write(fd,buf1,10)!=10)
+        err_exit("Write error!");
+    if(lseek(fd,40,SEEK_SET)==-1)
+        err_exit("Lseek error!");
+    if(write(fd,buf2,10)!=10)
+        err_exit("Write error!");
+    return 0;
+}
+#include "ch02.h"
+char buf1[]="abcdefghij";
+char buf2[]="0123456789";
+int main(void)
+{
+    int fd;
+    if((fd=open("file.hole.2",O_WRONLY|O_CREAT|O_APPEND,0644))<0)
+        err_exit("Creat error!");
+    if(write(fd,buf1,10)!=10)
+        err_exit("Write error!");
+    if(lseek(fd,40,SEEK_SET)==-1)
+        err_exit("Lseek error!");
+    if(write(fd,buf2,10)!=10)
+        err_exit("Write error!");
+    return 0;
+}
+#include "ch02.h"
+int main()
+{
+    int d1,d2;
+    char buf[5];
+    memset(buf,0,5);
+    d1=open("file.hole",O_RDONLY);
+    d2=open("file.hole",O_RDONLY);
+    printf("d1=%d,d2=%d\n",d1,d2);
+    lseek(d1,5,SEEK_SET);
+    read(d2,buf,4);
+    printf("buf:%s\n",buf);
+    return 0;
+}
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <string.h>
+#include <fcntl.h>
+#include <stdlib.h>
+void err_exit(char *s)
+{
+    printf("Usage : *s is faile!\n");
+    exit(1);
+}
+python@ubuntu:~/week4$ 
 
