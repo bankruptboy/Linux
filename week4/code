@@ -590,4 +590,82 @@ cat: 4-7.c: 没有那个文件或目录
 python@ubuntu:~/week4$ cp 4-4.c 4-7.c
 python@ubuntu:~/week4$ vi 4-7.c
 python@ubuntu:~/week4$ 
+python@ubuntu:~/week4$ vi 4-7.c
+python@ubuntu:~/week4$ vi ch02.h
+python@ubuntu:~/week4$ vi 4-7.c
+python@ubuntu:~/week4$ cp 4-7.c 4-8.c
+python@ubuntu:~/week4$ vi 4-8.c
+python@ubuntu:~/week4$ vi 4-7.c
+python@ubuntu:~/week4$ cp 4-8.c 4-7.c
+python@ubuntu:~/week4$ vi 4-7.c
+python@ubuntu:~/week4$ gcc 4-7.c -o 4-7
+4-7.c: In function ‘main’:
+4-7.c:6:26: error: ‘O_CAEAT’ undeclared (first use in this function)
+     fd=open("./test.dat",O_CAEAT|O_TRUNC|O_WRONLY,0644);
+                          ^
+4-7.c:6:26: note: each undeclared identifier is reported only once for each function it appears in
+4-7.c:11:12: error: assignment to expression with array type
+         buf=(char)('a'+n);
+            ^
+python@ubuntu:~/week4$ vi 4-7.c
+python@ubuntu:~/week4$ vi 4-7.c
+python@ubuntu:~/week4$ gcc 4-7.c -o 4-7
+4-7.c: In function ‘main’:
+4-7.c:6:26: error: ‘O_CAEAT’ undeclared (first use in this function)
+     fd=open("./test.dat",O_CAEAT|O_TRUNC|O_WRONLY,0644);
+                          ^
+4-7.c:6:26: note: each undeclared identifier is reported only once for each function it appears in
+python@ubuntu:~/week4$ vi 4-7.c
+python@ubuntu:~/week4$ gcc 4-7.c -o 4-7
+python@ubuntu:~/week4$ vi 4-8.c
+python@ubuntu:~/week4$ gcc 4-8.c -o 4-8
+python@ubuntu:~/week4$ cat 4-7.c 4-8.c
+#include "ch02.h"
+int main()
+{
+    int n,i,fd;
+    char buf;
+    fd=open("./test.dat",O_CREAT|O_TRUNC|O_WRONLY,0644);
+    for(i=0;i<2;i++)
+    {
+        srand(time(0));
+        n=rand()%26;
+        buf=(char)('a'+n);
+        write(fd,&buf,1);
+        lseek(fd,10,SEEK_SET);
+        sleep(50);
+    }
+    close(fd);
+    return 0;
+}
+#include "ch02.h"
+int main()
+{
+    int n,i,fd;
+    char buf;
+    fd=open("./test.dat",O_CREAT|O_TRUNC|O_WRONLY,0644);
+    for(i=0;i<2;i++)
+    {
+        srand(time(0));
+        n=rand()%26;
+        buf=(char)('A'+n);
+        write(fd,&buf,1);
+        lseek(fd,10,SEEK_SET);
+        sleep(70);
+    }
+    close(fd);
+    return 0;
+}
+python@ubuntu:~/week4$ ./4-7.c
+bash: ./4-7.c: 权限不够
+python@ubuntu:~/week4$ chomod 777 4-7.c
+未找到 'chomod' 命令，您要输入的是否是：
+ 命令 'chmod' 来自于包 'coreutils' (main)
+chomod：未找到命令
+python@ubuntu:~/week4$ chmod 777 4-7.c
+python@ubuntu:~/week4$ ./4-7.c
+./4-7.c: 行 2: 未预期的符号 `(' 附近有语法错误
+./4-7.c: 行 2: `int main()'
+python@ubuntu:~/week4$ ./4-7
+python@ubuntu:~/week4$ 
 
