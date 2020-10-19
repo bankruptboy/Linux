@@ -668,4 +668,187 @@ python@ubuntu:~/week4$ ./4-7.c
 ./4-7.c: 行 2: `int main()'
 python@ubuntu:~/week4$ ./4-7
 python@ubuntu:~/week4$ 
+python@ubuntu:~/week4$ ./4-7.c
+bash: ./4-7.c: 权限不够
+python@ubuntu:~/week4$ chomod 777 4-7.c
+未找到 'chomod' 命令，您要输入的是否是：
+ 命令 'chmod' 来自于包 'coreutils' (main)
+chomod：未找到命令
+python@ubuntu:~/week4$ chmod 777 4-7.c
+python@ubuntu:~/week4$ ./4-7.c
+./4-7.c: 行 2: 未预期的符号 `(' 附近有语法错误
+./4-7.c: 行 2: `int main()'
+python@ubuntu:~/week4$ ./4-7
+python@ubuntu:~/week4$ ^C
+python@ubuntu:~/week4$ vi 4-7.c
+python@ubuntu:~/week4$ vi 4-8.c
+python@ubuntu:~/week4$ gcc 4-8.c -o 4-8
+python@ubuntu:~/week4$ gcc 4-7.c -o 4-7
+python@ubuntu:~/week4$ ./4-7
+write1:a
+write1:f
+python@ubuntu:~/week4$ stat test.dat
+  文件：'test.dat'
+  大小：11        	块：8          IO 块：4096   普通文件
+设备：801h/2049d	Inode：529548      硬链接：1
+权限：(0644/-rw-r--r--)  Uid：( 1000/  python)   Gid：( 1000/  python)
+最近访问：2020-10-19 16:50:46.828123111 +0800
+最近更改：2020-10-19 16:50:46.435957105 +0800
+最近改动：2020-10-19 16:50:46.435957105 +0800
+创建时间：-
+python@ubuntu:~/week4$ vi 4-9.c
+python@ubuntu:~/week4$ gcc 4-9.c -o 4-9
+4-9.c:1:18: fatal error: ch02.h: 没有那个文件或目录
+compilation terminated.
+python@ubuntu:~/week4$ vi 4-9.c
+python@ubuntu:~/week4$ gcc 4-9.c -o 4-9
+4-9.c: In function ‘main’:
+4-9.c:6:25: error: ‘w’ undeclared (first use in this function)
+     fp=fopen("./ch02.h",w);
+                         ^
+4-9.c:6:25: note: each undeclared identifier is reported only once for each function it appears in
+python@ubuntu:~/week4$ vi 4-9.c
+python@ubuntu:~/week4$ gcc 4-9.c -o 4-9
+python@ubuntu:~/week4$ ./4-9
+fd = 3python@ubuntu:~/week4$ 
+python@ubuntu:~/week4$ cat 4-7.c 4-8.c 4-9.c
+#include "ch02.h"
+int main()
+{
+    int n,i,fd;
+    char buf;
+    fd=open("./test.dat",O_CREAT|O_TRUNC|O_WRONLY,0644);
+    for(i=0;i<2;i++)
+    {
+        srand(time(0));
+        n=rand()%26;
+        buf=(char)('a'+n);
+        printf("write1:%c\n",buf);
+        write(fd,&buf,1);
+        lseek(fd,10,SEEK_SET);
+        sleep(40);
+    }
+    close(fd);
+    return 0;
+}
+#include "ch02.h"
+int main()
+{
+    int n,i,fd;
+    char buf;
+    fd=open("./test.dat",O_CREAT|O_TRUNC|O_WRONLY,0644);
+    for(i=0;i<2;i++)
+    {
+        srand(time(0));
+        n=rand()%26;
+        buf=(char)('A'+n);
+        printf("write2:%c\n",buf);
+        write(fd,&buf,1);
+        lseek(fd,10,SEEK_SET);
+        sleep(50);
+    }
+    close(fd);
+    return 0;
+}
+#include "ch02.h"
+int main()
+{
+    FILE *fp;
+    int fd;
+    fp=fopen("./ch02.h","r");
+    fd=fileno(fp);
+    printf("fd = %d",fd);
+    return 0;
+}
+python@ubuntu:~/week4$ 
+python@ubuntu:~$ cd week4
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   f
+0000013
+python@ubuntu:~/week4$ 
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ 
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ cd week4
+bash: cd: week4: 没有那个文件或目录
+python@ubuntu:~/week4$ cd week4
+bash: cd: week4: 没有那个文件或目录
+python@ubuntu:~/week4$ 
+python@ubuntu:~/week4$ cd week4
+bash: cd: week4: 没有那个文件或目录
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ 
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ od -c test.dat
+0000000   Y  \0  \0  \0  \0  \0  \0  \0  \0  \0   Z
+0000013
+python@ubuntu:~/week4$ 
 
