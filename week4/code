@@ -206,4 +206,239 @@ python@ubuntu:~/week4$ time ./4-1-1 /proc/cpuinfo ./cpu.bak
 real	0m0.001s
 user	0m0.000s
 sys	0m0.000s
+python@ubuntu:~/week4$ ^C
+python@ubuntu:~/week4$ vi 4-2.c
+python@ubuntu:~/week4$ vi ch02.h
+python@ubuntu:~/week4$ gcc -g -Wall 4-2.c -o 4-2
+4-2.c: In function ‘main’:
+4-2.c:7:5: error: stray ‘\357’ in program
+     if ((fd = open("file.hole.2",O_WRONLY|O_CREAT|O_APPEND，0644))<0)
+     ^
+4-2.c:7:5: error: stray ‘\274’ in program
+4-2.c:7:5: error: stray ‘\214’ in program
+4-2.c:7:62: error: expected ‘)’ before numeric constant
+     if ((fd = open("file.hole.2",O_WRONLY|O_CREAT|O_APPEND，0644))<0)
+                                                              ^
+4-2.c:9:18: error: ‘bufl’ undeclared (first use in this function)
+     if(write (fd,bufl,10)!= 10)
+                  ^
+4-2.c:9:18: note: each undeclared identifier is reported only once for each function it appears in
+4-2.c:11:5: error: stray ‘\357’ in program
+     if(lseek (fd，40，SEEK_SET)== -1)
+     ^
+4-2.c:11:5: error: stray ‘\274’ in program
+4-2.c:11:5: error: stray ‘\214’ in program
+4-2.c:11:20: error: expected ‘)’ before numeric constant
+     if(lseek (fd，40，SEEK_SET)== -1)
+                    ^
+4-2.c:11:20: error: stray ‘\357’ in program
+4-2.c:11:20: error: stray ‘\274’ in program
+4-2.c:11:20: error: stray ‘\214’ in program
+4-2.c:11:8: error: too few arguments to function ‘lseek’
+     if(lseek (fd，40，SEEK_SET)== -1)
+        ^
+In file included from ch02.h:4:0,
+                 from 4-2.c:1:
+/usr/include/unistd.h:337:16: note: declared here
+ extern __off_t lseek (int __fd, __off_t __offset, int __whence) __THROW;
+                ^
+4-2.c:13:5: error: stray ‘\357’ in program
+     if( write (fd,buf2，10)!= 10)
+     ^
+4-2.c:13:5: error: stray ‘\274’ in program
+4-2.c:13:5: error: stray ‘\214’ in program
+4-2.c:13:26: error: expected ‘)’ before numeric constant
+     if( write (fd,buf2，10)!= 10)
+                          ^
+4-2.c:13:9: error: too few arguments to function ‘write’
+     if( write (fd,buf2，10)!= 10)
+         ^
+In file included from ch02.h:4:0,
+                 from 4-2.c:1:
+/usr/include/unistd.h:369:16: note: declared here
+ extern ssize_t write (int __fd, const void *__buf, size_t __n) __wur;
+                ^
+4-2.c:15:10: error: ‘O’ undeclared (first use in this function)
+     exit(O);
+          ^
+python@ubuntu:~/week4$ vi 4-2.c
+python@ubuntu:~/week4$ gcc -g -Wall 4-2.c -o 4-2
+4-2.c: In function ‘main’:
+4-2.c:7:5: error: stray ‘\357’ in program
+     if ((fd = open("file.hole.2",O_WRONLY|O_CREAT|O_APPEND，0644))<0)
+     ^
+4-2.c:7:5: error: stray ‘\274’ in program
+4-2.c:7:5: error: stray ‘\214’ in program
+4-2.c:7:62: error: expected ‘)’ before numeric constant
+     if ((fd = open("file.hole.2",O_WRONLY|O_CREAT|O_APPEND，0644))<0)
+                                                              ^
+4-2.c:11:5: error: stray ‘\357’ in program
+     if(lseek(fd，40，SEEK_SET)== -1)
+     ^
+4-2.c:11:5: error: stray ‘\274’ in program
+4-2.c:11:5: error: stray ‘\214’ in program
+4-2.c:11:19: error: expected ‘)’ before numeric constant
+     if(lseek(fd，40，SEEK_SET)== -1)
+                   ^
+4-2.c:11:19: error: stray ‘\357’ in program
+4-2.c:11:19: error: stray ‘\274’ in program
+4-2.c:11:19: error: stray ‘\214’ in program
+4-2.c:11:8: error: too few arguments to function ‘lseek’
+     if(lseek(fd，40，SEEK_SET)== -1)
+        ^
+In file included from ch02.h:4:0,
+                 from 4-2.c:1:
+/usr/include/unistd.h:337:16: note: declared here
+ extern __off_t lseek (int __fd, __off_t __offset, int __whence) __THROW;
+                ^
+4-2.c:13:5: error: stray ‘\357’ in program
+     if(write(fd,buf2，10)!= 10)
+     ^
+4-2.c:13:5: error: stray ‘\274’ in program
+4-2.c:13:5: error: stray ‘\214’ in program
+4-2.c:13:24: error: expected ‘)’ before numeric constant
+     if(write(fd,buf2，10)!= 10)
+                        ^
+4-2.c:13:8: error: too few arguments to function ‘write’
+     if(write(fd,buf2，10)!= 10)
+        ^
+In file included from ch02.h:4:0,
+                 from 4-2.c:1:
+/usr/include/unistd.h:369:16: note: declared here
+ extern ssize_t write (int __fd, const void *__buf, size_t __n) __wur;
+                ^
+4-2.c:15:10: error: ‘O’ undeclared (first use in this function)
+     exit(O);
+          ^
+4-2.c:15:10: note: each undeclared identifier is reported only once for each function it appears in
+python@ubuntu:~/week4$ vi 4-2.c
+python@ubuntu:~/week4$ gcc -g -Wall 4-2.c -o 4-2
+4-2.c: In function ‘main’:
+4-2.c:7:5: error: stray ‘\357’ in program
+     if((fd = open("file.hole.2",O_WRONLY|O_CREAT|O_APPEND，0644))<0)
+     ^
+4-2.c:7:5: error: stray ‘\274’ in program
+4-2.c:7:5: error: stray ‘\214’ in program
+4-2.c:7:61: error: expected ‘)’ before numeric constant
+     if((fd = open("file.hole.2",O_WRONLY|O_CREAT|O_APPEND，0644))<0)
+                                                             ^
+4-2.c:11:5: error: stray ‘\357’ in program
+     if(lseek(fd，40，SEEK_SET)== -1)
+     ^
+4-2.c:11:5: error: stray ‘\274’ in program
+4-2.c:11:5: error: stray ‘\214’ in program
+4-2.c:11:19: error: expected ‘)’ before numeric constant
+     if(lseek(fd，40，SEEK_SET)== -1)
+                   ^
+4-2.c:11:19: error: stray ‘\357’ in program
+4-2.c:11:19: error: stray ‘\274’ in program
+4-2.c:11:19: error: stray ‘\214’ in program
+4-2.c:11:8: error: too few arguments to function ‘lseek’
+     if(lseek(fd，40，SEEK_SET)== -1)
+        ^
+In file included from ch02.h:4:0,
+                 from 4-2.c:1:
+/usr/include/unistd.h:337:16: note: declared here
+ extern __off_t lseek (int __fd, __off_t __offset, int __whence) __THROW;
+                ^
+4-2.c:13:5: error: stray ‘\357’ in program
+     if(write(fd,buf2，10)!= 10)
+     ^
+4-2.c:13:5: error: stray ‘\274’ in program
+4-2.c:13:5: error: stray ‘\214’ in program
+4-2.c:13:24: error: expected ‘)’ before numeric constant
+     if(write(fd,buf2，10)!= 10)
+                        ^
+4-2.c:13:8: error: too few arguments to function ‘write’
+     if(write(fd,buf2，10)!= 10)
+        ^
+In file included from ch02.h:4:0,
+                 from 4-2.c:1:
+/usr/include/unistd.h:369:16: note: declared here
+ extern ssize_t write (int __fd, const void *__buf, size_t __n) __wur;
+                ^
+python@ubuntu:~/week4$ vi 4-2.c
+python@ubuntu:~/week4$ vi 4-2.c
+python@ubuntu:~/week4$ gcc -g -Wall 4-2.c -o 4-2
+python@ubuntu:~/week4$ vi ch02.h
+python@ubuntu:~/week4$ gcc -g -Wall 4-2.c -o 4-2
+In file included from 4-2.c:1:0:
+ch02.h: In function ‘err_exit’:
+ch02.h:10:12: warning: format ‘%s’ expects a matching ‘char *’ argument [-Wformat=]
+     printf("Usage : %s is faile!\n");
+            ^
+python@ubuntu:~/week4$ vi ch02.h
+python@ubuntu:~/week4$ gcc -g -Wall 4-2.c -o 4-2
+python@ubuntu:~/week4$ cp 4-2.c 4-3.c
+python@ubuntu:~/week4$ vi 4-3.c
+python@ubuntu:~/week4$ gcc -g -Wall 4-3.c -o 4-3
+python@ubuntu:~/week4$ ./4-2
+python@ubuntu:~/week4$ a.out
+a.out：未找到命令
+python@ubuntu:~/week4$ ls -l 
+总用量 60
+-rwxrwxr-x 1 python python 10184 10月 19 10:30 4-1-1
+-rw-rw-r-- 1 python python   595 10月 19 10:30 4-1-1.c
+-rwxrwxr-x 1 python python 10232 10月 19 11:02 4-2
+-rw-rw-r-- 1 python python   400 10月 19 11:01 4-2.c
+-rwxrwxr-x 1 python python 10232 10月 19 11:03 4-3
+-rw-rw-r-- 1 python python   411 10月 19 11:03 4-3.c
+-rw-rw-r-- 1 python python   221 10月 19 11:02 ch02.h
+-rw-r--r-- 1 python python  1830 10月 19 10:37 cpu.bak
+-rw-r--r-- 1 python python    50 10月 19 11:03 file.hole
+python@ubuntu:~/week4$ od -c file.hole
+0000000   a   b   c   d   e   f   g   h   i   j  \0  \0  \0  \0  \0  \0
+0000020  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0
+0000040  \0  \0  \0  \0  \0  \0  \0  \0   0   1   2   3   4   5   6   7
+0000060   8   9
+0000062
+python@ubuntu:~/week4$ rm file.hole
+python@ubuntu:~/week4$ ./4-2
+python@ubuntu:~/week4$ ls -l 
+总用量 60
+-rwxrwxr-x 1 python python 10184 10月 19 10:30 4-1-1
+-rw-rw-r-- 1 python python   595 10月 19 10:30 4-1-1.c
+-rwxrwxr-x 1 python python 10232 10月 19 11:02 4-2
+-rw-rw-r-- 1 python python   400 10月 19 11:01 4-2.c
+-rwxrwxr-x 1 python python 10232 10月 19 11:03 4-3
+-rw-rw-r-- 1 python python   411 10月 19 11:03 4-3.c
+-rw-rw-r-- 1 python python   221 10月 19 11:02 ch02.h
+-rw-r--r-- 1 python python  1830 10月 19 10:37 cpu.bak
+-rw-r--r-- 1 python python    50 10月 19 11:05 file.hole
+python@ubuntu:~/week4$ od -c file.hole
+0000000   a   b   c   d   e   f   g   h   i   j  \0  \0  \0  \0  \0  \0
+0000020  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0
+0000040  \0  \0  \0  \0  \0  \0  \0  \0   0   1   2   3   4   5   6   7
+0000060   8   9
+0000062
+python@ubuntu:~/week4$ ./4-3
+python@ubuntu:~/week4$ ls -l 
+总用量 64
+-rwxrwxr-x 1 python python 10184 10月 19 10:30 4-1-1
+-rw-rw-r-- 1 python python   595 10月 19 10:30 4-1-1.c
+-rwxrwxr-x 1 python python 10232 10月 19 11:02 4-2
+-rw-rw-r-- 1 python python   400 10月 19 11:01 4-2.c
+-rwxrwxr-x 1 python python 10232 10月 19 11:03 4-3
+-rw-rw-r-- 1 python python   411 10月 19 11:03 4-3.c
+-rw-rw-r-- 1 python python   221 10月 19 11:02 ch02.h
+-rw-r--r-- 1 python python  1830 10月 19 10:37 cpu.bak
+-rw-r--r-- 1 python python    50 10月 19 11:05 file.hole
+-rw-r--r-- 1 python python    20 10月 19 11:05 file.hole.2
+python@ubuntu:~/week4$ od -c file.hole.2
+0000000   a   b   c   d   e   f   g   h   i   j   0   1   2   3   4   5
+0000020   6   7   8   9
+0000024
+python@ubuntu:~/week4$ vi 4-4.c
+python@ubuntu:~/week4$ gcc -g -Wall 4-4.c -o 4-4
+4-4.c: In function ‘main’:
+4-4.c:11:13: error: ‘bud’ undeclared (first use in this function)
+     read(d2,bud,4);
+             ^
+4-4.c:11:13: note: each undeclared identifier is reported only once for each function it appears in
+python@ubuntu:~/week4$ vi 4-4.c
+python@ubuntu:~/week4$ gcc -g -Wall 4-4.c -o 4-4
+python@ubuntu:~/week4$ ./4-4
+d1=3,d2=4
+buf:abcd
 python@ubuntu:~/week4$ 
+
