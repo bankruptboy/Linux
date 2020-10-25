@@ -937,6 +937,82 @@ extern unsigned int _Cdecl _default87;
 
 
 
-     unit2  2-7 编写程序说明gets()函数的危险性。
-            2-10 设某个文件含n个记录，文件的第一个字(4字节）给出记录的总个数n，随后的n个字给出各个记录的长度（字节数)，剩余部分则由各个记录组成。
-                 编写一个根据文件指针和记录编号（从Ⅰ开始编号）读取第k个记录的函数。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+unit2  2-7 编写程序说明gets()函数的危险性。
+     
+     
+python@ubuntu:~$ vi gets.c
+python@ubuntu:~$ gcc gets.c -o gets
+gets.c: In function ‘main’:
+gets.c:16:5: warning: implicit declaration of function ‘gets’ [-Wimplicit-function-declaration]
+     gets(buffer.buf);
+     ^
+/tmp/cczaow6C.o：在函数‘main’中：
+gets.c:(.text+0x58): 警告： the `gets' function is dangerous and should not be used.
+python@ubuntu:~$ ./gets
+please enter a line
+abcdefghijk
+gets() get string "abcdefghijk"
+buffer.others is "ijk"
+python@ubuntu:~$ cat gets.c
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#define BUF_SIZE 8
+
+int main(void)
+{
+    FILE *fd;
+    int fgets_yes;
+    struct iobuf {
+        char buf[BUF_SIZE];
+        char others[BUF_SIZE];
+    }buffer;
+    memset(&buffer,'\0',sizeof(struct iobuf)); 
+    fprintf(stdout,"please enter a line\n");
+    gets(buffer.buf);
+    fprintf(stdout,"gets() get string \"%s\"\n",buffer.buf);
+    /* 查看溢出情况 */
+    fprintf(stdout,"buffer.others is \"%s\"\n",buffer.others);
+    exit(0);
+}
+
+
+     
+     
+     
+     
+2-10 设某个文件含n个记录，文件的第一个字(4字节）给出记录的总个数n，随后的n个字给出各个记录的长度（字节数)，剩余部分则由各个记录组成。
+     编写一个根据文件指针和记录编号（从Ⅰ开始编号）读取第k个记录的函数。
+     
+     
+     
+     
+     
+     
+     
