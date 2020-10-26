@@ -132,5 +132,94 @@ int main()
     close(fd);
     return 0;
 }
+python@ubuntu:~/week5$ vi 5-2.c
+python@ubuntu:~/week5$ gcc 5-2.c -o 5-2
+python@ubuntu:~/week5$ ./5-2
+Error to create file!
+python@ubuntu:~/week5$ vi 5-2.c
+python@ubuntu:~/week5$ gcc 5-2.c -o 5-2
+python@ubuntu:~/week5$ ./5-2
+After write
+python@ubuntu:~/week5$ cat test1.txt text2.txt
+Hello world!
+cat: text2.txt: 没有那个文件或目录
+python@ubuntu:~/week5$ cat test1.txt texs2.txt
+Hello world!
+cat: texs2.txt: 没有那个文件或目录
+python@ubuntu:~/week5$ cat test1.txt test2.txt
+Hello world!
+Hello world!
+python@ubuntu:~/week5$ cat 5-2.c
+#include "ch05.h"
+int main()
+{
+    int fd;
+    FILE *fp;
+    char *s = "Hello world!\n";
+    if((fd=open("./test1.txt",O_CREAT|O_WRONLY,0644))==-1)
+    {
+       printf("Error to create file!\n"); 
+        exit(1);
+    }
+        
+    if((fp=fopen("./test2.txt","w+"))==NULL)
+    {
+        printf("Error to create file!\n");  
+        exit(1); 
+    }
+    sleep(15);
+    write(fd,s,strlen(s));
+    fwrite(s,sizeof(char),strlen(s),fp);
+    printf("After write\n");
+    sleep(15);
+    close(fd);
+    return 0;
+}
+python@ubuntu:~/week5$ ^C
+python@ubuntu:~/week5$ ^C
+python@ubuntu:~/week5$ vi 5-3.c
+python@ubuntu:~/week5$ gcc 5-3.c -o 5-3
+5-3.c:2:1: error: expected identifier or ‘(’ before ‘{’ token
+ {
+ ^
+python@ubuntu:~/week5$ vi 5-3.c
+python@ubuntu:~/week5$ vi 5-3.c
+python@ubuntu:~/week5$ gcc 5-3.c -o 5-3
+python@ubuntu:~/week5$ ./5-3
+we write 1 byte
+python@ubuntu:~/week5$ cat 5-3.c
+#include "ch05.h"
+int main()
+{
+    char buf[20];
+    int ret;
+    FILE *fp = fopen("./tmp.txt","w+");
+    if(!fp)
+    {
+        printf("fail to open file");
+        exit(1);
+    }
+    ret = fwrite("123",sizeof("123"),1,fp);
+    printf("we write %d byte\n",ret);
+    memset(buf,0,sizeof(buf));
+    ret=fread(buf,1,1,fp);
+    fwrite("456",sizeof("456"),1,fp);
+    fclose(fp);
+    return 0;
+}
+python@ubuntu:~/week5$ vi 5-3.c
+python@ubuntu:~/week5$ gcc 5-3.c -o 5-3
+python@ubuntu:~/week5$ ./5-3
+we write 1 byte
+we read ,ret is 0
+python@ubuntu:~/week5$ cat tmp.txt
+123456python@ubuntu:~/week5$ vi 5-3.c
+python@ubuntu:~/week5$ gcc 5-3.c -o 5-3
+python@ubuntu:~/week5$ ./5-3
+we write 1 byte
+we read ,ret is 0
+python@ubuntu:~/week5$ vi 5-3.c
+python@ubuntu:~/week5$ gcc 5-3.c -o 5-3
+
 
 
