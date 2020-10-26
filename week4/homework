@@ -1009,7 +1009,57 @@ int main(void)
      
 2-10 设某个文件含n个记录，文件的第一个字(4字节）给出记录的总个数n，随后的n个字给出各个记录的长度（字节数)，剩余部分则由各个记录组成。
      编写一个根据文件指针和记录编号（从Ⅰ开始编号）读取第k个记录的函数。
-     
+     #include <stdio.h>
+void findljj(FILE *fp,int i,int j)
+{
+	char str[60];
+	char buffer[20];
+	
+	//读出数据的个数 
+	fseek(fp , 0 ,SEEK_SET);
+    fread(buffer, 1, 1, fp);
+    
+  	int n; //数据个数 
+    sscanf(buffer,"%d",&n);
+    //读出第i个数据的内容 
+    fseek(fp , (n+1)*4 ,SEEK_SET);
+	if(fgets (str, 5, fp)!=NULL ) {
+    	puts(str);
+   }
+   else{
+   	  printf("error");
+   }
+}
+int main ()
+{
+   FILE *fp;
+   char buffer[20];
+   
+   fp = fopen("file.txt","w+");
+   
+   int i; //第几个数据  
+   i = getchar(); 
+   
+   //写入数据 
+   fputs("2   ", fp);  
+   fseek( fp, 0, SEEK_CUR );
+   fputs("4   ", fp); 
+   fseek(fp , 0 ,SEEK_CUR);
+   fputs("2   ", fp);
+   fseek(fp , 0 ,SEEK_CUR);
+   fputs("C Programming Langauge", fp);
+   //求数据长度 
+   
+   int j; //数据长度 
+   fseek(fp , 4+4*(i-1) ,SEEK_SET);
+   fread(buffer, 1, 1, fp);
+   sscanf(buffer,"%d",&j);
+   
+   findljj(fp,i,j);
+   fclose(fp);
+   
+   return 0;
+}
      
      
      
