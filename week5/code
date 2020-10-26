@@ -32,3 +32,105 @@ int main()
  //   while(1);
     return 0;
 }
+python@ubuntu:~/week5$ ^C
+python@ubuntu:~/week5$ vi 5-1-2.c
+python@ubuntu:~/week5$ gcc 5-1-2.c -o 5-1-2
+python@ubuntu:~/week5$ ./5-1-2
+hello world!python@ubuntu:~/week5$ vi 5-1-2.c
+python@ubuntu:~/week5$ gcc 5-1-2.c -o 5-1-2
+python@ubuntu:~/week5$ ./5-1-2
+                                                            
+
+
+
+
+
+^C
+python@ubuntu:~/week5$ vi 5-1-2.c
+python@ubuntu:~/week5$ gcc 5-1-2.c -o 5-1-2
+python@ubuntu:~/week5$ ./5-1-2
+^C
+python@ubuntu:~/week5$ vi 5-1-2.c
+python@ubuntu:~/week5$ gcc 5-1-2.c -o 5-1-2
+python@ubuntu:~/week5$ ./5-1-2
+hello world!
+
+
+
+
+
+
+
+
+^C
+python@ubuntu:~/week5$ ./5-1-2
+hello world!^C
+python@ubuntu:~/week5$ cat 5-1-2.c
+#include "ch05.h"
+int main()
+{
+    char buff[1024];
+       setvbuf(stdout, buff, _IOFBF, 1024);
+       printf("hello world!");
+       fflush( stdout );
+       while(1);
+       return 0;
+}
+python@ubuntu:~/week5$ vi 5-2.c
+python@ubuntu:~/week5$ gcc 5-2.c -o 5-2
+5-2.c:1:18: fatal error: ch02.h: 没有那个文件或目录
+compilation terminated.
+python@ubuntu:~/week5$ vi 5-2.c
+python@ubuntu:~/week5$ gcc 5-2.c -o 5-2
+5-2.c: In function ‘main’:
+5-2.c:7:30: error: invalid suffix "_CREAT" on integer constant
+     if((fd=open("/test1.txt",0_CREAT|0_WRONLY,0644))==-1)
+                              ^
+5-2.c:7:38: error: invalid suffix "_WRONLY" on integer constant
+     if((fd=open("/test1.txt",0_CREAT|0_WRONLY,0644))==-1)
+                                      ^
+python@ubuntu:~/week5$ vi 5-2.c
+python@ubuntu:~/week5$ gcc 5-2.c -o 5-2
+python@ubuntu:~/week5$ ./5-2
+Error to create file!
+python@ubuntu:~/week5$ vi 5-2.c
+python@ubuntu:~/week5$ gcc 5-2.c -o 5-2
+python@ubuntu:~/week5$ ./5-2
+After write
+python@ubuntu:~/week5$ cat test1.txt text2.txt
+Hello world!
+cat: text2.txt: 没有那个文件或目录
+python@ubuntu:~/week5$ cat test1.txt texs2.txt
+Hello world!
+cat: texs2.txt: 没有那个文件或目录
+python@ubuntu:~/week5$ cat test1.txt test2.txt
+Hello world!
+Hello world!
+python@ubuntu:~/week5$ cat 5-2.c
+#include "ch05.h"
+int main()
+{
+    int fd;
+    FILE *fp;
+    char *s = "Hello world!\n";
+    if((fd=open("./test1.txt",O_CREAT|O_WRONLY,0644))==-1)
+    {
+       printf("Error to create file!\n"); 
+        exit(1);
+    }
+        
+    if((fp=fopen("./test2.txt","w+"))==NULL)
+    {
+        printf("Error to create file!\n");  
+        exit(1); 
+    }
+    sleep(15);
+    write(fd,s,strlen(s));
+    fwrite(s,sizeof(char),strlen(s),fp);
+    printf("After write\n");
+    sleep(15);
+    close(fd);
+    return 0;
+}
+
+
