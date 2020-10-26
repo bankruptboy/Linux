@@ -934,7 +934,51 @@ extern unsigned int _Cdecl _default87;
 
 
 
+#include <stdio.h>
 
+int main() {
+    int int_n = 0;
+    unsigned int u_int_n = 0;
+    // int float_n = 0;
+    long long double_n = 0;
+
+    while (1) {
+        int_n <<= 1;
+        int_n += 1;
+        // printf("%d\n", int_n);
+        if (int_n == -1) break;
+        printf("%d\n", int_n);
+    }
+    printf("-- int 最大值如上 --\n\n");
+
+    while (1) {
+        u_int_n <<= 1;
+        u_int_n += 1;
+        printf("%u\n", u_int_n);
+        if ((int)u_int_n == -1) break;
+    }
+    printf("-- unsigned int 最大值如上 --\n\n");
+
+    float float_n = -8.25;
+    char *tmp = (char *)&float_n;
+    *tmp = 0xff;
+    *(tmp + 1) = 0xff;
+    *(tmp + 2) = 0x7f;
+    *(tmp + 3) = 0x7f;
+
+    printf("\n&f = %x", &float_n);
+	printf("\n最大float： f = %f", float_n);
+
+    *tmp = 0x01;
+    *(tmp + 1) = 0x00;
+    *(tmp + 2) = 0x00;
+    *(tmp + 3) = 0x00;
+
+    printf("\n&f = %x", &float_n);
+	printf("\n最小float： f = %e", float_n);
+
+    return 0;
+}
 
 
 
@@ -1009,21 +1053,58 @@ int main(void)
      
 2-10 设某个文件含n个记录，文件的第一个字(4字节）给出记录的总个数n，随后的n个字给出各个记录的长度（字节数)，剩余部分则由各个记录组成。
      编写一个根据文件指针和记录编号（从Ⅰ开始编号）读取第k个记录的函数。
-     #include <stdio.h>
-void findljj(FILE *fp,int i,int j)
+python@ubuntu:~/week5$ vi aaa.c
+python@ubuntu:~/week5$ gcc aaa.c -o aaa
+python@ubuntu:~/week5$ ./aaa
+1
+C Pr
+python@ubuntu:~/week5$ ./aaa
+2
+og
+python@ubuntu:~/week5$ cat aaa.c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+void fun(char *str)
+{
+	char *str_c=str;
+	int i,j=0;
+	for(i=0;str[i]!='\0';i++)
+	{
+		if(str[i]!=' ')
+			str_c[j++]=str[i];
+	}
+	str_c[j]='\0';
+	str=str_c;	
+}
+
+void findljj(FILE *fp,int i)
 {
 	char str[60];
 	char buffer[20];
-	
+	char buf[100];
+	int b = 0;//某数前面数据的长度
 	//读出数据的个数 
 	fseek(fp , 0 ,SEEK_SET);
     fread(buffer, 1, 1, fp);
     
   	int n; //数据个数 
-    sscanf(buffer,"%d",&n);
+    sscanf(buffer,"%d",&n);    
+    
+    //读出数据的长度 
+	fseek(fp , 4 ,SEEK_SET);
+    fread(buf, sizeof(buf), 1, fp);
+    fun(buf);
+	for(int l = 0;l<i-1;l++)
+	{
+		b=buf[l]+b-'0';		
+	//	printf("%d\n",b);
+	}
+
     //读出第i个数据的内容 
-    fseek(fp , (n+1)*4 ,SEEK_SET);
-	if(fgets (str, 5, fp)!=NULL ) {
+    fseek(fp , (n+1)*4+b ,SEEK_SET);
+	if(fgets (str, (int)(buf[i-1]-'0')+1, fp)!=NULL ) {
     	puts(str);
    }
    else{
@@ -1033,13 +1114,9 @@ void findljj(FILE *fp,int i,int j)
 int main ()
 {
    FILE *fp;
-   char buffer[20];
-   
    fp = fopen("file.txt","w+");
-   
    int i; //第几个数据  
-   i = getchar(); 
-   
+   scanf("%d",&i); 
    //写入数据 
    fputs("2   ", fp);  
    fseek( fp, 0, SEEK_CUR );
@@ -1048,21 +1125,9 @@ int main ()
    fputs("2   ", fp);
    fseek(fp , 0 ,SEEK_CUR);
    fputs("C Programming Langauge", fp);
-   //求数据长度 
-   
-   int j; //数据长度 
-   fseek(fp , 4+4*(i-1) ,SEEK_SET);
-   fread(buffer, 1, 1, fp);
-   sscanf(buffer,"%d",&j);
-   
-   findljj(fp,i,j);
+      
+   findljj(fp,i);
    fclose(fp);
    
    return 0;
 }
-     
-     
-     
-     
-     
-     
