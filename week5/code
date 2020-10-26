@@ -1,0 +1,34 @@
+python@ubuntu:~/week5$ vi 5-1.c
+python@ubuntu:~/week5$ cat 5-1.c
+#include "ch05.h"
+int main()
+{
+    printf("hello world");
+    while(1);
+    return 0;
+}
+python@ubuntu:~/week5$ gcc 5-1.c -o 5-1
+python@ubuntu:~/week5$ ./5-1
+^C
+python@ubuntu:~/week5$ cp 5-1.c 5-1-1.c
+python@ubuntu:~/week5$ vi 5-1-1.c
+python@ubuntu:~/week5$ gcc 5-1-1.c -o 5-1-1
+python@ubuntu:~/week5$ ./5-1-1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+[3]+  已停止               ./5-1-1
+python@ubuntu:~/week5$ vi 5-1-1.c
+python@ubuntu:~/week5$ gcc 5-1-1.c -o 5-1-1
+python@ubuntu:~/week5$ ./5-1-1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               hello worldpython@ubuntu:~/week5$ cat 5-1-1.c
+#include "ch05.h"
+int main()
+{
+    int i;
+    for(i=0;i<1023;i++)
+    {
+        printf(" ");
+    }
+    printf("hello world");
+ //   while(1);
+    return 0;
+}
