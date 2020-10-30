@@ -430,7 +430,7 @@ book unit1  1-6 查看你的系统的头文件limits.h。系统相关的静态�
 			int b = 0;//某数前面数据的长度
 			//读出数据的个数 
 			fseek(fp , 0 ,SEEK_SET);
-		    fread(buffer, 1, 1, fp);
+		    fread(buffer, 4, 1, fp);
 
 			int n; //数据个数 
 		    sscanf(buffer,"%d",&n);    
@@ -461,11 +461,15 @@ book unit1  1-6 查看你的系统的头文件limits.h。系统相关的静态�
 		   int i; //第几个数据  
 		   scanf("%d",&i); 
 		   //写入数据 
-		   fputs("6   ", fp);  
+		   fputs("10  ", fp);  
 		   fputs("4   ", fp); 
 		   fputs("2   ", fp);
 		   fputs("2   ", fp);
 		   fputs("5   ", fp);
+		   fputs("1   ", fp);
+		   fputs("1   ", fp);
+		   fputs("1   ", fp);
+		   fputs("1   ", fp);
 		   fputs("1   ", fp);
 		   fputs("1   ", fp);
 		   fputs("C Programming Langauge", fp);
