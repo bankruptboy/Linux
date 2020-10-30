@@ -267,6 +267,7 @@ book unit1  1-6 查看你的系统的头文件limits.h。系统相关的静态�
 			int ch = 1;
 			while(ch)
 			{
+				printf("-------------------------------------\n"); 
 				printf("1.float类型最大最小值。\n");
 				printf("2.double类型最大最小值。\n");
 				printf("3.int类型最大最小值。\n");
@@ -278,7 +279,7 @@ book unit1  1-6 查看你的系统的头文件limits.h。系统相关的静态�
 				printf("9.unsigned_short类型最大最小值。\n");
 				printf("10.unsigned_long类型最大最小值。\n");
 				printf("0.退出。\n");
-				printf("请输入您需要打印的数据类型： ");
+				printf("-------------------------------------\n"); 
 				scanf("%d",&ch); 
 				switch(ch)
 				{
@@ -404,15 +405,6 @@ book unit1  1-6 查看你的系统的头文件limits.h。系统相关的静态�
      
 		2-10 设某个文件含n个记录，文件的第一个字(4字节）给出记录的总个数n，随后的n个字给出各个记录的长度（字节数)，剩余部分则由各个记录组成。
 		     编写一个根据文件指针和记录编号（从Ⅰ开始编号）读取第k个记录的函数。
-		python@ubuntu:~/week5$ vi aaa.c
-		python@ubuntu:~/week5$ gcc aaa.c -o aaa
-		python@ubuntu:~/week5$ ./aaa
-		1
-		C Pr
-		python@ubuntu:~/week5$ ./aaa
-		2
-		og
-		python@ubuntu:~/week5$ cat aaa.c
 		#include <stdio.h>
 		#include <stdlib.h>
 		#include <string.h>
@@ -447,10 +439,10 @@ book unit1  1-6 查看你的系统的头文件limits.h。系统相关的静态�
 			fseek(fp , 4 ,SEEK_SET);
 		    fread(buf, sizeof(buf), 1, fp);
 		    fun(buf);
-			for(int l = 0;l<i-1;l++)
+		    int l;
+			for(l = 0;l<i-1;l++)
 			{
 				b=buf[l]+b-'0';		
-			//	printf("%d\n",b);
 			}
 
 		    //读出第i个数据的内容 
@@ -469,12 +461,13 @@ book unit1  1-6 查看你的系统的头文件limits.h。系统相关的静态�
 		   int i; //第几个数据  
 		   scanf("%d",&i); 
 		   //写入数据 
-		   fputs("2   ", fp);  
-		   fseek( fp, 0, SEEK_CUR );
+		   fputs("6   ", fp);  
 		   fputs("4   ", fp); 
-		   fseek(fp , 0 ,SEEK_CUR);
 		   fputs("2   ", fp);
-		   fseek(fp , 0 ,SEEK_CUR);
+		   fputs("2   ", fp);
+		   fputs("5   ", fp);
+		   fputs("1   ", fp);
+		   fputs("1   ", fp);
 		   fputs("C Programming Langauge", fp);
 
 		   findljj(fp,i);
