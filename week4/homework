@@ -59,211 +59,426 @@ book unit1  1-6 查看你的系统的头文件limits.h。系统相关的静态�
 		取值范围 -(1.2 * 10 ^ 4932) ~ +(1.2 * 10 ^ 4932)
 
 
+		#include <stdio.h>
+		void int_num()
+		{
+			int i =1;
+			while(i>0)
+			{
+				i=i<<1;
+				if(i<0)
+				{
+					int a=i-1; 
+					printf("%d\n",a);
+				}
+				else
+				{
+					printf("%d\n",i);
+				}
 
-指数的默认进制
-FLT_RADIX 默认值是2，表示指数是以2进制表示
+			}
+			printf("%d\n",i);
+		}
+		void short_num()
+		{
+			short i =1;
+			while(i>0)
+			{
+				i=i<<1;
+				if(i<0)
+				{
+					short a=i-1; 
+					printf("%d\n",a);
+				}
+				else
+				{
+					printf("%d\n",i);
+				}
 
-尾数的位数
-FLT_MANT_DIG 默认值是23，表示float类型的变量尾数的位数是23位
-DBL_MANT_DIG 默认值是52，表示double类型的变量尾数的位数是52位
-LDBL_MANT_DIG 默认值是63，表示long double类型的变量尾数的位数是63位
+			}
+			printf("%d\n",i);
+		}
+		void long_num()
+		{
+			long i =1;
+			while(i>0)
+			{
+				i=i<<1;
+				if(i<0)
+				{
+					long a=i-1; 
+					printf("%ld\n",a);
+				}
+				else
+				{
+					printf("%ld\n",i);
+				}
 
-小数点后的位数，就是四舍五入后肯定能保证的精度
-FLT_DIG 默认值是6，表示float类型的变量小数点后的位数是6位
-DBL_DIG 默认值是15，表示double类型的变量小数点后的位数是15位
-LDBL_DIG 默认值是18，表示long double类型的变量小数点后的位数是18位
+			}
+			printf("%d\n",i);
+		}
+		void char_num()
+		{
+			char i =1;
+			while(i>0)
+			{
+				i=i<<1;
+				if(i<0)
+				{
+					char a=i-1; 
+					printf("%d\n",a);
+				}
+				else
+				{
+					printf("%d\n",i);
+				}
 
-指数的最小整数
-FLT_MIN_EXP 默认值是-125
-DBL_MIN_EXP 默认值是-1021
-LDBL_MIN_EXP 默认值是-16381
+			}
+			printf("%d\n",i);
+		}
+		void unsigned_char_num()
+		{
+			unsigned char i =1;
+			while(i>0)
+			{
+				i=i<<1;
+				if(i<0)
+				{
+					unsigned char a=i-1; 
+					printf("%d\n",a);
+				}
+				else
+				{
+					printf("%d\n",i);
+				}
 
-指数的最小负整数
-FLT_MIN_10_EXP 默认值是-37
-DBL_MIN_10_EXP 默认值是-307
-LDBL_MIN_10_EXP 默认值是-4931
+			}
+			printf("%d\n",i);
+		}
+		void unsigned_int_num()
+		{
+			unsigned int i =1;
+			while(i>0)
+			{
+				i=i<<1;
+				if(i<0)
+				{
+					unsigned int a=i-1; 
+					printf("%u\n",a);
+				}
+				else
+				{
+					printf("%u\n",i);
+				}
 
-指数的最大整数
-FLT_MAX_EXP 默认值是128
-DBL_MAX_EXP 默认值是1024
-LDBL_MAX_EXP 默认值是16384
+			}
+		}
+		void unsigned_short_num()
+		{
+			unsigned short i =1;
+			while(i>0)
+			{
+				i=i<<1;
+				if(i<0)
+				{
+					unsigned short a=i-1; 
+					printf("%u\n",a);
+				}
+				else
+				{
+					printf("%u\n",i);
+				}
 
-指数的最大非负整数
-FLT_MAX_10_EXP 默认值是38
-DBL_MAX_10_EXP 默认值是308
-LDBL_MAX_10_EXP 默认值是4932
+			}
+		}
+		void unsigned_long_num()
+		{
+			unsigned long i =1;
+			while(i>0)
+			{
+				i=i<<1;
+				if(i<0)
+				{
+					unsigned long a=i-1; 
+					printf("%u\n",a);
+				}
+				else
+				{
+					printf("%u\n",i);
+				}
 
-最大值
-FLT_MAX 默认值是3.4 * 10 ^ 38
-DBL_MAX 默认值是1.7 * 10 ^ 308
-LDBL_MAX 默认值是1.2 * 10 ^ 4932
+			}
+		}
+		void float_num()
+		{
+			float float_n = -8.25;
+		    char *tmp = (char *)&float_n;
+		    //0 111 1111 1111 1111 1111 1111 1111 1111
+		    *tmp = 0xff; //1111 1111  尾数 
+		    *(tmp + 1) = 0xff;  //1111 1111 
+		    *(tmp + 2) = 0x7f;  //0111 1111  阶码最后一位为0  
+		    *(tmp + 3) = 0x7f;  //0111 1111 小端  符号 阶码    
+			printf("最大float： f = %f\n", float_n);
+			printf("最大float： f = %e\n", float_n);
 
-跨度值
-FLT_EPSILON 默认值是0
-DBL_EPSILON 默认值是0
-LDBL_EPSILON 默认值是0
+			float float_n1 = -8.25;
+		    char *tmp2 = (char *)&float_n1;
+			//1 111 1111 1111 1111 1111 1111 1111 1111
+		    *tmp2 = 0xff; //1111 1111  尾数 
+		    *(tmp2 + 1) = 0xff;  //1111 1111 
+		    *(tmp2 + 2) = 0x7f;  //0111 1111  阶码最后一位为0  
+		    *(tmp2 + 3) = 0xff;  //0111 1111 小端  符号 阶码 
+			printf("最小float： f = -%f\n", float_n);
+			printf("最小float： f = -%e\n", float_n);
+		} 
 
-最小的正数
-FLT_MIN 默认值是0
-DBL_MIN 默认值是0
-LDBL_MIN 默认值是0
+		void double_num()
+		{
+			//0 111 1111 1110 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 
+		    double double_n = -6.25; 
+		    char *tmp1 = (char *)&double_n;
+		    *tmp1 = 0xff;
+		    *(tmp1 + 1) = 0xff;
+		    *(tmp1 + 2) = 0xff;
+		    *(tmp1 + 3) = 0xff;
+		    *(tmp1 + 4) = 0xff;
+		    *(tmp1 + 5) = 0xff;
+		    *(tmp1 + 6) = 0xef;
+		    *(tmp1 + 7) = 0x7f; //小端 
+		    printf("最大double f = %lf\n",double_n);
+			printf("最大double f = %e\n",double_n);
 
-四舍五入的方式
-FLT_ROUNDS，0代表向0，1代表向最近的，2代表向正无穷，3代表向负无穷，-1代表不确定
+			//1 111 1111 1110 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 
+		    double double_n1 = -3.25; 
+		    char *tmp3 = (char *)&double_n1;
+		    *tmp3 = 0xff;
+		    *(tmp3 + 1) = 0xff;
+		    *(tmp3 + 2) = 0xff;
+		    *(tmp3 + 3) = 0xff;
+		    *(tmp3 + 4) = 0xff;
+		    *(tmp3 + 5) = 0xff;
+		    *(tmp3 + 6) = 0xef;
+		    *(tmp3 + 7) = 0xff; //小端 
+		    printf("最小double f = %lf\n",double_n1);
+		    printf("最小double f = %e\n",double_n1);
+		}
+		void cicle()
+		{
+			int ch = 1;
+			while(ch)
+			{
+				printf("1.float类型最大最小值。\n");
+				printf("2.double类型最大最小值。\n");
+				printf("3.int类型最大最小值。\n");
+				printf("4.char类型最大最小值。\n");
+				printf("5.short类型最大最小值。\n");
+				printf("6.long类型最大最小值。\n");
+				printf("7.unsigned_char类型最大最小值。\n");
+				printf("8.unsigned_int类型最大最小值。\n");
+				printf("9.unsigned_short类型最大最小值。\n");
+				printf("10.unsigned_long类型最大最小值。\n");
+				printf("0.退出。\n");
+				printf("请输入您需要打印的数据类型： ");
+				scanf("%d",&ch); 
+				switch(ch)
+				{
+					case 1:
+						float_num();
+						break;
+					case 2:
+						double_num();
+						break;
+					case 3:
+						int_num();
+						break;
+					case 4:
+						char_num();
+						break;
+					case 5:
+						short_num();
+						break;
+					case 6:
+						long_num();
+						break;
+					case 7:
+						unsigned_char_num();
+						break;
+					case 8:
+						unsigned_int_num();
+						break;
+					case 9:
+						unsigned_short_num();
+						break;
+					case 10:
+						unsigned_long_num();
+						break;
+					default: 
+						break;
+				}
+
+			}
+		}
+		int main() {
+		    cicle();
+		    return 0;
+		}
 
 
 
 
 
-unit2  2-7 编写程序说明gets()函数的危险性。
-     
-     
-python@ubuntu:~$ vi gets.c
-python@ubuntu:~$ gcc gets.c -o gets
-gets.c: In function ‘main’:
-gets.c:16:5: warning: implicit declaration of function ‘gets’ [-Wimplicit-function-declaration]
-     gets(buffer.buf);
-     ^
-/tmp/cczaow6C.o：在函数‘main’中：
-gets.c:(.text+0x58): 警告： the `gets' function is dangerous and should not be used.
-python@ubuntu:~$ ./gets
-please enter a line
-abcdefghijk
-gets() get string "abcdefghijk"
-buffer.others is "ijk"
-python@ubuntu:~$ cat gets.c
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#define BUF_SIZE 8
-
-int main(void)
-{
-    FILE *fd;
-    int fgets_yes;
-    struct iobuf {
-        char buf[BUF_SIZE];
-        char others[BUF_SIZE];
-    }buffer;
-    memset(&buffer,'\0',sizeof(struct iobuf)); 
-    fprintf(stdout,"please enter a line\n");
-    gets(buffer.buf);
-    fprintf(stdout,"gets() get string \"%s\"\n",buffer.buf);
-    /* 查看溢出情况 */
-    fprintf(stdout,"buffer.others is \"%s\"\n",buffer.others);
-    exit(0);
-}
 
 
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-2-10 设某个文件含n个记录，文件的第一个字(4字节）给出记录的总个数n，随后的n个字给出各个记录的长度（字节数)，剩余部分则由各个记录组成。
-     编写一个根据文件指针和记录编号（从Ⅰ开始编号）读取第k个记录的函数。
-python@ubuntu:~/week5$ vi aaa.c
-python@ubuntu:~/week5$ gcc aaa.c -o aaa
-python@ubuntu:~/week5$ ./aaa
-1
-C Pr
-python@ubuntu:~/week5$ ./aaa
-2
-og
-python@ubuntu:~/week5$ cat aaa.c
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-void fun(char *str)
-{
-	char *str_c=str;
-	int i,j=0;
-	for(i=0;str[i]!='\0';i++)
-	{
-		if(str[i]!=' ')
-			str_c[j++]=str[i];
-	}
-	str_c[j]='\0';
-	str=str_c;	
-}
 
-void findljj(FILE *fp,int i)
-{
-	char str[60];
-	char buffer[20];
-	char buf[100];
-	int b = 0;//某数前面数据的长度
-	//读出数据的个数 
-	fseek(fp , 0 ,SEEK_SET);
-    fread(buffer, 1, 1, fp);
-    
-  	int n; //数据个数 
-    sscanf(buffer,"%d",&n);    
-    
-    //读出数据的长度 
-	fseek(fp , 4 ,SEEK_SET);
-    fread(buf, sizeof(buf), 1, fp);
-    fun(buf);
-	for(int l = 0;l<i-1;l++)
-	{
-		b=buf[l]+b-'0';		
-	//	printf("%d\n",b);
-	}
+		unit2  2-7 编写程序说明gets()函数的危险性。
 
-    //读出第i个数据的内容 
-    fseek(fp , (n+1)*4+b ,SEEK_SET);
-	if(fgets (str, (int)(buf[i-1]-'0')+1, fp)!=NULL ) {
-    	puts(str);
-   }
-   else{
-   	  printf("error");
-   }
-}
-int main ()
-{
-   FILE *fp;
-   fp = fopen("file.txt","w+");
-   int i; //第几个数据  
-   scanf("%d",&i); 
-   //写入数据 
-   fputs("2   ", fp);  
-   fseek( fp, 0, SEEK_CUR );
-   fputs("4   ", fp); 
-   fseek(fp , 0 ,SEEK_CUR);
-   fputs("2   ", fp);
-   fseek(fp , 0 ,SEEK_CUR);
-   fputs("C Programming Langauge", fp);
-      
-   findljj(fp,i);
-   fclose(fp);
-   
-   return 0;
-}
+
+		python@ubuntu:~$ vi gets.c
+		python@ubuntu:~$ gcc gets.c -o gets
+		gets.c: In function ‘main’:
+		gets.c:16:5: warning: implicit declaration of function ‘gets’ [-Wimplicit-function-declaration]
+		     gets(buffer.buf);
+		     ^
+		/tmp/cczaow6C.o：在函数‘main’中：
+		gets.c:(.text+0x58): 警告： the `gets' function is dangerous and should not be used.
+		python@ubuntu:~$ ./gets
+		please enter a line
+		abcdefghijk
+		gets() get string "abcdefghijk"
+		buffer.others is "ijk"
+		python@ubuntu:~$ cat gets.c
+		#include <stdio.h>
+		#include <string.h>
+		#include <stdlib.h>
+		#define BUF_SIZE 8
+
+		int main(void)
+		{
+		    FILE *fd;
+		    int fgets_yes;
+		    struct iobuf {
+			char buf[BUF_SIZE];
+			char others[BUF_SIZE];
+		    }buffer;
+		    memset(&buffer,'\0',sizeof(struct iobuf)); 
+		    fprintf(stdout,"please enter a line\n");
+		    gets(buffer.buf);
+		    fprintf(stdout,"gets() get string \"%s\"\n",buffer.buf);
+		    /* 查看溢出情况 */
+		    fprintf(stdout,"buffer.others is \"%s\"\n",buffer.others);
+		    exit(0);
+		}
+
+
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+		2-10 设某个文件含n个记录，文件的第一个字(4字节）给出记录的总个数n，随后的n个字给出各个记录的长度（字节数)，剩余部分则由各个记录组成。
+		     编写一个根据文件指针和记录编号（从Ⅰ开始编号）读取第k个记录的函数。
+		python@ubuntu:~/week5$ vi aaa.c
+		python@ubuntu:~/week5$ gcc aaa.c -o aaa
+		python@ubuntu:~/week5$ ./aaa
+		1
+		C Pr
+		python@ubuntu:~/week5$ ./aaa
+		2
+		og
+		python@ubuntu:~/week5$ cat aaa.c
+		#include <stdio.h>
+		#include <stdlib.h>
+		#include <string.h>
+		#include <math.h>
+		void fun(char *str)
+		{
+			char *str_c=str;
+			int i,j=0;
+			for(i=0;str[i]!='\0';i++)
+			{
+				if(str[i]!=' ')
+					str_c[j++]=str[i];
+			}
+			str_c[j]='\0';
+			str=str_c;	
+		}
+
+		void findljj(FILE *fp,int i)
+		{
+			char str[60];
+			char buffer[20];
+			char buf[100];
+			int b = 0;//某数前面数据的长度
+			//读出数据的个数 
+			fseek(fp , 0 ,SEEK_SET);
+		    fread(buffer, 1, 1, fp);
+
+			int n; //数据个数 
+		    sscanf(buffer,"%d",&n);    
+
+		    //读出数据的长度 
+			fseek(fp , 4 ,SEEK_SET);
+		    fread(buf, sizeof(buf), 1, fp);
+		    fun(buf);
+			for(int l = 0;l<i-1;l++)
+			{
+				b=buf[l]+b-'0';		
+			//	printf("%d\n",b);
+			}
+
+		    //读出第i个数据的内容 
+		    fseek(fp , (n+1)*4+b ,SEEK_SET);
+			if(fgets (str, (int)(buf[i-1]-'0')+1, fp)!=NULL ) {
+			puts(str);
+		   }
+		   else{
+			  printf("error");
+		   }
+		}
+		int main ()
+		{
+		   FILE *fp;
+		   fp = fopen("file.txt","w+");
+		   int i; //第几个数据  
+		   scanf("%d",&i); 
+		   //写入数据 
+		   fputs("2   ", fp);  
+		   fseek( fp, 0, SEEK_CUR );
+		   fputs("4   ", fp); 
+		   fseek(fp , 0 ,SEEK_CUR);
+		   fputs("2   ", fp);
+		   fseek(fp , 0 ,SEEK_CUR);
+		   fputs("C Programming Langauge", fp);
+
+		   findljj(fp,i);
+		   fclose(fp);
+
+		   return 0;
+		}
