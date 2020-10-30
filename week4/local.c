@@ -20,15 +20,15 @@ void findljj(FILE *fp,int i)
 	char str[60];
 	char buffer[20];
 	char buf[100];
-	int b = 0;//Ä³ÊıÇ°ÃæÊı¾İµÄ³¤¶È
-	//¶Á³öÊı¾İµÄ¸öÊı 
+	int b = 0;//æŸæ•°å‰é¢æ•°æ®çš„é•¿åº¦
+	//è¯»å‡ºæ•°æ®çš„ä¸ªæ•° 
 	fseek(fp , 0 ,SEEK_SET);
-    fread(buffer, 1, 1, fp);
+    fread(buffer, 4, 1, fp);
     
-  	int n; //Êı¾İ¸öÊı 
+  	int n; //æ•°æ®ä¸ªæ•° 
     sscanf(buffer,"%d",&n);    
     
-    //¶Á³öÊı¾İµÄ³¤¶È 
+    //è¯»å‡ºæ•°æ®çš„é•¿åº¦ 
 	fseek(fp , 4 ,SEEK_SET);
     fread(buf, sizeof(buf), 1, fp);
     fun(buf);
@@ -38,7 +38,7 @@ void findljj(FILE *fp,int i)
 		b=buf[l]+b-'0';		
 	}
 
-    //¶Á³öµÚi¸öÊı¾İµÄÄÚÈİ 
+    //è¯»å‡ºç¬¬iä¸ªæ•°æ®çš„å†…å®¹ 
     fseek(fp , (n+1)*4+b ,SEEK_SET);
 	if(fgets (str, (int)(buf[i-1]-'0')+1, fp)!=NULL ) {
     	puts(str);
@@ -51,14 +51,18 @@ int main ()
 {
    FILE *fp;
    fp = fopen("file.txt","w+");
-   int i; //µÚ¼¸¸öÊı¾İ  
+   int i; //ç¬¬å‡ ä¸ªæ•°æ®  
    scanf("%d",&i); 
-   //Ğ´ÈëÊı¾İ 
+   //å†™å…¥æ•°æ® 
    fputs("6   ", fp);  
    fputs("4   ", fp); 
    fputs("2   ", fp);
    fputs("2   ", fp);
    fputs("5   ", fp);
+   fputs("1   ", fp);
+   fputs("1   ", fp);
+   fputs("1   ", fp);
+   fputs("1   ", fp);
    fputs("1   ", fp);
    fputs("1   ", fp);
    fputs("C Programming Langauge", fp);
