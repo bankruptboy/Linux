@@ -17,3 +17,154 @@ int main()
     return 0;
 }
 python@ubuntu:~/week7$ 
+python@ubuntu:~/week7$ vi 7-1.c
+python@ubuntu:~/week7$ gcc 7-1.c -o 7-1
+7-1.c:7:41: error: redefinition of ‘before_main’
+ static void __attribute__((destructor)) before_main()
+                                         ^
+7-1.c:2:42: note: previous definition of ‘before_main’ was here
+ static void __attribute__((constructor)) before_main()
+                                          ^
+python@ubuntu:~/week7$ vi 7-1.c
+python@ubuntu:~/week7$ gcc 7-1.c -o 7-1
+python@ubuntu:~/week7$ ./7-1
+-----------Before Main------------
+-----------Main Function----------
+-----------After Main-------------
+python@ubuntu:~/week7$ cat 7-1.c
+#include "ch07.h"
+static void __attribute__((constructor)) before_main()
+{
+    printf("-----------Before Main------------\n");
+}
+
+static void __attribute__((destructor)) after_main()
+{
+    printf("-----------After Main-------------\n");
+}
+int main()
+{
+    printf("-----------Main Function----------\n");
+    return 0;
+}
+python@ubuntu:~/week7$ vi 7-2.c
+python@ubuntu:~/week7$ gcc 7-2.c -o 7-2
+7-2.c: In function ‘main’:
+7-2.c:6:16: warning: format ‘%s’ expects argument of type ‘char *’, but argument 3 has type ‘char **’ [-Wformat=]
+         printf("argc[%d] :%s",i,argv);
+                ^
+python@ubuntu:~/week7$ ./7-2
+argc[0] :(1���python@ubuntu:~/week7$ ./7-2 123 123 123 123 123
+argc[0] :���argc[1] :���argc[2] :���argc[3] :���argc[4] :���argc[5] :���python@ubuntu:~/week7$ vi 7-2.c
+python@ubuntu:~/week7$ gcc 7-2.c -o 7-2
+7-2.c: In function ‘main’:
+7-2.c:13:4: error: expected ‘;’ before ‘for’
+    for(int i =0;i<argc;i++)
+    ^
+python@ubuntu:~/week7$ vi 7-2.c
+python@ubuntu:~/week7$ gcc 7-2.c -o 7-2
+python@ubuntu:~/week7$ ./7-2
+input error!python@ubuntu:~/week7$ ./7-2 11 22
+11 + 22 = 33argv[0] = ./7-2
+argv[1] = 11
+argv[2] = 22
+python@ubuntu:~/week7$ vi 7-2.c
+python@ubuntu:~/week7$ gcc 7-2.c -o 7-2
+python@ubuntu:~/week7$ ./7-2 11 22
+11 + 22 = 33
+argv[0] = ./7-2
+argv[1] = 11
+argv[2] = 22
+python@ubuntu:~/week7$ vi 7-3.c
+python@ubuntu:~/week7$ gcc 7-3.c -o 7-3
+python@ubuntu:~/week7$ ./7-3
+python@ubuntu:~/week7$ cp 7-3 7-4
+python@ubuntu:~/week7$ vi 7-4
+
+/bin/bash: q: 未找到命令
+
+Shell 已返回127
+
+请按 ENTER 或其它命令继续
+python@ubuntu:~/week7$ cp 7-3.c 7-4.c
+python@ubuntu:~/week7$ vi 7-4.c
+python@ubuntu:~/week7$ gcc 7-4.c -o 7-4
+python@ubuntu:~/week7$ ./7-4
+------main exit-----
+-----CallBack3---------
+-----CallBack2---------
+-----CallBack1---------
+python@ubuntu:~/week7$ vi 7-4.c
+python@ubuntu:~/week7$ gcc 7-4.c -o 7-4
+python@ubuntu:~/week7$ ./7-4
+-----------Before Main------------
+------main exit-----
+-----CallBack3---------
+-----CallBack2---------
+-----CallBack1---------
+-----------After Main------------
+python@ubuntu:~/week7$ cat 7-2.c 7-3.c 7-4.c
+#include "ch07.h"
+int main(int argc,char *argv[])
+{
+   if(argc != 3)
+   {
+        printf("input error!\n");
+        exit(1);
+   }
+   int x,y;
+   x=atoi(argv[1]);
+   y=atoi(argv[2]);
+   printf("%d + %d = %d\n",x,y,x+y);
+   for(int i =0;i<argc;i++)
+   {
+       printf("argv[%d] = %s\n",i,argv[i]);
+   }
+    return 0;
+}
+#include "ch07.h"
+int main(void)
+{
+    printf("------data in buffer-----");
+    _exit(0);
+}
+#include "ch07.h"
+static void __attribute__((constructor)) before_main()
+{
+        printf("-----------Before Main------------\n");
+}
+static void __attribute__((destructor)) after_main()
+{
+        printf("-----------After Main------------\n");
+}
+static void callback1(void)
+{
+    printf("-----CallBack1---------\n");
+}
+
+static void callback2(void)
+{
+    printf("-----CallBack2---------\n");
+}
+
+static void callback3(void)
+{
+    printf("-----CallBack3---------\n");
+}
+int main(void)
+{
+    atexit(callback1);
+    atexit(callback2);
+    atexit(callback3);
+    printf("------main exit-----\n");
+    exit(0);
+}
+python@ubuntu:~/week7$ ./7-4
+-----------Before Main------------
+------main exit-----
+-----CallBack3---------
+-----CallBack2---------
+-----CallBack1---------
+-----------After Main------------
+python@ubuntu:~/week7$ 
+
