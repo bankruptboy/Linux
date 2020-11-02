@@ -210,4 +210,632 @@ int main(void)
     exit(0);
 }
 python@ubuntu:~/week7$ 
+python@ubuntu:~$ env
+XDG_VTNR=7
+LC_PAPER=zh_CN.UTF-8
+LC_ADDRESS=zh_CN.UTF-8
+XDG_SESSION_ID=c2
+VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+VIRTUALENVWRAPPER_PROJECT_FILENAME=.project
+XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/python
+LC_MONETARY=zh_CN.UTF-8
+CLUTTER_IM_MODULE=xim
+SESSION=ubuntu
+GPG_AGENT_INFO=/home/python/.gnupg/S.gpg-agent:0:1
+TERM=xterm-256color
+VTE_VERSION=4205
+SHELL=/bin/bash
+QT_LINUX_ACCESSIBILITY_ALWAYS_ON=1
+WINDOWID=62914570
+LC_NUMERIC=zh_CN.UTF-8
+UPSTART_SESSION=unix:abstract=/com/ubuntu/upstart-session/1000/4926
+GNOME_KEYRING_CONTROL=
+GTK_MODULES=gail:atk-bridge:unity-gtk-module
+USER=python
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+LC_TELEPHONE=zh_CN.UTF-8
+QT_ACCESSIBILITY=1
+XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0
+XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+DEFAULTS_PATH=/usr/share/gconf/ubuntu.default.path
+WORKON_HOME=/home/python/.virtualenvs
+XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/usr/share/upstart/xdg:/etc/xdg
+DESKTOP_SESSION=ubuntu
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/python/Downloads/node-v6.1.0-linux-x64/bin
+VIRTUALENVWRAPPER_HOOK_DIR=/home/python/.virtualenvs
+QT_IM_MODULE=fcitx
+QT_QPA_PLATFORMTHEME=appmenu-qt5
+LC_IDENTIFICATION=zh_CN.UTF-8
+XDG_SESSION_TYPE=x11
+PWD=/home/python
+JOB=unity-settings-daemon
+XMODIFIERS=@im=fcitx
+GNOME_KEYRING_PID=
+LANG=zh_CN.UTF-8
+GDM_LANG=zh_CN
+MANDATORY_PATH=/usr/share/gconf/ubuntu.mandatory.path
+LC_MEASUREMENT=zh_CN.UTF-8
+COMPIZ_CONFIG_PROFILE=ubuntu
+IM_CONFIG_PHASE=1
+PAPERSIZE=a4
+GDMSESSION=ubuntu
+SESSIONTYPE=gnome-session
+GTK2_MODULES=overlay-scrollbar
+SHLVL=1
+HOME=/home/python
+XDG_SEAT=seat0
+LANGUAGE=zh_CN:en_US:en
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+UPSTART_INSTANCE=
+UPSTART_EVENTS=xsession started
+XDG_SESSION_DESKTOP=ubuntu
+LOGNAME=python
+COMPIZ_BIN_PATH=/usr/bin/
+DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-AnJWf9LRwX
+XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+QT4_IM_MODULE=fcitx
+LESSOPEN=| /usr/bin/lesspipe %s
+VIRTUALENVWRAPPER_WORKON_CD=1
+INSTANCE=
+UPSTART_JOB=unity7
+XDG_RUNTIME_DIR=/run/user/1000
+DISPLAY=:0
+XDG_CURRENT_DESKTOP=Unity
+GTK_IM_MODULE=fcitx
+LESSCLOSE=/usr/bin/lesspipe %s %s
+LC_TIME=zh_CN.UTF-8
+LC_NAME=zh_CN.UTF-8
+XAUTHORITY=/home/python/.Xauthority
+_=/usr/bin/env
+python@ubuntu:~$ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/python/Downloads/node-v6.1.0-linux-x64/bin
+python@ubuntu:~$ echo $PWD
+/home/python
+python@ubuntu:~$ echo $HOME
+/home/python
+python@ubuntu:~$ cd week
+bash: cd: week: 没有那个文件或目录
+python@ubuntu:~$ cd week7
+python@ubuntu:~/week7$ ls
+7-1  7-1.c  7-2  7-2.c  7-3  7-3.c  7-4  7-4.c  7-5  7-5.c  ch07.h
+python@ubuntu:~/week7$ vi 7-6.c
+python@ubuntu:~/week7$ gcc 7-6.c -o 7-6
+python@ubuntu:~/week7$ ./7-6
+env[0] = XDG_VTNR=7
+env[1] = LC_PAPER=zh_CN.UTF-8
+env[2] = LC_ADDRESS=zh_CN.UTF-8
+env[3] = XDG_SESSION_ID=c2
+env[4] = VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+env[5] = VIRTUALENVWRAPPER_PROJECT_FILENAME=.project
+env[6] = XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/python
+env[7] = LC_MONETARY=zh_CN.UTF-8
+env[8] = CLUTTER_IM_MODULE=xim
+env[9] = SESSION=ubuntu
+env[10] = GPG_AGENT_INFO=/home/python/.gnupg/S.gpg-agent:0:1
+env[11] = TERM=xterm-256color
+env[12] = VTE_VERSION=4205
+env[13] = SHELL=/bin/bash
+env[14] = QT_LINUX_ACCESSIBILITY_ALWAYS_ON=1
+env[15] = WINDOWID=62914570
+env[16] = LC_NUMERIC=zh_CN.UTF-8
+env[17] = UPSTART_SESSION=unix:abstract=/com/ubuntu/upstart-session/1000/4926
+env[18] = GNOME_KEYRING_CONTROL=
+env[19] = GTK_MODULES=gail:atk-bridge:unity-gtk-module
+env[20] = USER=python
+env[21] = LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+env[22] = LC_TELEPHONE=zh_CN.UTF-8
+env[23] = QT_ACCESSIBILITY=1
+env[24] = XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0
+env[25] = XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+env[26] = SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+env[27] = DEFAULTS_PATH=/usr/share/gconf/ubuntu.default.path
+env[28] = WORKON_HOME=/home/python/.virtualenvs
+env[29] = XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/usr/share/upstart/xdg:/etc/xdg
+env[30] = DESKTOP_SESSION=ubuntu
+env[31] = PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/python/Downloads/node-v6.1.0-linux-x64/bin
+env[32] = VIRTUALENVWRAPPER_HOOK_DIR=/home/python/.virtualenvs
+env[33] = QT_IM_MODULE=fcitx
+env[34] = QT_QPA_PLATFORMTHEME=appmenu-qt5
+env[35] = LC_IDENTIFICATION=zh_CN.UTF-8
+env[36] = XDG_SESSION_TYPE=x11
+env[37] = PWD=/home/python/week7
+env[38] = JOB=unity-settings-daemon
+env[39] = XMODIFIERS=@im=fcitx
+env[40] = GNOME_KEYRING_PID=
+env[41] = LANG=zh_CN.UTF-8
+env[42] = GDM_LANG=zh_CN
+env[43] = MANDATORY_PATH=/usr/share/gconf/ubuntu.mandatory.path
+env[44] = LC_MEASUREMENT=zh_CN.UTF-8
+env[45] = COMPIZ_CONFIG_PROFILE=ubuntu
+env[46] = IM_CONFIG_PHASE=1
+env[47] = PAPERSIZE=a4
+env[48] = GDMSESSION=ubuntu
+env[49] = SESSIONTYPE=gnome-session
+env[50] = GTK2_MODULES=overlay-scrollbar
+env[51] = SHLVL=1
+env[52] = HOME=/home/python
+env[53] = XDG_SEAT=seat0
+env[54] = LANGUAGE=zh_CN:en_US:en
+env[55] = GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+env[56] = UPSTART_INSTANCE=
+env[57] = UPSTART_EVENTS=xsession started
+env[58] = XDG_SESSION_DESKTOP=ubuntu
+env[59] = LOGNAME=python
+env[60] = COMPIZ_BIN_PATH=/usr/bin/
+env[61] = DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-AnJWf9LRwX
+env[62] = XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+env[63] = QT4_IM_MODULE=fcitx
+env[64] = LESSOPEN=| /usr/bin/lesspipe %s
+env[65] = VIRTUALENVWRAPPER_WORKON_CD=1
+env[66] = INSTANCE=
+env[67] = UPSTART_JOB=unity7
+env[68] = XDG_RUNTIME_DIR=/run/user/1000
+env[69] = DISPLAY=:0
+env[70] = XDG_CURRENT_DESKTOP=Unity
+env[71] = GTK_IM_MODULE=fcitx
+env[72] = LESSCLOSE=/usr/bin/lesspipe %s %s
+env[73] = LC_TIME=zh_CN.UTF-8
+env[74] = LC_NAME=zh_CN.UTF-8
+env[75] = XAUTHORITY=/home/python/.Xauthority
+env[76] = _=./7-6
+env[77] = OLDPWD=/home/python
+python@ubuntu:~/week7$ cat 7-6.c
+#include "ch07.h"
+int main(int argc,char *argv[],char *env[])
+{
+    int i;
+    for(i=0;env[i];i++)
+    {
+        printf("env[%d] = %s\n",i,env[i]);
+    }
+    return 0;
+}
+python@ubuntu:~/week7$ vi 7-6.c
+python@ubuntu:~/week7$ gcc 7-6.c -o 7-6
+python@ubuntu:~/week7$ ./7-6
+environ[0] = XDG_VTNR=7
+environ[1] = LC_PAPER=zh_CN.UTF-8
+environ[2] = LC_ADDRESS=zh_CN.UTF-8
+environ[3] = XDG_SESSION_ID=c2
+environ[4] = VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+environ[5] = VIRTUALENVWRAPPER_PROJECT_FILENAME=.project
+environ[6] = XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/python
+environ[7] = LC_MONETARY=zh_CN.UTF-8
+environ[8] = CLUTTER_IM_MODULE=xim
+environ[9] = SESSION=ubuntu
+environ[10] = GPG_AGENT_INFO=/home/python/.gnupg/S.gpg-agent:0:1
+environ[11] = TERM=xterm-256color
+environ[12] = VTE_VERSION=4205
+environ[13] = SHELL=/bin/bash
+environ[14] = QT_LINUX_ACCESSIBILITY_ALWAYS_ON=1
+environ[15] = WINDOWID=62914570
+environ[16] = LC_NUMERIC=zh_CN.UTF-8
+environ[17] = UPSTART_SESSION=unix:abstract=/com/ubuntu/upstart-session/1000/4926
+environ[18] = GNOME_KEYRING_CONTROL=
+environ[19] = GTK_MODULES=gail:atk-bridge:unity-gtk-module
+environ[20] = USER=python
+environ[21] = LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+environ[22] = LC_TELEPHONE=zh_CN.UTF-8
+environ[23] = QT_ACCESSIBILITY=1
+environ[24] = XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0
+environ[25] = XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+environ[26] = SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+environ[27] = DEFAULTS_PATH=/usr/share/gconf/ubuntu.default.path
+environ[28] = WORKON_HOME=/home/python/.virtualenvs
+environ[29] = XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/usr/share/upstart/xdg:/etc/xdg
+environ[30] = DESKTOP_SESSION=ubuntu
+environ[31] = PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/python/Downloads/node-v6.1.0-linux-x64/bin
+environ[32] = VIRTUALENVWRAPPER_HOOK_DIR=/home/python/.virtualenvs
+environ[33] = QT_IM_MODULE=fcitx
+environ[34] = QT_QPA_PLATFORMTHEME=appmenu-qt5
+environ[35] = LC_IDENTIFICATION=zh_CN.UTF-8
+environ[36] = XDG_SESSION_TYPE=x11
+environ[37] = PWD=/home/python/week7
+environ[38] = JOB=unity-settings-daemon
+environ[39] = XMODIFIERS=@im=fcitx
+environ[40] = GNOME_KEYRING_PID=
+environ[41] = LANG=zh_CN.UTF-8
+environ[42] = GDM_LANG=zh_CN
+environ[43] = MANDATORY_PATH=/usr/share/gconf/ubuntu.mandatory.path
+environ[44] = LC_MEASUREMENT=zh_CN.UTF-8
+environ[45] = COMPIZ_CONFIG_PROFILE=ubuntu
+environ[46] = IM_CONFIG_PHASE=1
+environ[47] = PAPERSIZE=a4
+environ[48] = GDMSESSION=ubuntu
+environ[49] = SESSIONTYPE=gnome-session
+environ[50] = GTK2_MODULES=overlay-scrollbar
+environ[51] = SHLVL=1
+environ[52] = HOME=/home/python
+environ[53] = XDG_SEAT=seat0
+environ[54] = LANGUAGE=zh_CN:en_US:en
+environ[55] = GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+environ[56] = UPSTART_INSTANCE=
+environ[57] = UPSTART_EVENTS=xsession started
+environ[58] = XDG_SESSION_DESKTOP=ubuntu
+environ[59] = LOGNAME=python
+environ[60] = COMPIZ_BIN_PATH=/usr/bin/
+environ[61] = DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-AnJWf9LRwX
+environ[62] = XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+environ[63] = QT4_IM_MODULE=fcitx
+environ[64] = LESSOPEN=| /usr/bin/lesspipe %s
+environ[65] = VIRTUALENVWRAPPER_WORKON_CD=1
+environ[66] = INSTANCE=
+environ[67] = UPSTART_JOB=unity7
+environ[68] = XDG_RUNTIME_DIR=/run/user/1000
+environ[69] = DISPLAY=:0
+environ[70] = XDG_CURRENT_DESKTOP=Unity
+environ[71] = GTK_IM_MODULE=fcitx
+environ[72] = LESSCLOSE=/usr/bin/lesspipe %s %s
+environ[73] = LC_TIME=zh_CN.UTF-8
+environ[74] = LC_NAME=zh_CN.UTF-8
+environ[75] = XAUTHORITY=/home/python/.Xauthority
+environ[76] = _=./7-6
+environ[77] = OLDPWD=/home/python
+env[0] = XDG_VTNR=7
+env[1] = LC_PAPER=zh_CN.UTF-8
+env[2] = LC_ADDRESS=zh_CN.UTF-8
+env[3] = XDG_SESSION_ID=c2
+env[4] = VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+env[5] = VIRTUALENVWRAPPER_PROJECT_FILENAME=.project
+env[6] = XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/python
+env[7] = LC_MONETARY=zh_CN.UTF-8
+env[8] = CLUTTER_IM_MODULE=xim
+env[9] = SESSION=ubuntu
+env[10] = GPG_AGENT_INFO=/home/python/.gnupg/S.gpg-agent:0:1
+env[11] = TERM=xterm-256color
+env[12] = VTE_VERSION=4205
+env[13] = SHELL=/bin/bash
+env[14] = QT_LINUX_ACCESSIBILITY_ALWAYS_ON=1
+env[15] = WINDOWID=62914570
+env[16] = LC_NUMERIC=zh_CN.UTF-8
+env[17] = UPSTART_SESSION=unix:abstract=/com/ubuntu/upstart-session/1000/4926
+env[18] = GNOME_KEYRING_CONTROL=
+env[19] = GTK_MODULES=gail:atk-bridge:unity-gtk-module
+env[20] = USER=python
+env[21] = LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+env[22] = LC_TELEPHONE=zh_CN.UTF-8
+env[23] = QT_ACCESSIBILITY=1
+env[24] = XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0
+env[25] = XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+env[26] = SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+env[27] = DEFAULTS_PATH=/usr/share/gconf/ubuntu.default.path
+env[28] = WORKON_HOME=/home/python/.virtualenvs
+env[29] = XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/usr/share/upstart/xdg:/etc/xdg
+env[30] = DESKTOP_SESSION=ubuntu
+env[31] = PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/python/Downloads/node-v6.1.0-linux-x64/bin
+env[32] = VIRTUALENVWRAPPER_HOOK_DIR=/home/python/.virtualenvs
+env[33] = QT_IM_MODULE=fcitx
+env[34] = QT_QPA_PLATFORMTHEME=appmenu-qt5
+env[35] = LC_IDENTIFICATION=zh_CN.UTF-8
+env[36] = XDG_SESSION_TYPE=x11
+env[37] = PWD=/home/python/week7
+env[38] = JOB=unity-settings-daemon
+env[39] = XMODIFIERS=@im=fcitx
+env[40] = GNOME_KEYRING_PID=
+env[41] = LANG=zh_CN.UTF-8
+env[42] = GDM_LANG=zh_CN
+env[43] = MANDATORY_PATH=/usr/share/gconf/ubuntu.mandatory.path
+env[44] = LC_MEASUREMENT=zh_CN.UTF-8
+env[45] = COMPIZ_CONFIG_PROFILE=ubuntu
+env[46] = IM_CONFIG_PHASE=1
+env[47] = PAPERSIZE=a4
+env[48] = GDMSESSION=ubuntu
+env[49] = SESSIONTYPE=gnome-session
+env[50] = GTK2_MODULES=overlay-scrollbar
+env[51] = SHLVL=1
+env[52] = HOME=/home/python
+env[53] = XDG_SEAT=seat0
+env[54] = LANGUAGE=zh_CN:en_US:en
+env[55] = GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+env[56] = UPSTART_INSTANCE=
+env[57] = UPSTART_EVENTS=xsession started
+env[58] = XDG_SESSION_DESKTOP=ubuntu
+env[59] = LOGNAME=python
+env[60] = COMPIZ_BIN_PATH=/usr/bin/
+env[61] = DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-AnJWf9LRwX
+env[62] = XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+env[63] = QT4_IM_MODULE=fcitx
+env[64] = LESSOPEN=| /usr/bin/lesspipe %s
+env[65] = VIRTUALENVWRAPPER_WORKON_CD=1
+env[66] = INSTANCE=
+env[67] = UPSTART_JOB=unity7
+env[68] = XDG_RUNTIME_DIR=/run/user/1000
+env[69] = DISPLAY=:0
+env[70] = XDG_CURRENT_DESKTOP=Unity
+env[71] = GTK_IM_MODULE=fcitx
+env[72] = LESSCLOSE=/usr/bin/lesspipe %s %s
+env[73] = LC_TIME=zh_CN.UTF-8
+env[74] = LC_NAME=zh_CN.UTF-8
+env[75] = XAUTHORITY=/home/python/.Xauthority
+env[76] = _=./7-6
+env[77] = OLDPWD=/home/python
+python@ubuntu:~/week7$ cat 7-6.c
+#include "ch07.h"
+int main(int argc,char *argv[],char *env[])
+{
+    extern char** environ;
+    int i;
+    for(i=0;environ[i];i++)
+    {
+        printf("environ[%d] = %s\n",i,environ[i]);
+    }
+    for(i=0;env[i];i++)
+    {
+        printf("env[%d] = %s\n",i,env[i]);
+    }
+    return 0;
+}
+python@ubuntu:~/week7$ vi 7-6.c
+python@ubuntu:~/week7$ gcc 7-6.c -o 7-6
+python@ubuntu:~/week7$ ./7-6
+environ[0] = XDG_VTNR=7
+environ[1] = LC_PAPER=zh_CN.UTF-8
+environ[2] = LC_ADDRESS=zh_CN.UTF-8
+environ[3] = XDG_SESSION_ID=c2
+environ[4] = VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+environ[5] = VIRTUALENVWRAPPER_PROJECT_FILENAME=.project
+environ[6] = XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/python
+environ[7] = LC_MONETARY=zh_CN.UTF-8
+environ[8] = CLUTTER_IM_MODULE=xim
+environ[9] = SESSION=ubuntu
+environ[10] = GPG_AGENT_INFO=/home/python/.gnupg/S.gpg-agent:0:1
+environ[11] = TERM=xterm-256color
+environ[12] = VTE_VERSION=4205
+environ[13] = SHELL=/bin/bash
+environ[14] = QT_LINUX_ACCESSIBILITY_ALWAYS_ON=1
+environ[15] = WINDOWID=62914570
+environ[16] = LC_NUMERIC=zh_CN.UTF-8
+environ[17] = UPSTART_SESSION=unix:abstract=/com/ubuntu/upstart-session/1000/4926
+environ[18] = GNOME_KEYRING_CONTROL=
+environ[19] = GTK_MODULES=gail:atk-bridge:unity-gtk-module
+environ[20] = USER=python
+environ[21] = LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+environ[22] = LC_TELEPHONE=zh_CN.UTF-8
+environ[23] = QT_ACCESSIBILITY=1
+environ[24] = XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0
+environ[25] = XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+environ[26] = SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+environ[27] = DEFAULTS_PATH=/usr/share/gconf/ubuntu.default.path
+environ[28] = WORKON_HOME=/home/python/.virtualenvs
+environ[29] = XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/usr/share/upstart/xdg:/etc/xdg
+environ[30] = DESKTOP_SESSION=ubuntu
+environ[31] = PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/python/Downloads/node-v6.1.0-linux-x64/bin
+environ[32] = VIRTUALENVWRAPPER_HOOK_DIR=/home/python/.virtualenvs
+environ[33] = QT_IM_MODULE=fcitx
+environ[34] = QT_QPA_PLATFORMTHEME=appmenu-qt5
+environ[35] = LC_IDENTIFICATION=zh_CN.UTF-8
+environ[36] = XDG_SESSION_TYPE=x11
+environ[37] = PWD=/home/python/week7
+environ[38] = JOB=unity-settings-daemon
+environ[39] = XMODIFIERS=@im=fcitx
+environ[40] = GNOME_KEYRING_PID=
+environ[41] = LANG=zh_CN.UTF-8
+environ[42] = GDM_LANG=zh_CN
+environ[43] = MANDATORY_PATH=/usr/share/gconf/ubuntu.mandatory.path
+environ[44] = LC_MEASUREMENT=zh_CN.UTF-8
+environ[45] = COMPIZ_CONFIG_PROFILE=ubuntu
+environ[46] = IM_CONFIG_PHASE=1
+environ[47] = PAPERSIZE=a4
+environ[48] = GDMSESSION=ubuntu
+environ[49] = SESSIONTYPE=gnome-session
+environ[50] = GTK2_MODULES=overlay-scrollbar
+environ[51] = SHLVL=1
+environ[52] = HOME=/home/python
+environ[53] = XDG_SEAT=seat0
+environ[54] = LANGUAGE=zh_CN:en_US:en
+environ[55] = GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+environ[56] = UPSTART_INSTANCE=
+environ[57] = UPSTART_EVENTS=xsession started
+environ[58] = XDG_SESSION_DESKTOP=ubuntu
+environ[59] = LOGNAME=python
+environ[60] = COMPIZ_BIN_PATH=/usr/bin/
+environ[61] = DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-AnJWf9LRwX
+environ[62] = XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+environ[63] = QT4_IM_MODULE=fcitx
+environ[64] = LESSOPEN=| /usr/bin/lesspipe %s
+environ[65] = VIRTUALENVWRAPPER_WORKON_CD=1
+environ[66] = INSTANCE=
+environ[67] = UPSTART_JOB=unity7
+environ[68] = XDG_RUNTIME_DIR=/run/user/1000
+environ[69] = DISPLAY=:0
+environ[70] = XDG_CURRENT_DESKTOP=Unity
+environ[71] = GTK_IM_MODULE=fcitx
+environ[72] = LESSCLOSE=/usr/bin/lesspipe %s %s
+environ[73] = LC_TIME=zh_CN.UTF-8
+environ[74] = LC_NAME=zh_CN.UTF-8
+environ[75] = XAUTHORITY=/home/python/.Xauthority
+environ[76] = _=./7-6
+environ[77] = OLDPWD=/home/python
+env[0] = XDG_VTNR=7
+env[1] = LC_PAPER=zh_CN.UTF-8
+env[2] = LC_ADDRESS=zh_CN.UTF-8
+env[3] = XDG_SESSION_ID=c2
+env[4] = VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+env[5] = VIRTUALENVWRAPPER_PROJECT_FILENAME=.project
+env[6] = XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/python
+env[7] = LC_MONETARY=zh_CN.UTF-8
+env[8] = CLUTTER_IM_MODULE=xim
+env[9] = SESSION=ubuntu
+env[10] = GPG_AGENT_INFO=/home/python/.gnupg/S.gpg-agent:0:1
+env[11] = TERM=xterm-256color
+env[12] = VTE_VERSION=4205
+env[13] = SHELL=/bin/bash
+env[14] = QT_LINUX_ACCESSIBILITY_ALWAYS_ON=1
+env[15] = WINDOWID=62914570
+env[16] = LC_NUMERIC=zh_CN.UTF-8
+env[17] = UPSTART_SESSION=unix:abstract=/com/ubuntu/upstart-session/1000/4926
+env[18] = GNOME_KEYRING_CONTROL=
+env[19] = GTK_MODULES=gail:atk-bridge:unity-gtk-module
+env[20] = USER=python
+env[21] = LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+env[22] = LC_TELEPHONE=zh_CN.UTF-8
+env[23] = QT_ACCESSIBILITY=1
+env[24] = XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0
+env[25] = XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+env[26] = SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+env[27] = DEFAULTS_PATH=/usr/share/gconf/ubuntu.default.path
+env[28] = WORKON_HOME=/home/python/.virtualenvs
+env[29] = XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/usr/share/upstart/xdg:/etc/xdg
+env[30] = DESKTOP_SESSION=ubuntu
+env[31] = PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/python/Downloads/node-v6.1.0-linux-x64/bin
+env[32] = VIRTUALENVWRAPPER_HOOK_DIR=/home/python/.virtualenvs
+env[33] = QT_IM_MODULE=fcitx
+env[34] = QT_QPA_PLATFORMTHEME=appmenu-qt5
+env[35] = LC_IDENTIFICATION=zh_CN.UTF-8
+env[36] = XDG_SESSION_TYPE=x11
+env[37] = PWD=/home/python/week7
+env[38] = JOB=unity-settings-daemon
+env[39] = XMODIFIERS=@im=fcitx
+env[40] = GNOME_KEYRING_PID=
+env[41] = LANG=zh_CN.UTF-8
+env[42] = GDM_LANG=zh_CN
+env[43] = MANDATORY_PATH=/usr/share/gconf/ubuntu.mandatory.path
+env[44] = LC_MEASUREMENT=zh_CN.UTF-8
+env[45] = COMPIZ_CONFIG_PROFILE=ubuntu
+env[46] = IM_CONFIG_PHASE=1
+env[47] = PAPERSIZE=a4
+env[48] = GDMSESSION=ubuntu
+env[49] = SESSIONTYPE=gnome-session
+env[50] = GTK2_MODULES=overlay-scrollbar
+env[51] = SHLVL=1
+env[52] = HOME=/home/python
+env[53] = XDG_SEAT=seat0
+env[54] = LANGUAGE=zh_CN:en_US:en
+env[55] = GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+env[56] = UPSTART_INSTANCE=
+env[57] = UPSTART_EVENTS=xsession started
+env[58] = XDG_SESSION_DESKTOP=ubuntu
+env[59] = LOGNAME=python
+env[60] = COMPIZ_BIN_PATH=/usr/bin/
+env[61] = DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-AnJWf9LRwX
+env[62] = XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+env[63] = QT4_IM_MODULE=fcitx
+env[64] = LESSOPEN=| /usr/bin/lesspipe %s
+env[65] = VIRTUALENVWRAPPER_WORKON_CD=1
+env[66] = INSTANCE=
+env[67] = UPSTART_JOB=unity7
+env[68] = XDG_RUNTIME_DIR=/run/user/1000
+env[69] = DISPLAY=:0
+env[70] = XDG_CURRENT_DESKTOP=Unity
+env[71] = GTK_IM_MODULE=fcitx
+env[72] = LESSCLOSE=/usr/bin/lesspipe %s %s
+env[73] = LC_TIME=zh_CN.UTF-8
+env[74] = LC_NAME=zh_CN.UTF-8
+env[75] = XAUTHORITY=/home/python/.Xauthority
+env[76] = _=./7-6
+env[77] = OLDPWD=/home/python
+PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/python/Downloads/node-v6.1.0-linux-x64/bin
+python@ubuntu:~/week7$ cat 7-6.c
+#include "ch07.h"
+int main(int argc,char *argv[],char *env[])
+{
+    extern char** environ;
+    int i;
+    for(i=0;environ[i];i++)
+    {
+        printf("environ[%d] = %s\n",i,environ[i]);
+    }
+    for(i=0;env[i];i++)
+    {
+        printf("env[%d] = %s\n",i,env[i]);
+    }
+    printf("PATH = %s\n",getenv("PATH"));
+    return 0;
+}
+python@ubuntu:~/week7$ vi 7-7.c
+python@ubuntu:~/week7$ gcc 7-7.c -o 7-7
+7-7.c: In function ‘set_env_string’:
+7-7.c:5:15: warning: passing argument 1 of ‘putenv’ makes pointer from integer without a cast [-Wint-conversion]
+     if(putenv(test_env!=0))
+               ^
+In file included from ch07.h:7:0,
+                 from 7-7.c:1:
+/usr/include/stdlib.h:578:12: note: expected ‘char *’ but argument is of type ‘int’
+ extern int putenv (char *__string) __THROW __nonnull ((1));
+            ^
+python@ubuntu:~/week7$ vi 7-7.c
+python@ubuntu:~/week7$ gcc 7-7.c -o 7-7
+7-7.c: In function ‘set_env_string’:
+7-7.c:5:15: warning: passing argument 1 of ‘putenv’ makes pointer from integer without a cast [-Wint-conversion]
+     if(putenv((test_env)!=0))
+               ^
+In file included from ch07.h:7:0,
+                 from 7-7.c:1:
+/usr/include/stdlib.h:578:12: note: expected ‘char *’ but argument is of type ‘int’
+ extern int putenv (char *__string) __THROW __nonnull ((1));
+            ^
+python@ubuntu:~/week7$ vi 7-7.c
+python@ubuntu:~/week7$ vi 7-7.c
+python@ubuntu:~/week7$ gcc 7-7.c -o 7-7
+7-7.c: In function ‘set_env_string’:
+7-7.c:5:28: error: expected statement before ‘)’ token
+     if(putenv(test_env)!=0))
+                            ^
+python@ubuntu:~/week7$ vi 7-7.c
+python@ubuntu:~/week7$ gcc 7-7.c -o 7-7
+python@ubuntu:~/week7$ ./7-7
+1.The test_env = test
+2.The test_env = (null)
+python@ubuntu:~/week7$ mkdir dllib
+python@ubuntu:~/week7$ cd dllib
+python@ubuntu:~/week7/dllib$ ls
+python@ubuntu:~/week7/dllib$ pwd
+/home/python/week7/dllib
+python@ubuntu:~/week7/dllib$ vi dlib.c
+python@ubuntu:~/week7/dllib$ pwd
+/home/python/week7/dllib
+python@ubuntu:~/week7/dllib$ gcc -Wall -shared dlib.c -o libdlib.so
+/usr/bin/ld: /tmp/ccn0lJ8u.o: relocation R_X86_64_32 against `.rodata' can not be used when making a shared object; recompile with -fPIC
+/tmp/ccn0lJ8u.o: 无法添加符号: 错误的值
+collect2: error: ld returned 1 exit status
+python@ubuntu:~/week7/dllib$ gcc -Wall -shared dlib.c -o libdlib.so
+/usr/bin/ld: /tmp/ccLspSp7.o: relocation R_X86_64_32 against `.rodata' can not be used when making a shared object; recompile with -fPIC
+/tmp/ccLspSp7.o: 无法添加符号: 错误的值
+collect2: error: ld returned 1 exit status
+python@ubuntu:~/week7/dllib$ ls
+dlib.c
+python@ubuntu:~/week7/dllib$ vi test.c
+python@ubuntu:~/week7/dllib$ gcc -fpic -Wall -shared dlib.c -o libdlib.so
+python@ubuntu:~/week7/dllib$ ls
+dlib.c  libdlib.so  test.c
+python@ubuntu:~/week7/dllib$ file libdlib.so
+libdlib.so: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, BuildID[sha1]=6e1586aaad5145445ab1196512c6ff6baf56c2ba, not stripped
+python@ubuntu:~/week7/dllib$ gcc - Wall test.c -p test -L ./ -ldlib
+gcc: error: Wall: 没有那个文件或目录
+gcc: error: test: 没有那个文件或目录
+python@ubuntu:~/week7/dllib$ gcc -Wall test.c -o test -L ./ -ldlib
+python@ubuntu:~/week7/dllib$ ls
+dlib.c  libdlib.so  test  test.c
+python@ubuntu:~/week7/dllib$ ./test
+./test: error while loading shared libraries: libdlib.so: cannot open shared object file: No such file or directory
+python@ubuntu:~/week7/dllib$ ldd ./test
+	linux-vdso.so.1 =>  (0x00007ffc7c981000)
+	libdlib.so => not found
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f7fd53d1000)
+	/lib64/ld-linux-x86-64.so.2 (0x000055e6b0ed6000)
+python@ubuntu:~/week7/dllib$ sudo cp ./libdlib.so /use/lib
+[sudo] python 的密码： 
+cp: 无法创建普通文件'/use/lib': 没有那个文件或目录
+python@ubuntu:~/week7/dllib$ sudo cp ./libdlib.so /usr/lib
+python@ubuntu:~/week7/dllib$ ./test
+Dynamic lib is called!
+python@ubuntu:~/week7/dllib$ cat d;ib.c test.c
+cat: d: 没有那个文件或目录
+ib.c：未找到命令
+python@ubuntu:~/week7/dllib$ cat dlib.c test.c
+#include "../ch07.h"
+void dynamic_lib_call(void)
+{
+    printf("Dynamic lib is called!\n");
+}
+
+#include "../ch07.h"
+extern void dynamic_lib_call(void);
+int main()
+{
+    dynamic_lib_call();
+    return 0;
+}
+python@ubuntu:~/week7/dllib$ 
 
