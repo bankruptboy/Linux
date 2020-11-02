@@ -838,4 +838,1222 @@ int main()
     return 0;
 }
 python@ubuntu:~/week7/dllib$ 
+python@ubuntu:~/week7/dllib$ ls
+dlib.c  libdlib.so  test  test.c
+python@ubuntu:~/week7/dllib$ cd ..
+python@ubuntu:~/week7$ cd dllib/
+python@ubuntu:~/week7/dllib$ ls
+dlib.c  libdlib.so  test  test.c
+python@ubuntu:~/week7/dllib$ sudo rm /usr/lib/libdlib.so 
+[sudo] python 的密码： 
+python@ubuntu:~/week7/dllib$ ./test
+./test: error while loading shared libraries: libdlib.so: cannot open shared object file: No such file or directory
+python@ubuntu:~/week7/dllib$ cp test.c test1.c
+python@ubuntu:~/week7/dllib$ vi test1.c
+python@ubuntu:~/week7/dllib$ vi ../ch07.h
+python@ubuntu:~/week7/dllib$ gcc test1.c -ldl -o test1
+python@ubuntu:~/week7/dllib$ ./test1
+Dynamic lib is called!
+python@ubuntu:~/week7/dllib$ cat test1.c
+#include "../ch07.h"
+int main()
+{
+    void *dlib = dlopen("./libdlib.so",RTLD_NOW);
+    if(!dlib)
+    {
+        printf("dlopen failed!\n");
+        exit(-1);
+    }
+    void(*dfunc) (void)=dlsym(dlib,"dynamic_lib_call");
+    if(!dfunc)
+    {
+        printf("dfunc is failed!\n");
+        exit(-1);
+    }
+    dfunc();
+    dlclose(dlib);
+    return 0;
+}
+python@ubuntu:~/week7/dllib$ cat ../ch07.h
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <string.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <time.h>
+#include <dlfcn.h>
+void err_exit(char *s)
+{
+    printf("Usage : *s is faile!\n");
+    exit(1);
+}
+python@ubuntu:~/week7/dllib$ ls
+dlib.c  libdlib.so  test  test1  test1.c  test.c
+python@ubuntu:~/week7/dllib$ vi dlib.c
+python@ubuntu:~/week7/dllib$ gcc -fpic -Wall -shared dlib.c -o libdlib.so
+python@ubuntu:~/week7/dllib$ vi test.c
+python@ubuntu:~/week7/dllib$ vi test1.c
+python@ubuntu:~/week7/dllib$ gcc test1.c -ldl -o test1
+python@ubuntu:~/week7/dllib$ ./test1
+sum is 0 
+python@ubuntu:~/week7/dllib$ vi test1.c
+python@ubuntu:~/week7/dllib$ gcc test1.c -ldl -o test1
+test1.c: In function ‘main’:
+test1.c:16:5: error: too many arguments to function ‘dfunc’
+     dfunc(22);
+     ^
+python@ubuntu:~/week7/dllib$ vi test1.c
+python@ubuntu:~/week7/dllib$ gcc test1.c -ldl -o test1
+python@ubuntu:~/week7/dllib$ ./test1
+dfunc is failed!
+python@ubuntu:~/week7/dllib$ vi test1.c
+python@ubuntu:~/week7/dllib$ vi test.c
+python@ubuntu:~/week7/dllib$ gcc -fpic -Wall -shared dlib.c -o libdlib.so
+python@ubuntu:~/week7/dllib$ ls
+dlib.c  libdlib.so  test  test1  test1.c  test.c
+python@ubuntu:~/week7/dllib$ gcc -Wall test.c -0 test -L ./ -ldlib
+gcc: error: unrecognized command line option ‘-0’
+python@ubuntu:~/week7/dllib$ gcc -Wall test.c -o test -L ./ -ldlib
+python@ubuntu:~/week7/dllib$ ./test
+./test: error while loading shared libraries: libdlib.so: cannot open shared object file: No such file or directory
+python@ubuntu:~/week7/dllib$ ls
+dlib.c  libdlib.so  test  test1  test1.c  test.c
+python@ubuntu:~/week7/dllib$ sudo cp ./libdlib.so /usr/lib
+[sudo] python 的密码： 
+python@ubuntu:~/week7/dllib$ ./test
+sum is 5050 
+python@ubuntu:~/week7/dllib$ cat test.c dlib.c
+#include "../ch07.h"
+extern void dsum(int max);
+int main()
+{
+    dsum(100);
+    return 0;
+}
+#include "../ch07.h"
+void dynamic_lib_call(void)
+{
+    printf("Dynamic lib is called!\n");
+}
+void dsum(int max)
+{
+    int sum = 0;
+    for(int i = 1;i<=max;i++)
+    {
+        sum+=i;
+    }
+    printf("sum is %d \n",sum);
+}
+python@ubuntu:~/week7/dllib$ history 
+  438  ls
+  439  tar -zxvf jsonpath-0.54.tar.gz 
+  440  gzip -zxvf jsonpath-0.54.tar.gz 
+  441  gzip -z jsonpath-0.54.tar.gz 
+  442  gzip -x jsonpath-0.54.tar.gz 
+  443  gzip --help
+  444  gzip 
+  445  gzip -h
+  446  tar -zxvf jsonpath-0.54.tar.gz 
+  447  gunzip
+  448  gunzip jsonpath-0.54.tar.gz 
+  449  cd jsonpath-0.54/
+  450  python setup.py install
+  451  sudo pip install -r spider_py2.txt 
+  452  cd ~
+  453  sudo pip install -r spider_py2.txt 
+  454  pip install PIL
+  455  sudo pip install -r spider_py2.txt 
+  456  pip install pycurl
+  457  sudo pip install pycurl
+  458  sudo pip install -r spider_py2.txt 
+  459  ls
+  460  vi spider_py2.txt 
+  461  python
+  462  pip --version
+  463  python
+  464  workon spider_py2
+  465  scrapy
+  466  pip list
+  467  pip install -r spider_py2.txt 
+  468  scrapy
+  469  pip list
+  470  pip install -r spider_py2.txt 
+  471  pip install scrapy
+  472  pip install lxml
+  473  pip install libxml2
+  474  apt-get install libxml2-dev libxslt-dev python-dev
+  475  sudo apt-get install libxml2-dev libxslt-dev python-dev
+  476  pip install libxml2
+  477  pip install scrapy
+  478  sudo pip install scrapy
+  479  apt-get install libssl-dev
+  480  sudo apt-get install libssl-dev
+  481  sudo pip install scrapy
+  482  pip install -r spider_py2.txt 
+  483  subl spider_py2.txt 
+  484  pip install -r spider_py2.txt 
+  485  pip install Pillow
+  486  pip install -r spider_py2.txt 
+  487  pip install pycurl
+  488  pip install -r spider_py2.txt 
+  489  tmp/pip-build-69yBOM/pycurl/
+  490  easy_install pycurl
+  491  pip install -r spider_py2.txt 
+  492  apt-get install libcurl4-openssl-dev
+  493  sudo apt-get install libcurl4-openssl-dev
+  494  pip install -r spider_py2.txt 
+  495  mongo
+  496  sudo apt-get install -y mongodb-org
+  497  sudo sudo apt-get install -y mongodb-org
+  498  sudo apt-get update
+  499  sudo rm /var/cache/apt/archives/lock
+  500  sudo apt-get update
+  501  sudo rm /var/lib/dpkg/lock
+  502  sudo apt-get update
+  503  sudo rm /var/cache/apt/archives/lock
+  504  sudo rm /var/lib/dpkg/lock
+  505  sudo apt-get update
+  506  sudo apt-get install -y mongodb-org
+  507  sudo apt-get update
+  508  sudo apt-get update
+  509  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+  510  echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+  511  sudo apt-get update
+  512  sudo apt-get install -y mongodb-org
+  513  mkdir -p /lib/systemd/system/
+  514  vi /lib/systemd/system/mongod.service
+  515  sudo vi /lib/systemd/system/mongod.service
+  516  sudo service mongod start
+  517  mongo
+  518  sudo service mongod stop
+  519  mongo
+  520  systemctl start mongod.service mongodb
+  521  systemctl start mongodb
+  522  sudo vi /lib/systemd/system/mongod.service
+  523  sudo systemctl start mongodb
+  524  which mongod
+  525  sudo vi /lib/systemd/system/mongod.service
+  526  sudo systemctl start mongodb
+  527  which mongod
+  528  sudo systemctl start mongodb
+  529  sudo systemctl start mongod
+  530  mongo
+  531  sudo apt-get install redis-server
+  532  redis-server
+  533  redis-cli
+  534  mongo
+  535  sudo systemctl enable mongod
+  536  mongo
+  537  reboot
+  538  vi spider_py2.txt 
+  539  rm spider_py2.txt 
+  540  cd pro/
+  541  ls
+  542  cd dailyfresh/
+  543  ls
+  544  subl .
+  545  ifconfig
+  546  ls
+  547  rm install.txt 
+  548  ls
+  549  vi spider_py2.txt 
+  550  sudo systemctl start mongod
+  551  mongo
+  552  sudo systemctl start mongodb
+  553  ls
+  554  vi spider_py2.txt 
+  555  mkdir pro
+  556  ls
+  557  cd pro/
+  558  ls
+  559  tar -zxvf dailyfresh.tar.gz 
+  560  ls
+  561  rm dailyfresh.tar.gz 
+  562  ls
+  563  tar xvf Python-3.4.3.tgz 
+  564  ls
+  565  cd Python-3.4.3/
+  566  ls
+  567  vi README 
+  568  cd ..
+  569  ls
+  570  ./configure --help
+  571  configure --help
+  572  cd Python-3.4.3/
+  573  ls
+  574  vi install-sh 
+  575  ./configure --prefix=/usr/local/python3.4
+  576  make
+  577  make install
+  578  sudo make install
+  579  python
+  580  python3.4
+  581  python3.4.3
+  582  cd /usr/local
+  583  ls
+  584  cd python3.4/
+  585  ls
+  586  cd bin/
+  587  ls
+  588  python3.4
+  589  cd ..
+  590  cd ../bin/
+  591  ls
+  592  ll
+  593  cd ~
+  594  cd pro/
+  595  ls
+  596  cd Python-3.4.3/
+  597  ls
+  598  cd ..
+  599  cd /usr/local
+  600  ls
+  601  cd python3.4/
+  602  ls
+  603  cd bin/
+  604  ls
+  605  cd ~
+  606  ln -s /usr/local/python3.4/bin/python  /usr/bin/python3.4
+  607  sudo ln -s /usr/local/python3.4/bin/python  /usr/bin/python3.4
+  608  ls
+  609  python3.4
+  610  cd /usr/bin/
+  611  ls
+  612  ll
+  613  rm python3.4 
+  614  sudo rm python3.4 
+  615  ls
+  616  ln -s /usr/local/python3.4/bin/python  /usr/bin/python3.4
+  617  sudo ln -s /usr/local/python3.4/bin/python  /usr/bin/python3.4
+  618  ll
+  619  rm python3.4 
+  620  sudo rm python3.4 
+  621  cd /usr/local
+  622  ls
+  623  cd bin/
+  624  ls
+  625  cd ..
+  626  ls
+  627  cd python3.4/
+  628  ls
+  629  cd bin/
+  630  ls
+  631  vi python3.4
+  632  sudo ln -s /usr/local/python3.4/bin/python3.4  /usr/bin/python3.4
+  633  cd ~
+  634  cd /usr/bin/
+  635  ll python3.4
+  636  python3
+  637  ll python3
+  638  cd ~
+  639  ls
+  640  cd pro/
+  641  ls
+  642  rm Python-3.4.3
+  643  rm Python-3.4.3 -r
+  644  ls
+  645  cd Python-3.4.3/
+  646  ls
+  647  cd ..
+  648  rm Python-3.4.3 -r
+  649  sudo rm Python-3.4.3 -r
+  650  ls
+  651  rm Python-3.4.3.tgz 
+  652  python3.4
+  653  cd /usr/local/python3.4/
+  654  ls
+  655  cd bin/
+  656  ls
+  657  ll
+  658  cd ~
+  659  cd pro
+  660  ls
+  661  mkvirtualenv -p /usr/bin/python3.4 django_py3.4
+  662  pip3 --version
+  663  pip --version
+  664  deactivate 
+  665  pip3 --verion
+  666  pip3 --version
+  667  cd /usr/local/lib/python3.5/dist-packages
+  668  ls
+  669  ll
+  670  cd pip
+  671  ls
+  672  cd ..
+  673  ls
+  674  cd /usr/local/bin/
+  675  ls
+  676  ll
+  677  cd /usr/bin/
+  678  ll
+  679  ll pip3
+  680  cd ~/pro/
+  681  ls
+  682  cd dailyfresh/
+  683  ls
+  684  workon django_py3.4
+  685  ls
+  686  pip --version
+  687  vi install.txt
+  688  vi install.txt 
+  689  sudo apt-get install postgresql
+  690  sudo apt-get update
+  691  ping www.baidu.com
+  692  sudo apt-get update
+  693  ping www.baidu.com
+  694  sudo apt-get update
+  695  sudo apt-get install postgresql
+  696  sudo apt-get update
+  697  sudo apt-get install postgresql
+  698  sudo -u postgres
+  699  sudo -u postgres passwd
+  700  sudo passwd -d postgres
+  701  sudo -u postgres passwd
+  702  sudo -u postgres psql
+  703  ls
+  704  python manage.py runserver
+  705  vi install.txt 
+  706  pip3.4 install -r install.txt 
+  707  vi install.txt 
+  708  pip3.4 install -r install.txt 
+  709  vi install.txt 
+  710  pip3.4 install -r install.txt 
+  711  vi install.txt 
+  712  pip3.4 install -r install.txt 
+  713  sudo apt-get install libpq-dev
+  714  sudo apt-get install elasticsearch
+  715  ls
+  716  vi install.txt 
+  717  pip3.4 install -r install.txt 
+  718  pip lsit
+  719  pip list
+  720  python manage.py runserver
+  721  sudo -u postgres
+  722  sudo -u postgres psql
+  723  sudo -u postgres passwd
+  724  vi /etc/postgresql/9.1/main/postgresql.conf
+  725  vi /etc/postgresql/9.5/main/postgresql.conf 
+  726  sudo vi /etc/postgresql/9.5/main/postgresql.conf 
+  727  ls
+  728  sudo vi /etc/postgresql/9.5/main/pg_hba.conf 
+  729  /etc/init.d/postgresql restart
+  730  ls
+  731  python manage.py runserver
+  732  sudo vi /etc/postgresql/9.5/main/pg_hba.conf 
+  733  python manage.py runserver
+  734  /etc/init.d/postgresql restart
+  735  python manage.py runserver
+  736  sudo -u postgres psql
+  737  python manage.py runserver
+  738  sudo -u dailyfresh
+  739  sudo -u dailyfresh psql
+  740  psql -U postgres -h 127.0.0.1
+  741  createdb
+  742  sudo -u postgres psql
+  743  workon django_py3.4
+  744  pip lsit
+  745  pip list
+  746  pip3.4 install elasticsearch
+  747  workon django_py3.4
+  748  cd pro/
+  749  ls
+  750  cd dailyfresh/
+  751  ls
+  752  sudo -u postgres psql
+  753  psql -h localhost -p 5432 -U postgress testdb
+  754  psql -h localhost -p 5432 -U postgress dailyfresh
+  755  psql -h localhost -p 5432 -U postgres dailyfresh
+  756  python manage.py runserver
+  757  python manage.py migrate
+  758  python manage.py runserver
+  759  sudo -u postgres psql
+  760  psql -h localhost -p 5432 -U postgress dailyfresh
+  761  psql -h localhost -p 5432 -U postgres dailyfresh
+  762  python manage.py runserver
+  763  python manage.py createsuperuser
+  764  python manage.py runserver
+  765  ls
+  766  vi install.txt 
+  767  rm install.txt 
+  768  ls
+  769  python manage.py runserver
+  770  redis-cli
+  771  python manage.py runserver
+  772  ls
+  773  cd ..
+  774  ls
+  775  cd ..
+  776  ls
+  777  cd pro/
+  778  ls
+  779  subl .
+  780  sudo apt-get update && sudo apt-get upgrade
+  781  pip list
+  782  pip -version
+  783  pip --version
+  784  ls
+  785  cd pro/
+  786  git clone https://github.com/lyfeyaj/sublime-text-imfix.git
+  787  ls
+  788  cd sublime-text-imfix/
+  789  ls
+  790  ./sublime-imfix
+  791  ls
+  792  subl .
+  793  cd ..
+  794  ls
+  795  cd ..
+  796  ls
+  797  rm pro/ -r
+  798  sudo rm pro/ -r
+  799  ls
+  800  rmvirtualenv django_py3.4
+  801  workon django_py2
+  802  pip list
+  803  deactivate 
+  804  rmvirtualenv django_py2
+  805  ifconfig
+  806  ls
+  807  cd Desktop/
+  808  tar zxvf pycharm-professional-2016.3.1.tar.gz 
+  809  sudo mv pycharm-2016.3.1/ /opt/
+  810  cd /opt/
+  811  ls
+  812  cd pycharm-2016.3.1/
+  813  ls
+  814  cd bin/
+  815  ls
+  816  ./pycharm.sh 
+  817  sudo ./pycharm.sh 
+  818  ipython
+  819  workon spider_py2
+  820  ipython
+  821  pip list
+  822  ipython
+  823  deactivate 
+  824  '
+  825  pwd
+  826  mkdir practice
+  827  ls
+  828  cd ..
+  829  ls -l
+  830  vi 1-2.c
+  831  cd ..
+  832  vi 1-2.c
+  833  cd ..
+  834  mkdir haha
+  835  cd practice
+  836  cd /home/practice
+  837  vi 1-2.c
+  838  gcc 1.
+  839  gcc 1-2.c -o 1-2
+  840  vi 1-2.c
+  841  gcc 1-2.c -o 1-2
+  842  vi 1-2.c
+  843  gcc 1-2.c -o 1-2
+  844  vi 1-2.c
+  845  gcc 1-2.c -o 1-2
+  846  strace ./1-2
+  847  vi 1-2.c
+  848  gcc 1-2.c -o 1-2
+  849  strace ./1-2
+  850  gdb 1-2
+  851  strace ./1-2
+  852  ls
+  853  cd
+  854  ls
+  855  vi 1-2.c
+  856  ./1-2.c
+  857  gcc 1-2.c -0 1-2
+  858  gcc 1-2.c -o 1-2
+  859  vi 1-2.c
+  860  gcc 1-2.c -o 1-2
+  861  ./1-2
+  862  cat 1-2.c
+  863  time 1-2
+  864  echo $PATH
+  865  ./1-2
+  866  vim 1-2.c
+  867  vi 1-2.c
+  868  gcc 1-2.c -o 1-2
+  869  ./1-2
+  870  git remote add origin https://github.com/bankruptboy/Linux.git
+  871  git push -u origin master
+  872  git version
+  873  git branch
+  874  git init
+  875  apt-get install git
+  876  git add 1-2.c
+  877  git commit
+  878  git init
+  879  git log
+  880  git status
+  881  git commit
+  882  vi 1-2.c
+  883  git init
+  884  git log
+  885  cd /home/python/.git/
+  886  ls
+  887  cd /root/.ssh/
+  888  ssh-keygen -t ras -C 'bankruptboy'
+  889  ssh-keygen -t rsa -C 'bankruptboy'
+  890  cat id_rsa
+  891  cat /home/python/.ssh/id_rsa
+  892  bim id_rsa
+  893  vim id_rsa
+  894  vim id_rsa.pub
+  895  ssh -T git@github.com
+  896  ssh-keygen -t rsa -C 'bankruptboy'
+  897  ssh -T git@github.com
+  898  git add test.tst
+  899  cd /
+  900  git remote add origin github.com/bankruptboy/Linux
+  901  git add test.tst
+  902  ps
+  903  ps -ef
+  904  kill 6302
+  905  #include <sys/types.h>
+  906  man fopen
+  907  man fwrite
+  908  man printf
+  909  man mkdir
+  910  man time
+  911  man fgets
+  912  man fwrite
+  913  man opem
+  914  man open
+  915  man fopen
+  916  man open
+  917  man freopen
+  918  pwd
+  919  mkdir week3
+  920  cd week3
+  921  vi 3-2-1.c
+  922  gcc -g -Wall 3-2-1.c -0 3-2-2
+  923  gcc -g -Wall 3-2-1.c -o 3-2-2
+  924  vi test1.txt
+  925  gcc -g -Wall 3-2-1.c -o 3-2-2
+  926  vi 3-2-1.c
+  927  gcc -g -Wall 3-2-1.c -o 3-2-2
+  928  ./3-2-2
+  929  vi 3-2-1.c
+  930  gcc -g -Wall 3-2-1.c -o 3-2-2
+  931  ./3-2-2
+  932  cp 3-2-1.c 3-2-2.c
+  933  vi 3-2-2.c
+  934  gcc -g -Wall 3-2-2.c -o 3-2-3
+  935  ./3-2-3
+  936  vi 3-2-2.c
+  937  gcc -g -Wall 3-2-2.c -o 3-2-3
+  938  vi 3-2-2.c
+  939  gcc -g -Wall 3-2-2.c -o 3-2-3
+  940  ./3-2-3
+  941  cat 3-2-1.c 3-2-2.c
+  942  cp 3-2-2.c ch02.h
+  943  vi ch02.h
+  944  pwd
+  945  ls
+  946  vi 3-2-3.c
+  947  gcc -g -Wall 3-2-3.c -o 3-2-1
+  948  vi 3-2-3.c
+  949  gcc -g -Wall 3-2-3.c -o 3-2-1
+  950  ./3-2-1
+  951  vi 3-2-3.c
+  952  gcc -g -Wall 3-2-3.c -o 3-2-1
+  953  ./3-2-1
+  954  vi 3-2-3.c
+  955  vi test1.txt
+  956  vi 3-2-3.c
+  957  ./3-2-1
+  958  vi test1.txt
+  959  cat 3-2-3.c test1.txt
+  960  cp 3-2-3.c 3-2-4.c
+  961  vi 3-2-4.c
+  962  gcc -g -Wall 3-2-4.c -o 3-2-4
+  963  ./3-2-4
+  964  ./3-2-4 12 a b c
+  965  vi 3-2-4.c
+  966  gcc -g -Wall 3-2-4.c -o 3-2-4
+  967  vi 3-2-4.c
+  968  gcc -g -Wall 3-2-4.c -o 3-2-4
+  969  vi 3-2-4.c
+  970  gcc -g -Wall 3-2-4.c -o 3-2-4
+  971  ./3-2-4 12 a b c
+  972  vi 3-2-4.c
+  973  gcc -g -Wall 3-2-4.c -o 3-2-4
+  974  vi 3-2-4.c
+  975  gcc -g -Wall 3-2-4.c -o 3-2-4
+  976  vi 3-2-4.c
+  977  ./3-2-4 12 a b c
+  978  vi 3-2-4.c
+  979  gcc -g -Wall 3-2-4.c -o 3-2-4
+  980  vi 3-2-4.c
+  981  gcc -g -Wall 3-2-4.c -o 3-2-4
+  982  ./3-2-4 12 a b c
+  983  test1.txt
+  984  cat test1.txt
+  985  vi test1.txt
+  986  vi 3-2-4.c
+  987  ./3-2-4 12 a b c
+  988  vi 3-2-4.c
+  989  gcc -g -Wall 3-2-4.c -o 3-2-4
+  990  vi 3-2-4.c
+  991  gcc -g -Wall 3-2-4.c -o 3-2-4
+  992  ./3-2-4 12 a b c
+  993  cp 3-2-4.c 3-2-5.c
+  994  vi 3-2-5.c
+  995  gcc -g -Wall 3-2-5.c -o 3-2-5
+  996  ./3-2-5 12 a b c
+  997  cat 3-2-4.c 3-2-5.c
+  998  vi 3-2-7.c
+  999  gcc -g -Wall 3-2-7.c -o 3-2-7
+ 1000  ./3-2-7
+ 1001  vi 3-2-7.c
+ 1002  gcc -g -Wall 3-2-7.c -o 3-2-7
+ 1003  ./3-2-7
+ 1004  vi 3-2-7.c
+ 1005  gcc -g -Wall 3-2-7.c -o 3-2-7
+ 1006  ./3-2-7
+ 1007  vi 3-2-7.c
+ 1008  ./3-2-7
+ 1009  od -c test.bat
+ 1010  od -c test.dat
+ 1011  cd week4
+ 1012  od -c test.dat
+ 1013  cd week4
+ 1014  od -c test.dat
+ 1015  cd week4
+ 1016  ./4-8
+ 1017  pwd
+ 1018  ls
+ 1019  ls -a
+ 1020  mkdir week4
+ 1021  cd week4
+ 1022  vi 4-1-1
+ 1023  gcc -g -Wall 4-1-1.c -o 4-1-1
+ 1024  cat 4-1-1.c
+ 1025  cat 4.1.1
+ 1026  cat 4-1-1
+ 1027  cp 4-1-1 4-1-1.c
+ 1028  cat 4-1-1.c
+ 1029  rm 4-1-1
+ 1030  gcc -g -Wall 4-1-1.c -o 4-1-1
+ 1031  vi 4-1-1.c
+ 1032  gcc -g -Wall 4-1-1.c -o 4-1-1
+ 1033  vi 4-1-1.c
+ 1034  gcc -g -Wall 4-1-1.c -o 4-1-1
+ 1035  vi ch02.h
+ 1036  ./4-1-1
+ 1037  cat 4-1-1.c
+ 1038  ./4-1-1
+ 1039  ./4-1-1 1 2 3 
+ 1040  vi 4-1-1.c
+ 1041  gcc -g -Wall 4-1-1.c -o 4-1-1
+ 1042  ./4-1-1 1 2 3 
+ 1043  ./4-1-1 123456 123 123
+ 1044  cat 4-1-1.c
+ 1045  ./4-1-1 123456 123 123
+ 1046  ls
+ 1047  ./4-1-1 /proc/cpuinfo ./cpu.bak
+ 1048  ls
+ 1049  time ./4-1-1 /proc/cpuinfo ./cpu.bak
+ 1050  vi 4-2.c
+ 1051  vi ch02.h
+ 1052  gcc -g -Wall 4-2.c -o 4-2
+ 1053  vi 4-2.c
+ 1054  gcc -g -Wall 4-2.c -o 4-2
+ 1055  vi 4-2.c
+ 1056  gcc -g -Wall 4-2.c -o 4-2
+ 1057  vi 4-2.c
+ 1058  gcc -g -Wall 4-2.c -o 4-2
+ 1059  vi ch02.h
+ 1060  gcc -g -Wall 4-2.c -o 4-2
+ 1061  vi ch02.h
+ 1062  gcc -g -Wall 4-2.c -o 4-2
+ 1063  cp 4-2.c 4-3.c
+ 1064  vi 4-3.c
+ 1065  gcc -g -Wall 4-3.c -o 4-3
+ 1066  ./4-2
+ 1067  a.out
+ 1068  ls -l 
+ 1069  od -c file.hole
+ 1070  rm file.hole
+ 1071  ./4-2
+ 1072  ls -l 
+ 1073  od -c file.hole
+ 1074  ./4-3
+ 1075  ls -l 
+ 1076  od -c file.hole.2
+ 1077  vi 4-4.c
+ 1078  gcc -g -Wall 4-4.c -o 4-4
+ 1079  vi 4-4.c
+ 1080  gcc -g -Wall 4-4.c -o 4-4
+ 1081  ./4-4
+ 1082  cat 4-2.c 4-3.c 4-4.c ch02.h
+ 1083  cp 4-4.c 4-5.c
+ 1084  vi 4-5.c
+ 1085  gcc -g -Wall 4-5.c -o 4-5
+ 1086  ./4-5
+ 1087  cp 4-5.c 4-6.c
+ 1088  vi 4-6.c
+ 1089  gcc 4-6.c -o 4-6
+ 1090  ./4-6
+ 1091  vi 4-6.c
+ 1092  cat 4-5.c
+ 1093  vi 4-6.c
+ 1094  gcc 4-6.c -o 4-6
+ 1095  ./4-6
+ 1096  vi 4-6.c
+ 1097  cat out.info
+ 1098  ls -l
+ 1099  ls -a
+ 1100  cat 4-6.c
+ 1101  pwd
+ 1102  ls
+ 1103  cat 4-6.c 4-7.c
+ 1104  cp 4-4.c 4-7.c
+ 1105  vi 4-7.c
+ 1106  cat 4-5.c
+ 1107  vi 4-7.c
+ 1108  vi ch02.h
+ 1109  vi 4-7.c
+ 1110  cp 4-7.c 4-8.c
+ 1111  vi 4-8.c
+ 1112  vi 4-7.c
+ 1113  cp 4-8.c 4-7.c
+ 1114  vi 4-7.c
+ 1115  gcc 4-7.c -o 4-7
+ 1116  vi 4-7.c
+ 1117  gcc 4-7.c -o 4-7
+ 1118  vi 4-7.c
+ 1119  gcc 4-7.c -o 4-7
+ 1120  vi 4-8.c
+ 1121  gcc 4-8.c -o 4-8
+ 1122  cat 4-7.c 4-8.c
+ 1123  ./4-7.c
+ 1124  chomod 777 4-7.c
+ 1125  chmod 777 4-7.c
+ 1126  ./4-7.c
+ 1127  ./4-7
+ 1128  vi 4-7.c
+ 1129  vi 4-8.c
+ 1130  gcc 4-8.c -o 4-8
+ 1131  gcc 4-7.c -o 4-7
+ 1132  ./4-7
+ 1133  stat test.dat
+ 1134  vi 4-9.c
+ 1135  gcc 4-9.c -o 4-9
+ 1136  vi 4-9.c
+ 1137  gcc 4-9.c -o 4-9
+ 1138  vi 4-9.c
+ 1139  gcc 4-9.c -o 4-9
+ 1140  ./4-9
+ 1141  cat 4-7.c 4-8.c 4-9.c
+ 1142  cat 4-3.c
+ 1143  mor 4-3.c
+ 1144  more 4-3.c
+ 1145  head -5 4-3.c
+ 1146  tree
+ 1147  stat 4-3.c
+ 1148  vi 4-3.c
+ 1149  cat /usr/include/limits.h
+ 1150  cat /usr/include/float.h
+ 1151  cat /usr/include/stdio.h
+ 1152  cat /usr/include/float.h
+ 1153  cat /usr/float.h
+ 1154  cd usr
+ 1155  cd /usr
+ 1156  ls
+ 1157  cd /usr/include/
+ 1158  ls
+ 1159  cat /usr/include/features.h
+ 1160  find /usr/include -name "float.h"
+ 1161  cat /usr/include/c++/5/tr1/float
+ 1162  cat /usr/include/c++/5/tr1/float.h
+ 1163  cat /usr/include/c++/5/tr1/cfloat
+ 1164  sudo find / -name float.h
+ 1165  sudo find /usr -name float.h
+ 1166  cat /usr/lib/gcc/x86_64-linux-gnu/5/include/float.h
+ 1167  cat /usr/local/include/float.h
+ 1168  sudo find / -name float.h
+ 1169  cat /usr/include/c++/5/tr1/cfloat
+ 1170  locat float.h
+ 1171  local float.h
+ 1172  gcc -posix -E -dM - </dev/null
+ 1173  vi gets.h
+ 1174  cd
+ 1175  vi gets.c
+ 1176  gcc gets.c -o gets
+ 1177  ./gets
+ 1178  cat gets.c
+ 1179  cd week4
+ 1180  vi pro3.c
+ 1181  gcc pro3.c -o pro3
+ 1182  ./pro3
+ 1183  cat pro3.c
+ 1184  cd
+ 1185  mkdir week5
+ 1186  cd week5
+ 1187  ls
+ 1188  cp ../week4/ch02.h ch05.h
+ 1189  cat ch05.h
+ 1190  vi 5-1.c
+ 1191  gcc 5-1.c -o 5-1
+ 1192  ./5-1
+ 1193  vi 5-1.c
+ 1194  clear
+ 1195  vi 5-1.c
+ 1196  mv 5-1.c.swp
+ 1197  clear
+ 1198  cat 5-1.c
+ 1199  gcc 5-1.c -o 5-1
+ 1200  ./5-1
+ 1201  cp 5-1.c 5-1-1.c
+ 1202  vi 5-1-1.c
+ 1203  gcc 5-1-1.c -o 5-1-1
+ 1204  ./5-1-1
+ 1205  vi 5-1-1.c
+ 1206  gcc 5-1-1.c -o 5-1-1
+ 1207  ./5-1-1
+ 1208  cat 5-1-1.c
+ 1209  vi 5-1-2.c
+ 1210  gcc 5-1-2.c -o 5-1-2
+ 1211  ./5-1-2
+ 1212  vi 5-1-2.c
+ 1213  gcc 5-1-2.c -o 5-1-2
+ 1214  ./5-1-2
+ 1215  vi 5-1-2.c
+ 1216  gcc 5-1-2.c -o 5-1-2
+ 1217  ./5-1-2
+ 1218  vi 5-1-2.c
+ 1219  gcc 5-1-2.c -o 5-1-2
+ 1220  ./5-1-2
+ 1221  cat 5-1-2.c
+ 1222  vi 5-2.c
+ 1223  gcc 5-2.c -o 5-2
+ 1224  vi 5-2.c
+ 1225  gcc 5-2.c -o 5-2
+ 1226  vi 5-2.c
+ 1227  gcc 5-2.c -o 5-2
+ 1228  ./5-2
+ 1229  vi 5-2.c
+ 1230  gcc 5-2.c -o 5-2
+ 1231  ./5-2
+ 1232  cat test1.txt text2.txt
+ 1233  cat test1.txt texs2.txt
+ 1234  cat test1.txt test2.txt
+ 1235  cat 5-2.c
+ 1236  vi 5-3.c
+ 1237  gcc 5-3.c -o 5-3
+ 1238  vi 5-3.c
+ 1239  gcc 5-3.c -o 5-3
+ 1240  ./5-3
+ 1241  cat 5-3.c
+ 1242  vi 5-3.c
+ 1243  gcc 5-3.c -o 5-3
+ 1244  ./5-3
+ 1245  cat tmp.txt
+ 1246  vi 5-3.c
+ 1247  gcc 5-3.c -o 5-3
+ 1248  ./5-3
+ 1249  vi 5-3.c
+ 1250  gcc 5-3.c -o 5-3
+ 1251  vi 5-3.c
+ 1252  gcc 5-3.c -o 5-3
+ 1253  ./5-3
+ 1254  vi zuoye.c
+ 1255  gcc zuoye.c -o zuoye
+ 1256  vi zuoye.c
+ 1257  vi haha.c
+ 1258  vi aaa.c
+ 1259  gcc aaa.c -o aaa
+ 1260  ./aaa
+ 1261  vi aaa.c
+ 1262  gcc aaa.c -o aaa
+ 1263  ./aaa
+ 1264  cat aaa.c
+ 1265  vi 123.c
+ 1266  vi aaa.c
+ 1267  vi 123.c
+ 1268  gcc 123.c -o 123
+ 1269  vi ch05.h
+ 1270  mkdir homework
+ 1271  cd homework/
+ 1272  vi max_and_min.c
+ 1273  vi test.c
+ 1274  vi gets.c
+ 1275  gcc test.c -o test
+ 1276  ./test
+ 1277  vi gets.c
+ 1278  vi test.c
+ 1279  gcc test.c -o test
+ 1280  ./test
+ 1281  gcc gets.c -o gets
+ 1282  ./gets
+ 1283  gcc max_and_min.c -o max_and_min
+ 1284  ./max_and_min
+ 1285  #vim /etc/locale.conf
+ 1286  #locale -a |grep "zh_CN"
+ 1287  cd
+ 1288  #locale -a |grep "zh_CN"
+ 1289  export LANG="zh_CN.UTF-8"   
+ 1290  cd homework/
+ 1291  ./max_and_min
+ 1292  vi max_and_min.c
+ 1293  gcc max_and_min.c -o max_and_min
+ 1294  ./max_and_min
+ 1295  vi max_and_min.c
+ 1296  gcc max_and_min.c -o max_and_min
+ 1297  ./max_and_min
+ 1298  vi max_and_min.c
+ 1299  gcc max_and_min.c -o max_and_min
+ 1300  ./max_and_min
+ 1301  ./gets
+ 1302  ./test
+ 1303  cd homework
+ 1304  vi myfun,c
+ 1305  vi myfun.c
+ 1306  mkdir week7
+ 1307  cd week7
+ 1308  vi 7-1.c
+ 1309  gcc 7-1.c -o 7-1
+ 1310  ./7-1
+ 1311  cat 7-1.c
+ 1312  vi 7-1.c
+ 1313  gcc 7-1.c -o 7-1
+ 1314  vi 7-1.c
+ 1315  gcc 7-1.c -o 7-1
+ 1316  ./7-1
+ 1317  cat 7-1.c
+ 1318  vi 7-2.c
+ 1319  gcc 7-2.c -o 7-2
+ 1320  ./7-2
+ 1321  ./7-2 123 123 123 123 123
+ 1322  vi 7-2.c
+ 1323  gcc 7-2.c -o 7-2
+ 1324  vi 7-2.c
+ 1325  gcc 7-2.c -o 7-2
+ 1326  ./7-2
+ 1327  ./7-2 11 22
+ 1328  vi 7-2.c
+ 1329  gcc 7-2.c -o 7-2
+ 1330  ./7-2 11 22
+ 1331  vi 7-3.c
+ 1332  gcc 7-3.c -o 7-3
+ 1333  ./7-3
+ 1334  cp 7-3 7-4
+ 1335  vi 7-4
+ 1336  cp 7-3.c 7-4.c
+ 1337  vi 7-4.c
+ 1338  gcc 7-4.c -o 7-4
+ 1339  ./7-4
+ 1340  vi 7-4.c
+ 1341  gcc 7-4.c -o 7-4
+ 1342  ./7-4
+ 1343  cat 7-2.c 7-3.c 7-4.c
+ 1344  ./7-4
+ 1345  cp 7-4.c 7-5.c
+ 1346  vi 7-5.c
+ 1347  gcc 7-5.c -o 7-5
+ 1348  ./7-5
+ 1349  cat 7-5.c
+ 1350  env
+ 1351  echo $PATH
+ 1352  echo $PWD
+ 1353  echo $HOME
+ 1354  cd week
+ 1355  cd week7
+ 1356  ls
+ 1357  vi 7-6.c
+ 1358  gcc 7-6.c -o 7-6
+ 1359  ./7-6
+ 1360  cat 7-6.c
+ 1361  vi 7-6.c
+ 1362  gcc 7-6.c -o 7-6
+ 1363  ./7-6
+ 1364  cat 7-6.c
+ 1365  vi 7-6.c
+ 1366  gcc 7-6.c -o 7-6
+ 1367  ./7-6
+ 1368  cat 7-6.c
+ 1369  vi 7-7.c
+ 1370  gcc 7-7.c -o 7-7
+ 1371  vi 7-7.c
+ 1372  gcc 7-7.c -o 7-7
+ 1373  vi 7-7.c
+ 1374  gcc 7-7.c -o 7-7
+ 1375  vi 7-7.c
+ 1376  gcc 7-7.c -o 7-7
+ 1377  ./7-7
+ 1378  mkdir dllib
+ 1379  cd dllib
+ 1380  ls
+ 1381  pwd
+ 1382  vi dlib.c
+ 1383  pwd
+ 1384  gcc -Wall -shared dlib.c -o libdlib.so
+ 1385  ls
+ 1386  vi test.c
+ 1387  gcc -fpic -Wall -shared dlib.c -o libdlib.so
+ 1388  ls
+ 1389  file libdlib.so
+ 1390  gcc - Wall test.c -p test -L ./ -ldlib
+ 1391  gcc -Wall test.c -o test -L ./ -ldlib
+ 1392  ls
+ 1393  ./test
+ 1394  ldd ./test
+ 1395  sudo cp ./libdlib.so /use/lib
+ 1396  sudo cp ./libdlib.so /usr/lib
+ 1397  ./test
+ 1398  cat d;ib.c test.c
+ 1399  cat dlib.c test.c
+ 1400  clear
+ 1401  ls
+ 1402  cd ..
+ 1403  cd dllib/
+ 1404  ls
+ 1405  sudo rm /usr/lib/libdlib.so 
+ 1406  ./test
+ 1407  cp test.c test1.c
+ 1408  vi test1.c
+ 1409  vi ../ch07.h
+ 1410  gcc test1.c -ldl -o test1
+ 1411  ./test1
+ 1412  cat test1.c
+ 1413  cat ../ch07.h
+ 1414  ls
+ 1415  vi dlib.c
+ 1416  gcc -fpic -Wall -shared dlib.c -o libdlib.so
+ 1417  vi test.c
+ 1418  vi test1.c
+ 1419  gcc test1.c -ldl -o test1
+ 1420  ./test1
+ 1421  vi test1.c
+ 1422  gcc test1.c -ldl -o test1
+ 1423  vi test1.c
+ 1424  gcc test1.c -ldl -o test1
+ 1425  ./test1
+ 1426* vi test1.c [B
+ 1427  vi test.c
+ 1428  gcc -fpic -Wall -shared dlib.c -o libdlib.so
+ 1429  ls
+ 1430  gcc -Wall test.c -0 test -L ./ -ldlib
+ 1431  gcc -Wall test.c -o test -L ./ -ldlib
+ 1432  ./test
+ 1433  ls
+ 1434  sudo cp ./libdlib.so /usr/lib
+ 1435  ./test
+ 1436  cat test.c dlib.c
+ 1437  history 
+python@ubuntu:~/week7/dllib$ vi test1.c
+python@ubuntu:~/week7/dllib$ gcc test1.c -ldl -o test1
+python@ubuntu:~/week7/dllib$ ./test1
+sum is 5050 
+python@ubuntu:~/week7/dllib$ cat test1.c
+#include "../ch07.h"
+int main()
+{
+    void *dlib = dlopen("./libdlib.so",RTLD_NOW);
+    if(!dlib)
+    {
+        printf("dlopen failed!\n");
+        exit(-1);
+    }
+    void(*dfunc) (int)=dlsym(dlib,"dsum");
+    if(!dfunc)
+    {
+        printf("dfunc is failed!\n");
+        exit(-1);
+    }
+    dfunc(100);
+    dlclose(dlib);
+    return 0;
+}
+python@ubuntu:~/week7/dllib$ cd ..
+python@ubuntu:~/week7$ mkdir error
+python@ubuntu:~/week7$ cd error
+python@ubuntu:~/week7/error$ pwd
+/home/python/week7/error
+python@ubuntu:~/week7/error$ vi error1.c
+python@ubuntu:~/week7/error$ gcc -Wall error1.c -o error1
+error1.c: In function ‘main’:
+error1.c:7:7: warning: ‘q’ is used uninitialized in this function [-Wuninitialized]
+     *q=2;
+       ^
+python@ubuntu:~/week7/error$ ./error1
+段错误 (核心已转储)
+python@ubuntu:~/week7/error$ cp error1.c bug1.c
+python@ubuntu:~/week7/error$ vi bubg1.c
+python@ubuntu:~/week7/error$ vi bug1.c
+python@ubuntu:~/week7/error$ gcc -Wall bug1.c -o bug1
+python@ubuntu:~/week7/error$ ./bug1
+*p = 1, *q=2
+python@ubuntu:~/week7/error$ cat error1.c bug1.c
+#include "../ch07.h"
+int *p;
+int main()
+{
+    int *q;
+    *p=1;
+    *q=2;
+    printf("*p = %d, *q=%d\n",*p,*q);
+    return 0;
+}
+#include "../ch07.h"
+int *p,x;
+int main()
+{
+    int *q;
+    p=&x;
+    *p=1;
+    q=(int*)malloc(sizeof(int));
+    *q=2;
+    printf("*p = %d, *q=%d\n",*p,*q);
+    return 0;
+}
+python@ubuntu:~/week7/error$ vi error2.c
+python@ubuntu:~/week7/error$ gcc -Wall error2.c -o error2
+error2.c: In function ‘main’:
+error2.c:10:12: warning: too many arguments for format [-Wformat-extra-args]
+     printf("#d\n",a[i]);
+            ^
+python@ubuntu:~/week7/error$ vi error2.c
+python@ubuntu:~/week7/error$ gcc -Wall error2.c -o error2
+python@ubuntu:~/week7/error$ ./error2.c
+bash: ./error2.c: 权限不够
+python@ubuntu:~/week7/error$ ./error2
+i = 123456789
+段错误 (核心已转储)
+python@ubuntu:~/week7/error$ cat error2.c
+#include "../ch07.h"
+#define N 10
+int a[N],i;
+int main()
+{
+    for(i = 0;i<N;i++)
+        a[i]=i+1;
+    a[N]=123456789;
+    printf("i = %d\n",i);
+    printf("%d\n",a[i]);
+    return 0;
+}
+python@ubuntu:~/week7/error$ vi error3.c
+python@ubuntu:~/week7/error$ gcc -Wall error3.c -o error3
+error3.c: In function ‘main’:
+error3.c:5:5: warning: ‘s’ is used uninitialized in this function [-Wuninitialized]
+     strcpy(s,"hello world!");
+     ^
+python@ubuntu:~/week7/error$ ./error3
+段错误 (核心已转储)
+python@ubuntu:~/week7/error$ cat error3.c
+#include "../ch07.h"
+int main()
+{
+    char *s;
+    strcpy(s,"hello world!");
+    printf("s = %s\n",s);
+    return 0;
+}
 
