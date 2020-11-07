@@ -2,3 +2,27 @@ error2.c
   数组打印；
 7-7.c
   环境变量2打印；
+python@ubuntu:~/week7$ cat 7-7.c 
+#include "ch07.h"
+static void set_env_string(void)
+{
+    char test_env[]="test_env=test";
+    if(putenv(test_env)!=0)
+    {
+        printf("Putenv is failed!\n");
+    }
+    printf("1.The test_env = %s\n",getenv("test_env"));
+}
+static void show_env_string()
+{
+    printf("2.The test_env = %s\n",getenv("test_env"));
+}
+int main()
+{
+    set_env_string();
+    show_env_string();
+    return 0;
+}
+python@ubuntu:~/week7$ ./7-7
+1.The test_env = test
+2.The test_env = (null)
