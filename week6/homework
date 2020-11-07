@@ -70,6 +70,36 @@ python@ubuntu:~/week7$ ./7-7
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
+putenv用于增加或修改当前的环境变量。string的格式为“名字=值”。 如果当前环境变量没有该名称的环境变量， 则增加这个新的环境变量；如果已经存在，则使用新值。
+如果非要用putenv来设置环境变量， 就必须要保证参数是一个长期存在的内容。 因此，只能选择全局变量、常量或动态内存等。
+
+
+python@ubuntu:~/week7$ cat haha.c
+#include "ch07.h"
+char test_env[]="test_env=test";
+static void set_env_string(void)
+{
+    if(putenv(test_env)!=0)
+    {
+        printf("Putenv is failed!\n");
+    }
+    printf("1.The test_env = %s\n",getenv("test_env"));
+}
+static void show_env_string()
+{
+    printf("2.The test_env = %s\n",getenv("test_env"));
+}
+int main()
+{
+    set_env_string();
+    show_env_string();
+    return 0;
+}
+python@ubuntu:~/week7$ ./hah
+1.The test_env = test
+2.The test_env = test
+
+
 注意：设置的环境仅对程序本身有效。你在程序里做的改变不会反映到外部环境中，这是因为变量的值不会从子进程传播到父进程，这样做更安全。本函数在Linux下使用仅当前函数有效，应用setenv代替。
 
 
