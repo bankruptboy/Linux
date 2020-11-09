@@ -171,3 +171,67 @@ before sorting array :
 9  4  3  7  6  8  1  2  10  99  
 sort array is :
 1  2  3  4  6  7  8  9  10  99  
+
+python@ubuntu:~/week8/lib$ ./test 3 2 1 5 6 9 8
+before sorting array : 
+3  2  1  5  6  9  8  
+sort array is :
+1  2  3  5  6  8  9  
+python@ubuntu:~/week8/lib$ cat test.c dlib.c
+#include "../ch08.h"
+int main(int argc,char* argv[])
+{
+    void *fpt = dlopen("./libdlib.so",RTLD_NOW);
+    if(!fpt)
+    {
+        printf("dlopen failed!\n");
+        exit(1);
+    }
+    void (*fp)(int*,int)=dlsym(fpt,"mysort");
+    if(!fp)
+    {
+        printf("failed\n");
+        exit(1);
+    }
+   // int arr[10]={9,4,3,7,6,8,1,2,10,99};
+    int *arr;
+    arr =(int*)malloc(sizeof(int)*(argc-1));
+    int j;
+    for(j=0;j<argc-1;j++)
+    {
+        arr[j]=atoi(argv[j+1]);
+    }
+    int i;
+    printf("before sorting array : \n");
+    for(i=0;i<argc-1;i++)
+    {
+        printf("%d  ",arr[i]);
+    }
+    printf("\n");
+    fp(arr,argc-1);
+    dlclose(fpt);
+    return 0;
+}
+#include "../ch08.h"
+void dynamic_lib_call(void)
+{
+    printf("Dynamic lib is called!\n");
+}
+void mysort(int arr[],int n)
+{
+    int m,i,j,k;
+    for(i=0;i<n-1;i++)
+        for(j=0;j<n-1-i;j++)
+            if(arr[j]>arr[j+1])
+            {
+                m=arr[j];
+                arr[j]=arr[j+1];
+                arr[j+1]=m;
+            }
+    printf("sort array is :\n");
+    for(k=0;k<n;k++)
+    {
+        printf("%d  ",arr[k]);
+    }
+    printf("\n");
+}
