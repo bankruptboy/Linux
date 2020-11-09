@@ -240,3 +240,129 @@ before sorting array :
 99  88  6  1  3  2  8  9  10  66  598  432  961  555  47  
 sort array is :
 1  2  3  6  8  9  10  47  66  88  99  432  555  598  961 
+
+
+
+python@ubuntu:~/week8$ cat *.c
+#include "./ch08.h"
+static int g=100,k;
+void fun(void)
+{
+    int x,y;
+    int *p = (int *)malloc(4);
+    printf("fun :address of x = %x,y = %x,p = %x\n",&x,&y,p);
+    sleep(20);
+}
+int main()
+{
+    int i=0,j=0,a[10]={1};
+    static int w = 100;
+    int *pt=(int*)malloc(sizeof(int)*10);
+    printf("address of g = %x,k = %x\n",&g,&k);
+    printf("address of i = %x,j = %x,a = %x\n",&i,&j,a);
+    printf("address of w = %x\n",&w);
+    printf("address of pt = %x\n",pt);
+    fun();
+    return 0;
+}
+#include "./ch08.h"
+static int count = 0;
+void fun()
+{
+    int a[256];
+    printf("size =  %dkb  ",count++);
+    {
+        fun();
+    }
+}
+int main()
+{
+    fun();
+    return 0;
+}
+#include "./ch08.h"
+int main()
+{
+    int *pt =NULL;
+    int i,max;
+    max=1024*1024;
+    for(i=0;i<max;i++)
+    {
+        pt = (int*)malloc(i*max);
+        if(!pt)
+        {
+            perror("malloc failed\n");
+            exit(-1);
+        }
+        else
+        {
+            printf("malloc %d MB\n",i);
+        }
+    }
+    return 0;
+}
+
+#include "./ch08.h"
+static int count = 0;
+int fun(int x)
+{
+    int a=10,b=10,c=10;
+    count++;
+    printf("count =  %d\n",count);
+   // printf("local a = %8x,b = %8x,c = %8x",&a,&b,&c);
+    if(x==1)
+        return 1;
+    else
+        return x+fun(x-1);
+}
+int main()
+{
+    printf("sum %d = %d\n",1024*1024*10,fun(1024*1024*10));
+    return 0;
+}
+#include "./ch08.h"
+static void func1(void);
+static void func2(void);
+static jmp_buf g_stack_env;
+int main()
+{
+    if(setjmp(g_stack_env)==0)
+    {
+        printf("Main Normal flow!\n");
+        func1();
+        printf("Normal flow back from func1\n");
+    }else{
+        printf("Back from long jump!\n");
+    }
+   // printf("Main continue!\n");
+    return 0;
+}
+static void func1()
+{
+    printf("Enter func1!\n");
+    func2();
+    printf("Leave func1!\n");
+}
+static void func2()
+{
+    printf("Enter func2!\n");
+    longjmp(g_stack_env,1);
+    printf("Leave func2!\n");
+}
+#include "./ch08.h"
+static long int count = 0;
+
+void fun()
+{
+    int *pt=(int*)malloc(1024*1024);
+    printf("count = %d",count++);
+    {
+        fun();
+    }
+}
+int main()
+{
+    fun();
+    return 0;
+}
+python@ubuntu:~/week8$ 
