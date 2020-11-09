@@ -1,0 +1,173 @@
+python@ubuntu:~$ mkdir week8
+python@ubuntu:~$ cd mkdir
+bash: cd: mkdir: 没有那个文件或目录
+python@ubuntu:~$ cd week8
+python@ubuntu:~/week8$ mkdir lib
+python@ubuntu:~/week8$ pwd
+/home/python/week8
+python@ubuntu:~/week8$ ls
+lib
+python@ubuntu:~/week8$ ls
+ch08.h  lib
+python@ubuntu:~/week8$ vi dlib.c
+python@ubuntu:~/week8$ cd lib
+python@ubuntu:~/week8/lib$ vi dlib.c
+python@ubuntu:~/week8/lib$ vi test_dlib.c
+python@ubuntu:~/week8/lib$ gcc -Wall -shared dlib.c -o libdlib.so
+/usr/bin/ld: /tmp/ccycQFT5.o: relocation R_X86_64_32 against `.rodata' can not be used when making a shared object; recompile with -fPIC
+/tmp/ccycQFT5.o: 无法添加符号: 错误的值
+collect2: error: ld returned 1 exit status
+python@ubuntu:~/week8/lib$ gcc -Wall -fpic -shared dlib.c -o libdlib.so
+python@ubuntu:~/week8/lib$ ls
+dlib.c  libdlib.so  test_dlib.c
+python@ubuntu:~/week8/lib$ file liblib.so
+liblib.so: cannot open `liblib.so' (No such file or directory)
+python@ubuntu:~/week8/lib$ file libdlib.so
+libdlib.so: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, BuildID[sha1]=6e1586aaad5145445ab1196512c6ff6baf56c2ba, not stripped
+python@ubuntu:~/week8/lib$ gcc -Wall test_dlib.c -o test_lib -L ./ -ldlib
+python@ubuntu:~/week8/lib$ ls
+dlib.c  libdlib.so  test_dlib.c  test_lib
+python@ubuntu:~/week8/lib$ ./test_lib
+Dynamic lib is called!
+python@ubuntu:~/week8/lib$ ldd ./test_lib
+	linux-vdso.so.1 =>  (0x00007ffd29d84000)
+	libdlib.so => /usr/lib/libdlib.so (0x00007ffa1cd8b000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007ffa1c9c2000)
+	/lib64/ld-linux-x86-64.so.2 (0x000055b588d23000)
+python@ubuntu:~/week8/lib$ vi ch08.h
+python@ubuntu:~/week8/lib$ cat dlib.c test_lib.c
+#include "../ch08.h"
+void dynamic_lib_call(void)
+{
+        printf("Dynamic lib is called!\n");
+}
+cat: test_lib.c: 没有那个文件或目录
+python@ubuntu:~/week8/lib$ cd ..
+python@ubuntu:~/week8$ vi ch08.h
+python@ubuntu:~/week8$ cd lib
+python@ubuntu:~/week8/lib$ vi test.c
+python@ubuntu:~/week8/lib$ vi ../ch08.h
+python@ubuntu:~/week8/lib$ gcc test.c -o test
+test.c: In function ‘main’:
+test.c:16:5: warning: implicit declaration of function ‘dynamic_lib_call’ [-Wimplicit-function-declaration]
+     dynamic_lib_call();
+     ^
+/tmp/ccONcZfg.o：在函数‘main’中：
+test.c:(.text+0x33)：对‘dlopen’未定义的引用
+test.c:(.text+0x63)：对‘dlsym’未定义的引用
+test.c:(.text+0x8c)：对‘dynamic_lib_call’未定义的引用
+test.c:(.text+0x98)：对‘dlclose’未定义的引用
+collect2: error: ld returned 1 exit status
+python@ubuntu:~/week8/lib$ vi test.c
+python@ubuntu:~/week8/lib$ vi test.c
+python@ubuntu:~/week8/lib$ gcc test.c -ldl -o test
+python@ubuntu:~/week8/lib$ ./test
+Dynamic lib is called!
+python@ubuntu:~/week8/lib$ vi test.c
+python@ubuntu:~/week8/lib$ ls
+dlib.c  libdlib.so  test  test.c  test_dlib.c  test_lib
+python@ubuntu:~/week8/lib$ vi dlib.c
+python@ubuntu:~/week8/lib$ gcc -Wall -fpic -shared dlib.c -o libdlib.so
+python@ubuntu:~/week8/lib$ vi test.c
+python@ubuntu:~/week8/lib$ gcc test.c -ldl -o test
+test.c: In function ‘main’:
+test.c:17:8: warning: passing argument 1 of ‘fp’ makes integer from pointer without a cast [-Wint-conversion]
+     fp(arr,10);
+        ^
+test.c:17:8: note: expected ‘int’ but argument is of type ‘int *’
+test.c:17:5: error: too many arguments to function ‘fp’
+     fp(arr,10);
+     ^
+python@ubuntu:~/week8/lib$ vi dlib.c
+python@ubuntu:~/week8/lib$ vi test.c
+python@ubuntu:~/week8/lib$ gcc test.c -ldl -o test
+python@ubuntu:~/week8/lib$ ./test
+sort array is :
+1
+2
+3
+4
+6
+7
+8
+9
+10
+99
+python@ubuntu:~/week8/lib$ vi test.c
+python@ubuntu:~/week8/lib$ gcc test.c -ldl -o test
+python@ubuntu:~/week8/lib$ ./test
+sort array is :
+1
+2
+3
+4
+6
+7
+8
+9
+10
+99
+python@ubuntu:~/week8/lib$ vi test.c
+python@ubuntu:~/week8/lib$ gcc test.c -ldl -o test
+python@ubuntu:~/week8/lib$ ./test
+before sorting array : 
+9
+4
+3
+7
+6
+8
+1
+2
+10
+99
+sort array is :
+1
+2
+3
+4
+6
+7
+8
+9
+10
+99
+python@ubuntu:~/week8/lib$ vi test.c
+python@ubuntu:~/week8/lib$ gcc test.c -ldl -o test
+python@ubuntu:~/week8/lib$ ./test
+before sorting array : 
+9  4  3  7  6  8  1  2  10  99  sort array is :
+1
+2
+3
+4
+6
+7
+8
+9
+10
+99
+python@ubuntu:~/week8/lib$ vi test.c
+python@ubuntu:~/week8/lib$ gcc test.c -ldl -o test
+python@ubuntu:~/week8/lib$ ./test
+before sorting array : 
+9  4  3  7  6  8  1  2  10  99  
+sort array is :
+1
+2
+3
+4
+6
+7
+8
+9
+10
+99
+python@ubuntu:~/week8/lib$ vi dlib.c
+python@ubuntu:~/week8/lib$ gcc -Wall -fpic -shared dlib.c -o libdlib.so
+python@ubuntu:~/week8/lib$ gcc test.c -ldl -o test
+python@ubuntu:~/week8/lib$ ./test
+before sorting array : 
+9  4  3  7  6  8  1  2  10  99  
+sort array is :
+1  2  3  4  6  7  8  9  10  99  
