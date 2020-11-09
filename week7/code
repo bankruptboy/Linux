@@ -366,3 +366,45 @@ int main()
     return 0;
 }
 python@ubuntu:~/week8$ 
+python@ubuntu:~/week8$ ./8-1
+address of g = 601060,k = 60106c
+address of i = fd5c9000,j = fd5c9004,a = fd5c9010
+address of w = 601064
+address of pt = 95b010
+fun :address of x = fd5c8fd8,y = fd5c8fdc,p = 95b450
+python@ubuntu:~/week8$ vi 8-5.c
+python@ubuntu:~/week8$ gcc 8-5.c -o 8-5
+8-5.c:4:1: error: duplicate ‘static’
+ static static jmp_buf g_stack_env;
+ ^
+python@ubuntu:~/week8$ vi 8-5.c
+python@ubuntu:~/week8$ gcc 8-5.c -o 8-5
+python@ubuntu:~/week8$ ./8-5
+Main Normal flow!
+Enter func1!
+Enter func2!
+Back from long jump!
+python@ubuntu:~/week8$ vi 8-5.c
+python@ubuntu:~/week8$ gcc 8-5.c -o 8-5
+python@ubuntu:~/week8$ ./8-5
+Main Normal flow!
+Enter func1!
+Enter func2!
+Leave func2!
+Leave func1!
+Normal flow back from func1python@ubuntu:~/week8$ vi 8-5.c
+python@ubuntu:~/week8$ gcc 8-5.c -o 8-5
+python@ubuntu:~/week8$ ./8-5
+Main Normal flow!
+Enter func1!
+Enter func2!
+Leave func2!
+Leave func1!
+Normal flow back from func1
+python@ubuntu:~/week8$ vi 8-5.c
+python@ubuntu:~/week8$ gcc 8-5.c -o 8-5
+python@ubuntu:~/week8$ ./8-5
+Main Normal flow!
+Enter func1!
+Enter func2!
+Back from long jump!
