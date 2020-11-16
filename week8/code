@@ -297,59 +297,6 @@ python@ubuntu:~/week9$ mv ch08.h ch09.h
 python@ubuntu:~/week9$ ls
 ch09.h
 python@ubuntu:~/week9$ vi 9-1.c
-python@ubuntu:~/week9$ gcc 9-1.c -o 9-1
-9-1.c: In function ‘main’:
-9-1.c:8:52: warning: implicit declaration of function ‘strerr’ [-Wimplicit-function-declaration]
-         sprintf(stderr,"failed to fork.Reason(%s)",strerr(errno));
-                                                    ^
-9-1.c:8:59: error: ‘errno’ undeclared (first use in this function)
-         sprintf(stderr,"failed to fork.Reason(%s)",strerr(errno));
-                                                           ^
-9-1.c:8:59: note: each undeclared identifier is reported only once for each function it appears in
-9-1.c:8:17: warning: passing argument 1 of ‘sprintf’ from incompatible pointer type [-Wincompatible-pointer-types]
-         sprintf(stderr,"failed to fork.Reason(%s)",strerr(errno));
-                 ^
-In file included from ./ch09.h:1:0,
-                 from 9-1.c:1:
-/usr/include/stdio.h:364:12: note: expected ‘char * restrict’ but argument is of type ‘struct _IO_FILE *’
- extern int sprintf (char *__restrict __s,
-            ^
-python@ubuntu:~/week9$ vi 9-1.c
-python@ubuntu:~/week9$ gcc 9-1.c -o 9-1
-9-1.c: In function ‘main’:
-9-1.c:8:61: error: ‘errno’ undeclared (first use in this function)
-         sprintf(stderr,"failed to fork.Reason(%s)",strerror(errno));
-                                                             ^
-9-1.c:8:61: note: each undeclared identifier is reported only once for each function it appears in
-9-1.c:8:17: warning: passing argument 1 of ‘sprintf’ from incompatible pointer type [-Wincompatible-pointer-types]
-         sprintf(stderr,"failed to fork.Reason(%s)",strerror(errno));
-                 ^
-In file included from ./ch09.h:1:0,
-                 from 9-1.c:1:
-/usr/include/stdio.h:364:12: note: expected ‘char * restrict’ but argument is of type ‘struct _IO_FILE *’
- extern int sprintf (char *__restrict __s,
-            ^
-python@ubuntu:~/week9$ gcc 9-1.c -o 9-1
-9-1.c: In function ‘main’:
-9-1.c:8:61: error: ‘errno’ undeclared (first use in this function)
-         sprintf(stderr,"failed to fork.Reason(%s)",strerror(errno));
-                                                             ^
-9-1.c:8:61: note: each undeclared identifier is reported only once for each function it appears in
-9-1.c:8:17: warning: passing argument 1 of ‘sprintf’ from incompatible pointer type [-Wincompatible-pointer-types]
-         sprintf(stderr,"failed to fork.Reason(%s)",strerror(errno));
-                 ^
-In file included from ./ch09.h:1:0,
-                 from 9-1.c:1:
-/usr/include/stdio.h:364:12: note: expected ‘char * restrict’ but argument is of type ‘struct _IO_FILE *’
- extern int sprintf (char *__restrict __s,
-            ^
-python@ubuntu:~/week9$ vi 9-1.c
-python@ubuntu:~/week9$ gcc 9-1.c -o 9-1
-9-1.c: In function ‘main’:
-9-1.c:8:61: error: ‘errno’ undeclared (first use in this function)
-         fprintf(stderr,"failed to fork.Reason(%s)",strerror(errno));
-                                                             ^
-9-1.c:8:61: note: each undeclared identifier is reported only once for each function it appears in
 python@ubuntu:~/week9$ vi ch09.h
 python@ubuntu:~/week9$ gcc 9-1.c -o 9-1
 python@ubuntu:~/week9$ ./9-1
@@ -373,3 +320,42 @@ python@ubuntu:~/week9$ ./9-1
 parent : pid = 16130,ppid = 13436 return from fork()=16131
 
 python@ubuntu:~/week9$ child : pid = 16131,ppid = 5331 return form fork =0
+python@ubuntu:~/week9$ cat ch09.h 9-1.c
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <string.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <time.h>
+#include <dlfcn.h>
+#include <setjmp.h>
+#include <wait.h>
+#include <errno.h>
+void err_exit(char *s)
+{
+    printf("Usage : *s is faile!\n");
+    exit(1);
+}
+#include "./ch09.h"
+int main()
+{
+    pid_t pid;
+    pid = fork();
+    if(pid<0)
+    {
+        fprintf(stderr,"failed to fork.Reason(%s)\n",strerror(errno));
+        exit(-1);
+    }
+    else if(pid == 0)
+    {
+        printf("child : pid = %d,ppid = %d return form fork =%d\n\n",getpid(),getppid(),pid);
+        exit(0);
+    }
+    else
+    {
+        printf("parent : pid = %d,ppid = %d return from fork()=%d\n\n",getpid(),getppid(),pid);
+        return 0;
+    }
+}
