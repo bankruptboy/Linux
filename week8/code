@@ -1,0 +1,375 @@
+python@ubuntu:~$ ps aux
+USER        PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root          1  0.0  0.2 119852  4336 ?        Ss   00:30   0:07 /sbin/init aut
+root          2  0.0  0.0      0     0 ?        S    00:30   0:00 [kthreadd]
+root          3  0.0  0.0      0     0 ?        S    00:30   0:01 [ksoftirqd/0]
+root          5  0.0  0.0      0     0 ?        S<   00:30   0:00 [kworker/0:0H]
+root          7  0.0  0.0      0     0 ?        S    00:30   0:09 [rcu_sched]
+root          8  0.0  0.0      0     0 ?        S    00:30   0:00 [rcu_bh]
+root          9  0.0  0.0      0     0 ?        S    00:30   0:00 [migration/0]
+root         10  0.0  0.0      0     0 ?        S    00:30   0:00 [watchdog/0]
+root         11  0.0  0.0      0     0 ?        S    00:30   0:00 [kdevtmpfs]
+root         12  0.0  0.0      0     0 ?        S<   00:30   0:00 [netns]
+root         13  0.0  0.0      0     0 ?        S<   00:30   0:00 [perf]
+root         14  0.0  0.0      0     0 ?        S    00:30   0:00 [khungtaskd]
+root         15  0.0  0.0      0     0 ?        S<   00:30   0:00 [writeback]
+root         16  0.0  0.0      0     0 ?        SN   00:30   0:00 [ksmd]
+root         17  0.0  0.0      0     0 ?        SN   00:30   0:03 [khugepaged]
+root         18  0.0  0.0      0     0 ?        S<   00:30   0:00 [crypto]
+root         19  0.0  0.0      0     0 ?        S<   00:30   0:00 [kintegrityd]
+root         20  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         21  0.0  0.0      0     0 ?        S<   00:30   0:00 [kblockd]
+root         22  0.0  0.0      0     0 ?        S<   00:30   0:00 [ata_sff]
+root         23  0.0  0.0      0     0 ?        S<   00:30   0:00 [md]
+root         24  0.0  0.0      0     0 ?        S<   00:30   0:00 [devfreq_wq]
+root         28  0.0  0.0      0     0 ?        S    00:30   0:04 [kswapd0]
+root         29  0.0  0.0      0     0 ?        S<   00:30   0:00 [vmstat]
+root         30  0.0  0.0      0     0 ?        S    00:30   0:00 [fsnotify_mark
+root         31  0.0  0.0      0     0 ?        S    00:30   0:00 [ecryptfs-kthr
+root         47  0.0  0.0      0     0 ?        S<   00:30   0:00 [kthrotld]
+root         48  0.0  0.0      0     0 ?        S<   00:30   0:00 [acpi_thermal_
+root         49  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         50  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         51  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         52  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         53  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         54  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         55  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         56  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         57  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         58  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         59  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         60  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         61  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         62  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         63  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         64  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         65  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         66  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         67  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         68  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         69  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         70  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         71  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         72  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root         73  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_0]
+root         74  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_0]
+root         75  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_1]
+root         76  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_1]
+root         81  0.0  0.0      0     0 ?        S<   00:30   0:00 [ipv6_addrconf
+root         96  0.0  0.0      0     0 ?        S<   00:30   0:00 [deferwq]
+root         97  0.0  0.0      0     0 ?        S<   00:30   0:00 [charger_manag
+root        335  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root        341  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root        342  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root        348  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root        349  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root        354  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root        357  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root        361  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root        741  0.0  0.0      0     0 ?        S<   00:30   0:00 [mpt_poll_0]
+root        743  0.0  0.0      0     0 ?        S<   00:30   0:00 [mpt/0]
+root        822  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_2]
+root        825  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_2]
+root        862  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root        863  0.0  0.0      0     0 ?        S<   00:30   0:00 [ttm_swap]
+root        913  0.0  0.0      0     0 ?        S<   00:30   0:00 [kpsmoused]
+root       1365  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_3]
+root       1366  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_3]
+root       1367  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_4]
+root       1368  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_4]
+root       1369  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_5]
+root       1370  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_5]
+root       1371  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_6]
+root       1372  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_6]
+root       1373  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_7]
+root       1374  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_7]
+root       1375  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_8]
+root       1376  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_8]
+root       1377  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_9]
+root       1378  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_9]
+root       1379  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_10]
+root       1380  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_10]
+root       1381  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_11]
+root       1382  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_11]
+root       1383  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_12]
+root       1384  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_12]
+root       1385  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_13]
+root       1386  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_13]
+root       1387  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_14]
+root       1388  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_14]
+root       1389  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_15]
+root       1390  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_15]
+root       1391  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_16]
+root       1392  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_16]
+root       1393  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_17]
+root       1394  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_17]
+root       1395  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_18]
+root       1396  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_18]
+root       1397  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_19]
+root       1398  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_19]
+root       1399  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_20]
+root       1400  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_20]
+root       1401  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_21]
+root       1402  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_21]
+root       1403  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_22]
+root       1404  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_22]
+root       1405  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_23]
+root       1406  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_23]
+root       1407  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_24]
+root       1408  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_24]
+root       1409  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_25]
+root       1410  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_25]
+root       1411  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_26]
+root       1412  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_26]
+root       1413  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_27]
+root       1414  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_27]
+root       1415  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_28]
+root       1416  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_28]
+root       1417  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_29]
+root       1418  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_29]
+root       1419  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_30]
+root       1420  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_30]
+root       1421  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_31]
+root       1422  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_31]
+root       1423  0.0  0.0      0     0 ?        S    00:30   0:00 [scsi_eh_32]
+root       1424  0.0  0.0      0     0 ?        S<   00:30   0:00 [scsi_tmf_32]
+root       1462  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root       1463  0.0  0.0      0     0 ?        S<   00:30   0:00 [bioset]
+root       1636  0.0  0.0      0     0 ?        S<   00:30   0:02 [kworker/0:1H]
+root       1670  0.0  0.0      0     0 ?        S    00:30   0:01 [jbd2/sda1-8]
+root       1671  0.0  0.0      0     0 ?        S<   00:30   0:00 [ext4-rsv-conv
+root       1723  0.0  0.1  29748  2904 ?        Ss   00:30   0:01 /lib/systemd/s
+root       1728  0.0  0.0      0     0 ?        S    00:30   0:00 [kauditd]
+root       1744  0.0  0.0      0     0 ?        S<   00:30   0:00 [rpciod]
+root       1757  0.0  0.0  48212  1508 ?        Ss   00:30   0:02 /lib/systemd/s
+root       2237  0.0  0.0  23536     0 ?        Ss   00:30   0:00 /usr/sbin/rpc.
+systemd+   2428  0.0  0.0 102384  1160 ?        Ssl  00:30   0:00 /lib/systemd/s
+root       4012  0.0  0.0 189360    72 ?        Ssl  00:30   0:00 /usr/sbin/vmwa
+root       4031  0.0  0.1 177252  3784 ?        Sl   00:30   0:28 /usr/sbin/vmto
+root       4041  0.0  0.0  47628   372 ?        Ss   00:30   0:00 /sbin/rpcbind 
+message+   4044  0.0  0.1  44292  3004 ?        Ss   00:30   0:01 /usr/bin/dbus-
+whoopsie   4067  0.0  0.3 447776  7104 ?        Ssl  00:30   0:02 /usr/bin/whoop
+root       4070  0.0  0.1  32060  2596 ?        Ss   00:30   0:00 /usr/lib/bluet
+root       4073  0.0  0.0 337316  1752 ?        Ssl  00:30   0:00 /usr/sbin/Mode
+root       4075  0.0  0.0 283192   936 ?        Ssl  00:30   0:00 /usr/lib/accou
+avahi      4077  0.0  0.0  44916  1280 ?        Ss   00:30   0:00 avahi-daemon: 
+root       4078  0.0  0.0  28656   764 ?        Ss   00:30   0:00 /lib/systemd/s
+root       4083  0.0  0.4 382944  8676 ?        Ssl  00:30   0:05 /usr/sbin/Netw
+root       4085  0.0  0.0  36076   808 ?        Ss   00:30   0:00 /usr/sbin/cron
+root       4097  0.0  0.0   4400     0 ?        Ss   00:30   0:00 /usr/sbin/acpi
+syslog     4101  0.0  0.0 256396   180 ?        Ssl  00:30   0:00 /usr/sbin/rsys
+root       4115  0.0  0.4 203924 10092 ?        Ssl  00:30   0:01 /usr/lib/snapd
+avahi      4134  0.0  0.0  44788     4 ?        S    00:30   0:00 avahi-daemon: 
+root       4141  0.0  0.0 274824  1744 ?        Ssl  00:30   0:00 /usr/sbin/cups
+root       4175  0.0  0.2 289124  5064 ?        Ssl  00:30   0:00 /usr/lib/polic
+root       4229  0.0  0.3  65612  6224 ?        Ss   00:30   0:00 /usr/sbin/sshd
+colord     4235  0.0  0.1 308508  2784 ?        Ssl  00:30   0:00 /usr/lib/color
+root       4238  0.0  0.0  24136   244 ?        Ss   00:30   0:00 /usr/sbin/vsft
+mysql      4256  0.0  0.4 1095280 10052 ?       Ssl  00:30   0:11 /usr/sbin/mysq
+redis      4265  0.0  0.2  47204  4148 ?        Ssl  00:30   0:27 /usr/bin/redis
+root       4276  0.0  0.0  37976     4 ?        Ss   00:30   0:00 /usr/sbin/rpc.
+root       4286  0.0  0.0      0     0 ?        S<   00:30   0:00 [nfsd4_callbac
+root       4287  0.0  0.0      0     0 ?        S    00:30   0:00 [lockd]
+root       4290  0.0  0.0      0     0 ?        S    00:30   0:00 [nfsd]
+root       4291  0.0  0.0      0     0 ?        S    00:30   0:00 [nfsd]
+root       4292  0.0  0.0      0     0 ?        S    00:30   0:00 [nfsd]
+root       4293  0.0  0.0      0     0 ?        S    00:30   0:00 [nfsd]
+root       4294  0.0  0.0      0     0 ?        S    00:30   0:00 [nfsd]
+root       4295  0.0  0.0      0     0 ?        S    00:30   0:00 [nfsd]
+root       4296  0.0  0.0      0     0 ?        S    00:30   0:00 [nfsd]
+root       4297  0.0  0.0      0     0 ?        S    00:30   0:00 [nfsd]
+root       4365  0.0  0.0 350536   988 ?        SLsl 00:30   0:00 /usr/sbin/ligh
+postgres   4376  0.0  0.0 301972  1716 ?        S    00:30   0:00 /usr/lib/postg
+root       4404  0.2  2.1 454156 43640 tty7     Ss+  00:30   1:30 /usr/lib/xorg/
+nobody     4415  0.0  0.0  59940  1552 ?        S    00:31   0:00 /usr/sbin/dnsm
+postgres   4459  0.0  0.0 301972    96 ?        Ss   00:31   0:00 postgres: chec
+postgres   4460  0.0  0.0 301972    44 ?        Ss   00:31   0:00 postgres: writ
+postgres   4461  0.0  0.0 301972    16 ?        Ss   00:31   0:00 postgres: wal 
+postgres   4462  0.0  0.0 302372  1888 ?        Ss   00:31   0:00 postgres: auto
+postgres   4463  0.0  0.0 157096   628 ?        Ss   00:31   0:00 postgres: stat
+root       4555  0.0  0.0  23008     0 tty1     Ss+  00:31   0:00 /sbin/agetty -
+root       5028  0.0  0.0 230300   968 ?        Sl   00:31   0:00 lightdm --sess
+rtkit      5102  0.0  0.0 183544   252 ?        SNsl 00:31   0:00 /usr/lib/rtkit
+root       5133  0.0  0.1 354304  2664 ?        Ssl  00:31   0:00 /usr/lib/upowe
+root       5156  0.0  0.0      0     0 ?        S<   00:31   0:00 [krfcommd]
+python     5190  0.0  0.0  45368  1748 ?        Ss   00:32   0:00 /lib/systemd/s
+python     5191  0.0  0.0 145396    36 ?        S    00:32   0:00 (sd-pam)
+python     5305  0.0  0.0 212584  1032 ?        Sl   00:32   0:00 /usr/bin/gnome
+python     5331  0.0  0.0  53724  1900 ?        Ss   00:32   0:01 /sbin/upstart 
+python     5412  0.0  0.0  39996  1032 ?        S    00:32   0:00 upstart-udev-b
+python     5416  0.0  0.1  43816  2756 ?        Ss   00:32   0:05 dbus-daemon --
+python     5428  0.0  0.1  93416  2920 ?        Ss   00:32   0:00 /usr/lib/x86_6
+python     5458  0.0  0.7 524424 14396 ?        Sl   00:32   0:11 /usr/bin/fcitx
+python     5468  0.0  0.0  39904   752 ?        S    00:32   0:00 upstart-dbus-b
+python     5470  0.0  0.0  39904   676 ?        S    00:32   0:01 upstart-dbus-b
+python     5475  0.0  0.0  48528   600 ?        S    00:32   0:00 upstart-file-b
+python     5476  0.0  0.0 173752  1388 ?        Ss   00:32   0:00 gpg-agent --ho
+python     5487  0.0  0.0  43036   876 ?        Ss   00:32   0:04 /usr/bin/dbus-
+python     5491  0.0  0.6 524060 12840 ?        Ssl  00:32   0:02 /usr/lib/x86_6
+python     5493  0.0  0.0  27636   520 ?        SN   00:32   0:00 /usr/bin/fcitx
+python     5503  0.0  0.5 672988 11696 ?        Ssl  00:32   0:01 /usr/lib/x86_6
+python     5505  0.0  0.4 837480  8348 ?        Ssl  00:32   0:01 /usr/lib/unity
+python     5511  0.2  2.4 1213412 49592 ?       Ssl  00:32   1:23 compiz
+python     5513  0.0  0.0 337996  1288 ?        Ssl  00:32   0:00 /usr/lib/at-sp
+python     5514  0.0  0.0 707112  2016 ?        Ssl  00:32   0:01 /usr/lib/gnome
+python     5522  0.0  0.0  43032  1524 ?        S    00:32   0:00 /usr/bin/dbus-
+python     5523  0.0  1.5 584412 31280 ?        Ssl  00:32   0:05 /usr/lib/x86_6
+python     5531  0.0  0.0 206868  1676 ?        Sl   00:32   0:00 /usr/lib/at-sp
+python     5536  0.0  0.0 281776  1484 ?        Sl   00:32   0:00 /usr/lib/gvfs/
+python     5543  0.0  0.0 406860   700 ?        Sl   00:32   0:00 /usr/lib/gvfs/
+python     5577  0.0  0.0 178664  1840 ?        Sl   00:32   0:00 /usr/lib/dconf
+python     5586  0.0  0.0 351856   936 ?        Ssl  00:32   0:00 /usr/lib/x86_6
+python     5589  0.0  0.1 349036  2420 ?        Ssl  00:32   0:00 /usr/lib/x86_6
+python     5594  0.0  0.0 510764   928 ?        Ssl  00:32   0:00 /usr/lib/x86_6
+python     5598  0.0  0.2 781748  5172 ?        Ssl  00:32   0:00 /usr/lib/x86_6
+python     5600  0.0  0.2 648996  4700 ?        Ssl  00:32   0:00 /usr/lib/x86_6
+python     5601  0.0  0.0 744356   860 ?        Ssl  00:32   0:00 /usr/lib/x86_6
+python     5602  0.0  0.1 547696  3236 ?        Ssl  00:32   0:00 /usr/lib/x86_6
+python     5606  0.0  0.0 632512   920 ?        Ssl  00:32   0:00 /usr/lib/x86_6
+python     5630  0.0  0.0 915460  1100 ?        Sl   00:32   0:00 /usr/lib/evolu
+python     5634  0.0  0.1 469700  2196 ?        Ssl  00:32   0:01 /usr/lib/x86_6
+python     5639  0.0  0.0 442172  1940 ?        S<l  00:32   0:00 /usr/bin/pulse
+python     5684  0.0  3.2 992928 65460 ?        Sl   00:32   0:30 /usr/bin/gnome
+python     5687  0.0  0.7 690948 14620 ?        Sl   00:32   0:04 nm-applet
+python     5688  0.0  2.1 1063960 43056 ?       Sl   00:32   0:13 nautilus -n
+python     5692  0.0  0.1 577296  3212 ?        Sl   00:32   0:00 /usr/lib/unity
+python     5693  0.0  0.1 429796  3208 ?        Sl   00:32   0:00 /usr/lib/polic
+python     5697  0.0  0.7 331844 15332 ?        Sl   00:32   0:30 /usr/lib/vmwar
+python     5699  0.0  0.9 529028 19040 ?        Sl   00:32   0:08 /usr/lib/x86_6
+python     5727  0.0  0.0 862964  1128 ?        Sl   00:32   0:01 /usr/lib/evolu
+python     5737  0.0  0.0 292844   664 ?        Sl   00:32   0:00 /usr/lib/gvfs/
+root       5745  0.0  0.1 367712  2752 ?        Ssl  00:32   0:00 /usr/lib/udisk
+root       5751  0.0  0.2 628748  4572 ?        Sl   00:32   0:01 /usr/lib/x86_6
+python     5763  0.0  0.0 410848   732 ?        Sl   00:32   0:00 /usr/lib/gvfs/
+python     5770  0.0  0.0 278928  1532 ?        Sl   00:32   0:00 /usr/lib/gvfs/
+python     5776  0.0  0.0 266732  1168 ?        Sl   00:32   0:00 /usr/lib/gvfs/
+python     5781  0.0  0.0 264768   808 ?        Sl   00:32   0:00 /usr/lib/gvfs/
+python     5789  0.0  0.0  68672   840 ?        S    00:32   0:00 /usr/lib/x86_6
+python     5814  0.0  0.2 807540  4144 ?        Sl   00:32   0:02 /usr/lib/evolu
+python     5816  0.0  0.0 357940  1884 ?        Sl   00:32   0:00 /usr/lib/gvfs/
+python     5823  0.0  2.1 3217164 42672 ?       Sl   00:32   0:19 sogou-qimpanel
+python     5839  0.0  0.0 552020  1948 ?        Sl   00:32   0:00 zeitgeist-data
+python     5853  0.0  0.1 814964  3584 ?        Sl   00:32   0:02 /usr/lib/evolu
+python     5894  0.0  0.0   4508     0 ?        S    00:32   0:00 /bin/sh -c /us
+python     5899  0.0  0.1 410212  3528 ?        Sl   00:32   0:02 /usr/bin/zeitg
+python     5943  0.0  0.2 318916  4860 ?        Sl   00:32   0:00 /usr/lib/x86_6
+python     5958  0.0  0.0 698024   940 ?        Sl   00:33   0:00 /usr/lib/evolu
+python     5993  0.0  0.3 697868  7544 ?        S    00:33   0:00 sogou-qimpanel
+python     6019  0.0  0.1 775816  2052 ?        Sl   00:33   0:02 /usr/lib/evolu
+python     6095  0.0  0.6 544088 13336 ?        Sl   00:33   0:02 update-notifie
+python     6191  0.0  0.1 655800  3428 ?        Sl   00:34   0:01 /usr/lib/x86_6
+python     6212  0.0  0.1 360300  2460 ?        Sl   00:34   0:00 /usr/lib/gvfs/
+python     6249  0.0  0.0 368960  1288 ?        Sl   00:35   0:00 /usr/lib/gvfs/
+python     6258  0.0  0.0 193212   924 ?        Sl   00:35   0:00 /usr/lib/gvfs/
+python     7382  0.2  4.6 759080 94324 ?        SNl  01:39   1:14 /usr/bin/pytho
+root      11693  0.0  0.0      0     0 ?        S    07:32   0:00 [kworker/u256:
+root      12367  0.0  0.0   4508  1700 ?        Ss   08:49   0:00 /bin/sh /usr/l
+root      12596  0.0  1.7 227336 34820 ?        SNl  08:49   0:01 /usr/bin/pytho
+root      12695 98.0  5.6 183500 114448 ?       R    08:49  53:36 /usr/bin/pytho
+root      12746  0.0  0.0      0     0 ?        S    08:50   0:00 [kworker/u256:
+root      12902  0.0  0.0      0     0 ?        S    09:14   0:00 [kworker/0:2]
+root      12921  0.0  0.0      0     0 ?        Z    09:17   0:00 [dpkg-deb] <de
+root      12974  0.0  0.0      0     0 ?        S    09:28   0:00 [kworker/0:0]
+root      13129  0.0  0.0      0     0 ?        S    09:39   0:00 [kworker/0:1]
+root      13165  0.0  0.0      0     0 ?        S<   09:39   0:00 [kworker/u257:
+root      13166  0.0  0.0      0     0 ?        S<   09:39   0:00 [hci0]
+root      13167  0.0  0.0      0     0 ?        S<   09:39   0:00 [hci0]
+root      13169  0.0  0.0      0     0 ?        S<   09:39   0:00 [kworker/u257:
+root      13170  0.0  0.0      0     0 ?        S<   09:39   0:00 [kworker/u257:
+root      13207  0.0  0.1  16120  3612 ?        S    09:39   0:00 /sbin/dhclient
+python    13431  0.2  2.1 608968 43004 ?        Sl   09:40   0:00 /usr/lib/gnome
+python    13436  0.0  0.2  30524  5968 pts/1    Ss   09:40   0:00 bash
+python    13479  0.0  0.1  44432  3252 pts/1    R+   09:44   0:00 ps aux
+python@ubuntu:~$ ls
+dbs        Downloads         haha      Pictures  Templates  week4  week8
+Desktop    dump.rdb          homework  practice  Videos     week5  workspace
+Documents  examples.desktop  Music     Public    week3      week7
+python@ubuntu:~$ mkdir week9
+python@ubuntu:~$ cd week8/ch08.h week9
+bash: cd: week8/ch08.h: 不是目录
+python@ubuntu:~$ cp week8/ch08.h week9
+python@ubuntu:~$ cd week9
+python@ubuntu:~/week9$ ls
+ch08.h
+python@ubuntu:~/week9$ vi ch08.h
+python@ubuntu:~/week9$ mv ch08.h ch09.h
+python@ubuntu:~/week9$ ls
+ch09.h
+python@ubuntu:~/week9$ vi 9-1.c
+python@ubuntu:~/week9$ gcc 9-1.c -o 9-1
+9-1.c: In function ‘main’:
+9-1.c:8:52: warning: implicit declaration of function ‘strerr’ [-Wimplicit-function-declaration]
+         sprintf(stderr,"failed to fork.Reason(%s)",strerr(errno));
+                                                    ^
+9-1.c:8:59: error: ‘errno’ undeclared (first use in this function)
+         sprintf(stderr,"failed to fork.Reason(%s)",strerr(errno));
+                                                           ^
+9-1.c:8:59: note: each undeclared identifier is reported only once for each function it appears in
+9-1.c:8:17: warning: passing argument 1 of ‘sprintf’ from incompatible pointer type [-Wincompatible-pointer-types]
+         sprintf(stderr,"failed to fork.Reason(%s)",strerr(errno));
+                 ^
+In file included from ./ch09.h:1:0,
+                 from 9-1.c:1:
+/usr/include/stdio.h:364:12: note: expected ‘char * restrict’ but argument is of type ‘struct _IO_FILE *’
+ extern int sprintf (char *__restrict __s,
+            ^
+python@ubuntu:~/week9$ vi 9-1.c
+python@ubuntu:~/week9$ gcc 9-1.c -o 9-1
+9-1.c: In function ‘main’:
+9-1.c:8:61: error: ‘errno’ undeclared (first use in this function)
+         sprintf(stderr,"failed to fork.Reason(%s)",strerror(errno));
+                                                             ^
+9-1.c:8:61: note: each undeclared identifier is reported only once for each function it appears in
+9-1.c:8:17: warning: passing argument 1 of ‘sprintf’ from incompatible pointer type [-Wincompatible-pointer-types]
+         sprintf(stderr,"failed to fork.Reason(%s)",strerror(errno));
+                 ^
+In file included from ./ch09.h:1:0,
+                 from 9-1.c:1:
+/usr/include/stdio.h:364:12: note: expected ‘char * restrict’ but argument is of type ‘struct _IO_FILE *’
+ extern int sprintf (char *__restrict __s,
+            ^
+python@ubuntu:~/week9$ gcc 9-1.c -o 9-1
+9-1.c: In function ‘main’:
+9-1.c:8:61: error: ‘errno’ undeclared (first use in this function)
+         sprintf(stderr,"failed to fork.Reason(%s)",strerror(errno));
+                                                             ^
+9-1.c:8:61: note: each undeclared identifier is reported only once for each function it appears in
+9-1.c:8:17: warning: passing argument 1 of ‘sprintf’ from incompatible pointer type [-Wincompatible-pointer-types]
+         sprintf(stderr,"failed to fork.Reason(%s)",strerror(errno));
+                 ^
+In file included from ./ch09.h:1:0,
+                 from 9-1.c:1:
+/usr/include/stdio.h:364:12: note: expected ‘char * restrict’ but argument is of type ‘struct _IO_FILE *’
+ extern int sprintf (char *__restrict __s,
+            ^
+python@ubuntu:~/week9$ vi 9-1.c
+python@ubuntu:~/week9$ gcc 9-1.c -o 9-1
+9-1.c: In function ‘main’:
+9-1.c:8:61: error: ‘errno’ undeclared (first use in this function)
+         fprintf(stderr,"failed to fork.Reason(%s)",strerror(errno));
+                                                             ^
+9-1.c:8:61: note: each undeclared identifier is reported only once for each function it appears in
+python@ubuntu:~/week9$ vi ch09.h
+python@ubuntu:~/week9$ gcc 9-1.c -o 9-1
+python@ubuntu:~/week9$ ./9-1
+parent : pid = 13436,ppid = 13436 return from fork()=16097
+python@ubuntu:~/week9$ child : pid = 16097,ppid = 5331 return form fork =0
+vi 9-1.c
+python@ubuntu:~/week9$ gcc 9-1.c -o 9-1
+python@ubuntu:~/week9$ ./9-1
+parent : pid = 13436,ppid = 13436 return from fork()=16109
+python@ubuntu:~/week9$ child : pid = 16109,ppid = 5331 return form fork =0
+vi 9-1.c
+python@ubuntu:~/week9$ gcc 9-1.c -o 9-1
+python@ubuntu:~/week9$ ./9-1
+parent : pid = 13436,ppid = 13436 return from fork()=16120
+
+python@ubuntu:~/week9$ child : pid = 16120,ppid = 5331 return form fork =0
+
+vi 9-1.c
+python@ubuntu:~/week9$ gcc 9-1.c -o 9-1
+python@ubuntu:~/week9$ ./9-1
+parent : pid = 16130,ppid = 13436 return from fork()=16131
+
+python@ubuntu:~/week9$ child : pid = 16131,ppid = 5331 return form fork =0
