@@ -359,3 +359,246 @@ int main()
         return 0;
     }
 }
+python@ubuntu:~/week9$ child : pid = 16609,ppid = 5331 return form fork =0
+./9-1
+
+parent : pid = 16610,ppid = 13436 return from fork()=16611
+python@ubuntu:~/week9$ child : pid = 16611,ppid = 5331 return form fork =0
+./9-1
+
+parent : pid = 16612,ppid = 13436 return from fork()=16613
+python@ubuntu:~/week9$ child : pid = 16613,ppid = 5331 return form fork =0
+touch Makefile
+python@ubuntu:~/week9$ vi Makefile
+python@ubuntu:~/week9$ make
+make: '9-1' is up to date.
+python@ubuntu:~/week9$ rm 9-1
+python@ubuntu:~/week9$ make
+gcc 9-1.c -o 9-1
+python@ubuntu:~/week9$ ./9-1
+
+parent : pid = 16645,ppid = 13436 return from fork()=16646
+python@ubuntu:~/week9$ child : pid = 16646,ppid = 5331 return form fork =0
+vi 9-1.c
+python@ubuntu:~/week9$ make
+gcc 9-1.c -o 9-1
+python@ubuntu:~/week9$ vi Makefile
+python@ubuntu:~/week9$ cat /proc/sys/kernel/pid_max
+131072
+python@ubuntu:~/week9$ clear
+
+python@ubuntu:~/week9$ cat /proc/sys/kernel/pid_max
+131072
+python@ubuntu:~/week9$ sysctl kernel.pid_max 
+kernel.pid_max = 131072
+python@ubuntu:~/week9$ sysctl -w kernel.pid_max=131073
+sysctl: permission denied on key 'kernel.pid_max'
+python@ubuntu:~/week9$ sudo sysctl -w kernel.pid_max=131073
+[sudo] python 的密码： 
+kernel.pid_max = 131073
+python@ubuntu:~/week9$ sudo sysctl -w kernel.pid_max=131072
+kernel.pid_max = 131072
+python@ubuntu:~/week9$ cp 9-1.c 9-2.c
+python@ubuntu:~/week9$ vi 9-2.c
+python@ubuntu:~/week9$ ,ake
+未找到 ',ake' 命令，您要输入的是否是：
+ 命令 'jake' 来自于包 'node-jake' (universe)
+ 命令 'make' 来自于包 'make-guile' (universe)
+ 命令 'make' 来自于包 'make' (main)
+ 命令 'fake' 来自于包 'fake' (universe)
+ 命令 'rake' 来自于包 'rake' (main)
+ 命令 'cake' 来自于包 'cakephp-scripts' (universe)
+,ake：未找到命令
+python@ubuntu:~/week9$ make
+make: '9-1' is up to date.
+python@ubuntu:~/week9$ vi Makefile
+python@ubuntu:~/week9$ make
+make: '9-1' is up to date.
+python@ubuntu:~/week9$ vi Makefile
+python@ubuntu:~/week9$ make
+gcc 9-2.c -o 9-2
+python@ubuntu:~/week9$ ./9-2
+child : pid = 16754,ppid = 16753 return form fork =0
+child : init g = 1, l = 99 , *pt = 9999
+child : g = 2, l = 100 , *pt = 0
+parent : pid = 16753,ppid = 13436 return from fork()=16754
+child : init g = 1, l = 99 , *pt = 9999
+child : g = 2, l = 100 , *pt = 0
+python@ubuntu:~/week9$ vi 9-2.c
+python@ubuntu:~/week9$ make
+gcc 9-2.c -o 9-2
+python@ubuntu:~/week9$ vi Makefile
+python@ubuntu:~/week9$ vi 9-2.c
+python@ubuntu:~/week9$ make
+gcc 9-2.c -o 9-2
+9-2.c: In function ‘main’:
+9-2.c:22:16: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 3 has type ‘int *’ [-Wformat=]
+         printf("child : g = %d %x, l = %d %x, *pt = %d %x\n",g,&g,l,&l,*pt,pt);
+                ^
+9-2.c:22:16: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 5 has type ‘int *’ [-Wformat=]
+9-2.c:22:16: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 7 has type ‘int *’ [-Wformat=]
+9-2.c:33:16: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 3 has type ‘int *’ [-Wformat=]
+         printf("child : g = %d %x, l = %d %x, *pt = %d %x\n",g,&g,l,&l,*pt,pt);
+                ^
+9-2.c:33:16: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 5 has type ‘int *’ [-Wformat=]
+9-2.c:33:16: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 7 has type ‘int *’ [-Wformat=]
+python@ubuntu:~/week9$ ./9-2
+child : pid = 16780,ppid = 16779 return form fork =0
+child : init g = 1, l = 99 , *pt = 9999
+child : g = 2 601090, l = 100 dae33408, *pt = 10000 1194010
+parent : pid = 16779,ppid = 13436 return from fork()=16780
+child : init g = 1, l = 99 , *pt = 9999
+child : g = 2 601090, l = 100 dae33408, *pt = 10000 1194010
+python@ubuntu:~/week9$ vi ch09.h
+python@ubuntu:~/week9$ vi 9-2.c
+python@ubuntu:~/week9$ make
+gcc 9-2.c -o 9-2
+9-2.c: In function ‘main’:
+9-2.c:24:16: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 3 has type ‘int *’ [-Wformat=]
+         printf("child : g = %d %x, l = %d %x, *pt = %d %x\n",g,&g,l,&l,*pt,pt);
+                ^
+9-2.c:24:16: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 5 has type ‘int *’ [-Wformat=]
+9-2.c:24:16: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 7 has type ‘int *’ [-Wformat=]
+9-2.c:36:16: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 3 has type ‘int *’ [-Wformat=]
+         printf("child : g = %d %x, l = %d %x, *pt = %d %x\n",g,&g,l,&l,*pt,pt);
+                ^
+9-2.c:36:16: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 5 has type ‘int *’ [-Wformat=]
+9-2.c:36:16: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 7 has type ‘int *’ [-Wformat=]
+python@ubuntu:~/week9$ ./9-2
+----------Before Fork----------child : pid = 16819,ppid = 16818 return form fork =0
+child : init g = 1, l = 99 , *pt = 9999
+child : g = 2 602090, l = 100 81f35bb0, *pt = 10000 121f010
+chlid : string = test string!
+----------Before Fork----------parent : pid = 16818,ppid = 13436 return from fork()=16819
+child : init g = 1, l = 99 , *pt = 9999
+child : g = 2 602090, l = 100 81f35bb0, *pt = 10000 121f010
+chlid : string = test string!
+python@ubuntu:~/week9$ vi 9-2.c
+python@ubuntu:~/week9$ vi 9-2.c
+python@ubuntu:~/week9$ cat 9-2.c
+#include "./ch09.h"
+int g = 1;
+int main()
+{
+    pid_t pid;
+    int l = 99;
+    int *pt=malloc(sizeof(int));
+    char *string = "test string!";
+    *pt = 9999;
+    printf("----------Before Fork----------");
+    pid = fork();
+    if(pid<0)
+    {
+        fprintf(stderr,"failed to fork.Reason(%s)\n",strerror(errno));
+        exit(-1);
+    }
+    else if(pid == 0)
+    {
+        printf("child : pid = %d,ppid = %d return form fork =%d\n",getpid(),getppid(),pid);
+        printf("child : init g = %d, l = %d , *pt = %d\n",g,l,*pt);
+        g++;
+        l++;
+        (*pt)++;
+        printf("child : g = %d %x, l = %d %x, *pt = %d %x\n",g,&g,l,&l,*pt,pt);
+        printf("chlid : string = %s\n",string);
+        exit(0);
+    }
+    else
+    {
+        sleep(2);
+        printf("parent : pid = %d,ppid = %d return from fork()=%d\n",getpid(),getppid(),pid);
+        printf("child : init g = %d, l = %d , *pt = %d\n",g,l,*pt);
+        g++;
+        l++;
+        (*pt)++;
+        printf("child : g = %d %x, l = %d %x, *pt = %d %x\n",g,&g,l,&l,*pt,pt);
+        printf("chlid : string = %s\n",string);
+        return 0;
+    }
+}
+python@ubuntu:~/week9$ vi 9-2.c
+python@ubuntu:~/week9$ make
+gcc 9-2.c -o 9-2
+9-2.c: In function ‘main’:
+9-2.c:24:16: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 3 has type ‘int *’ [-Wformat=]
+         printf("child : g = %d %x, l = %d %x, *pt = %d %x\n",g,&g,l,&l,*pt,pt);
+                ^
+9-2.c:24:16: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 5 has type ‘int *’ [-Wformat=]
+9-2.c:24:16: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 7 has type ‘int *’ [-Wformat=]
+9-2.c:36:16: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 3 has type ‘int *’ [-Wformat=]
+         printf("child : g = %d %x, l = %d %x, *pt = %d %x\n",g,&g,l,&l,*pt,pt);
+                ^
+9-2.c:36:16: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 5 has type ‘int *’ [-Wformat=]
+9-2.c:36:16: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 7 has type ‘int *’ [-Wformat=]
+python@ubuntu:~/week9$ ./9-2
+----------Before Fork----------
+child : pid = 16836,ppid = 16835 return form fork =0
+child : init g = 1, l = 99 , *pt = 9999
+child : g = 2 602090, l = 100 caed0d40, *pt = 10000 60c010
+chlid : string = test string!
+parent : pid = 16835,ppid = 13436 return from fork()=16836
+child : init g = 1, l = 99 , *pt = 9999
+child : g = 2 602090, l = 100 caed0d40, *pt = 10000 60c010
+chlid : string = test string!
+python@ubuntu:~/week9$ cat 9-2.c
+#include "./ch09.h"
+int g = 1;
+int main()
+{
+    pid_t pid;
+    int l = 99;
+    int *pt=malloc(sizeof(int));
+    char *string = "test string!";
+    *pt = 9999;
+    printf("----------Before Fork----------\n");
+    pid = fork();
+    if(pid<0)
+    {
+        fprintf(stderr,"failed to fork.Reason(%s)\n",strerror(errno));
+        exit(-1);
+    }
+    else if(pid == 0)
+    {
+        printf("child : pid = %d,ppid = %d return form fork =%d\n",getpid(),getppid(),pid);
+        printf("child : init g = %d, l = %d , *pt = %d\n",g,l,*pt);
+        g++;
+        l++;
+        (*pt)++;
+        printf("child : g = %d %x, l = %d %x, *pt = %d %x\n",g,&g,l,&l,*pt,pt);
+        printf("chlid : string = %s\n",string);
+        exit(0);
+    }
+    else
+    {
+        sleep(2);
+        printf("parent : pid = %d,ppid = %d return from fork()=%d\n",getpid(),getppid(),pid);
+        printf("child : init g = %d, l = %d , *pt = %d\n",g,l,*pt);
+        g++;
+        l++;
+        (*pt)++;
+        printf("child : g = %d %x, l = %d %x, *pt = %d %x\n",g,&g,l,&l,*pt,pt);
+        printf("chlid : string = %s\n",string);
+        return 0;
+    }
+}
+python@ubuntu:~/week9$ cat ch09.h
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <string.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <time.h>
+#include <dlfcn.h>
+#include <setjmp.h>
+#include <wait.h>
+#include <errno.h>
+#define INFILE "./in.txt"
+#define OUTFILE "./out.txt"
+#define MODE S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP|S_IROTH
+void err_exit(char *s)
+{
+    printf("Usage : *s is faile!\n");
+    exit(1);
+}
