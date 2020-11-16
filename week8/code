@@ -635,3 +635,64 @@ chlid : string = test string!
 child : init g = 1, l = 99 , *pt = 9999
 child : g = 2 602090, l = 100 7becaeb0, *pt = 10000 ec6010
 chlid : string = test string!
+
+python@ubuntu:~/week9$ make
+gcc 9-3.c -o 9-3
+python@ubuntu:~/week9$ vi in.txt
+python@ubuntu:~/week9$ ./9-3
+16953 :1
+16954 :2
+16953 :3
+16954 :4
+16953 :5
+16954 :6
+16953 :7
+16954 :8
+16953 :9
+python@ubuntu:~/week9$ cat out.txt
+16953 Hello World!
+16954 Hello World!
+16953 Hello World!
+16954 Hello World!
+16953 Hello World!
+16954 Hello World!
+16953 Hello World!
+16954 Hello World!
+16953 Hello World!
+python@ubuntu:~/week9$ cat 9-3.c
+#include "./ch09.h"
+int main()
+{
+    int fd_in,fd_out;
+    char buf[1024];
+    pid_t pid;
+    memset(buf,0,1024);
+    fd_in=open(INFILE,O_RDONLY);
+    if(fd_in<0)
+    {
+        fprintf(stderr,"failed to open %s,reason(%s)\n",INFILE,strerror(errno));
+        return 1;
+    }
+    fd_out = open(OUTFILE,O_WRONLY|O_CREAT|O_TRUNC,MODE);
+    if(fd_out<0)
+    {
+        fprintf(stderr,"failed to open %s,reason(%s)\n",OUTFILE,strerror(errno));
+        return 1;
+    }
+    pid = fork();
+    if(pid<0)
+    {
+        fprintf(stderr,"failed to open %s,reason(%s)\n",INFILE,strerror(errno));
+        return 1;
+    }
+    while(read(fd_in,buf,2)>0)
+    {
+        printf("%d :%s",getpid(),buf);
+        sprintf(buf,"%d Hello World!\n",getpid());
+        write(fd_out,buf,strlen(buf));
+        sleep(1);
+        memset(buf,0,1024);
+    }
+
+
+}
