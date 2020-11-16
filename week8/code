@@ -696,3 +696,55 @@ int main()
 
 
 }
+
+python@ubuntu:~/week9$ vi 9-5.c
+python@ubuntu:~/week9$ gcc 9-5.c -o 9-5
+python@ubuntu:~/week9$ ./9-5
+child : pid = 17511 ppid = 17510, i = 0
+parent : pid = 17510, ppid = 13436 , i =17511
+9-5: cxa_atexit.c:100: __new_exitfn: Assertion `l != NULL' failed.
+已放弃 (核心已转储)
+python@ubuntu:~/week9$ wq
+wq：未找到命令
+python@ubuntu:~/week9$ gcc 9-5.c -o 9-5
+python@ubuntu:~/week9$ ./9-5
+child : pid = 17523 ppid = 17522, i = 0
+parent : pid = 17522, ppid = 13436 , i =17523
+9-5: cxa_atexit.c:100: __new_exitfn: Assertion `l != NULL' failed.
+已放弃 (核心已转储)
+python@ubuntu:~/week9$ vi 9-5.c
+python@ubuntu:~/week9$ gcc 9-5.c -o 9-5
+9-5.c: In function ‘main’:
+9-5.c:14:8: error: too few arguments to function ‘_exit’
+        _exit();
+        ^
+python@ubuntu:~/week9$ vi 9-5.c
+python@ubuntu:~/week9$ gcc 9-5.c -o 9-5
+python@ubuntu:~/week9$ ./9-5
+child : pid = 17546 ppid = 17545, i = 0
+parent : pid = 17545, ppid = 13436 , i =17546
+python@ubuntu:~/week9$ cat 9-5.c
+#include "./ch09.h"
+int main()
+{
+    pid_t i;
+    i = vfork();
+    if(i<0)
+    {
+        perror("Vfork failed!\n");
+        exit(-1);
+    }
+    else if(i == 0)
+    {
+        printf("child : pid = %d ppid = %d, i = %d\n",getpid(),getppid(),i);
+        _exit(0);
+       // return 0;
+    }
+    else
+    {
+        wait(NULL);
+        printf("parent : pid = %d, ppid = %d , i =%d\n",getpid(),getppid(),i);
+        return 0;
+    }
+}
+
