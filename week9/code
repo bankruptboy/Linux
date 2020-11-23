@@ -1,0 +1,294 @@
+python@ubuntu:~/Linux/week9$ cat haha.c -n
+     1	#include"ch09.h"
+     2	int g=0;
+     3	int main(){
+     4	    int fd_out,g=0;
+     5	    char buf[1024];
+     6	    memset(buf,0,1024);
+     7	    pid_t pid1,pid2,pid3,pid4,pid5,pid6;
+     8	    fd_out=open(OUTFILE,O_WRONLY|O_CREAT|O_TRUNC,MODE);
+     9	    if(fd_out<0){
+    10	        fprintf(stderr,"failed to open %s,reason(%s)\n",OUTFILE,strerror(errno));
+    11	        exit(1);
+    12	    }
+    13	    pid1=fork();
+    14	    g++;
+    15	    if(pid1<0){
+    16	        fprintf(stderr,"failed to fork,reason(%s)\n",strerror(errno));
+    17	        exit(1);
+    18	    }
+    19	    else if(pid1==0){
+    20	        pid2=fork();
+    21	        g++;
+    22	        if(pid2<0){
+    23	            fprintf(stderr,"failed to fork,reason(%s)\n",strerror(errno));
+    24	            return 1;
+    25	        }
+    26	        else if(pid2==0){
+    27	
+    28	            wait(NULL);
+    29	            wait(NULL);
+    30	            sprintf(buf,"process parent pid %d: g=%d\n",getpid(),g);
+    31	            write(fd_out,buf,strlen(buf));
+    32	            memset(buf,0,1024);
+    33	        }
+    34	        else{
+    35	            pid5=fork();
+    36	            g++;
+    37	            if(pid5<0){
+    38	                fprintf(stderr,"failed to fork,reason(%s)\n",strerror(errno));
+    39	                exit(1);
+    40	            }
+    41	            else if(pid5==0){
+    42	                pid6=fork();
+    43	                g++;
+    44	
+    45	                if(pid6<0){
+    46	                    fprintf(stderr,"failed to fork,reason(%s)\n",strerror(errno));
+    47	                    exit(1);
+    48	                }
+    49	                else if(pid6==0){
+    50	                    wait(NULL);
+    51	                    wait(NULL);
+    52	                    sprintf(buf,"process child2 pid %d: g=%d\n",getpid(),g);
+    53	                    write(fd_out,buf,strlen(buf));
+    54	                    memset(buf,0,1024);     
+    55	                }
+    56	
+    57	            }
+    58	
+    59	        }
+    60	    }
+    61	    else{   //子1
+    62	        pid3=fork();
+    63	        g++;
+    64	        if(pid3<0){
+    65	            fprintf(stderr,"failed to fork,reason(%s)\n",strerror(errno));
+    66	            exit(1);
+    67	        }
+    68	        else if(pid3==0){
+    69	            g++;
+    70	            pid4=fork();
+    71	            if(pid4<0){
+    72	                fprintf(stderr,"failed to fork,reason(%s)\n",strerror(errno));
+    73	                exit(1);
+    74	            }
+    75	            else if(pid4==0){
+    76	                wait(NULL);
+    77	                wait(NULL);
+    78	                sprintf(buf,"process child1 pid %d: g=%d\n",getpid(),g);
+    79	                write(fd_out,buf,strlen(buf));
+    80	                memset(buf,0,1024);
+    81	            }
+    82	            else{
+    83	                sprintf(buf,"process child12 pid %d: g=%d\n",getpid(),g);
+    84	                write(fd_out,buf,strlen(buf));
+    85	                memset(buf,0,1024);
+    86	            }
+    87	
+    88	        }
+    89	        else{
+    90	            sprintf(buf,"process child11 pid %d: g=%d\n",getpid(),g);
+    91	            write(fd_out,buf,strlen(buf));
+    92	            memset(buf,0,1024);
+    93	        }
+    94	    }
+    95	    return 0;
+    96	}
+python@ubuntu:~/Linux/week9$ ./hehe
+parent :g = 1,pid = 19917, ppid =13436
+python@ubuntu:~/Linux/week9$ child2 :g = 1,pid = 19919, ppid =5331
+child1 :g = 1,pid = 19918, ppid =5331
+child11 :g = 1,pid = 19920, ppid =19918
+child12 :g = 2,pid = 19918, ppid =5331
+^C
+python@ubuntu:~/Linux/week9$ cd ../week10
+python@ubuntu:~/Linux/week10$ vi 10-1
+python@ubuntu:~/Linux/week10$ vi 10-1.c
+python@ubuntu:~/Linux/week10$ make
+gcc 10-1.c -o 10-1
+^Cmake: *** wait: 没有子进程。 停止。
+make: *** 正在等待未完成的任务....
+make: *** wait: 没有子进程。 停止。
+python@ubuntu:~/Linux/week10$ make
+gcc 10-1.c -o 10-1
+python@ubuntu:~/Linux/week10$ ./10-1
+child 2: pid:19967,ppid:19965
+child 1: pid:19966,ppid19965
+parent : pid:19965,r1:19966,r2:19967
+python@ubuntu:~/Linux/week10$ vi 10-1.c
+python@ubuntu:~/Linux/week10$ make
+gcc 10-1.c -o 10-1
+python@ubuntu:~/Linux/week10$ ./10-1
+child 2: pid:19993,ppid:19991
+child 1: pid:19992,ppid19991
+parent : pid:19991,r1:19992,r2:19993
+python@ubuntu:~/Linux/week10$ child 3: pid:19994,ppid:5331
+^C
+python@ubuntu:~/Linux/week10$ vi 10-1.c
+python@ubuntu:~/Linux/week10$ make
+gcc 10-1.c -o 10-1
+python@ubuntu:~/Linux/week10$ ./10-1
+child 3: pid:20008,ppid:20005
+child 2: pid:20007,ppid:20005
+parent : pid:20005,r1:20006,r2:20007
+python@ubuntu:~/Linux/week10$ child 1: pid:20006,ppid5331
+^C
+python@ubuntu:~/Linux/week10$ vi 10-1.c
+python@ubuntu:~/Linux/week10$ make
+gcc 10-1.c -o 10-1
+python@ubuntu:~/Linux/week10$ ./10-1
+child 3: pid:20026,ppid:20023
+child 2: pid:20025,ppid:20023
+parent : pid:20023,r1:20024,r2:20025
+python@ubuntu:~/Linux/week10$ child 1: pid:20024,ppid5331
+^C
+python@ubuntu:~/Linux/week10$ vi 10-1.c
+python@ubuntu:~/Linux/week10$ make
+gcc 10-1.c -o 10-1
+10-1.c: In function ‘main’:
+10-1.c:21:20: warning: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘__pid_t (*)(void) {aka int (*)(void)}’ [-Wformat=]
+             printf("child11 : pid = %d,ppid = %d",getpid(),getppid);
+                    ^
+python@ubuntu:~/Linux/week10$ vi 10-1.c
+^[[Bpython@ubuntu:~/Linux/week10$ make
+gcc 10-1.c -o 10-1
+python@ubuntu:~/Linux/week10$ ./10-1
+child 3: pid = 20429,ppid = 20426
+child 2: pid = 20428,ppid = 20426
+child 1: pid = 20430,ppid = 20427,r11 = 0
+child 1: pid = 20427,ppid = 20426,r11 = 0
+parent : pid = 20426,r1 = 20427,r2 = 20428,r3 = 20429
+python@ubuntu:~/Linux/week10$ vi 10-1.c
+python@ubuntu:~/Linux/week10$ make
+gcc 10-1.c -o 10-1
+python@ubuntu:~/Linux/week10$ ./10-1
+child 3: pid = 20451,ppid = 20448
+child 2: pid = 20450,ppid = 20448
+child 1: pid = 20452,ppid = 20449,r11 = 0
+child 1: pid = 20449,ppid = 20448,r11 = 0
+parent : pid = 20448,r1 = 20449,r2 = 20450,r3 = 20451
+python@ubuntu:~/Linux/week10$ vi 10-1.c
+python@ubuntu:~/Linux/week10$ make
+gcc 10-1.c -o 10-1
+python@ubuntu:~/Linux/week10$ ./10-1
+child 3: pid = 20465,ppid = 20462
+child 2: pid = 20464,ppid = 20462
+child11 : pid = 20466,ppid = 20463child 1: pid = 20463,ppid = 20462,r11 = 20466
+parent : pid = 20462,r1 = 20463,r2 = 20464,r3 = 20465
+python@ubuntu:~/Linux/week10$ vi 10-1.c
+python@ubuntu:~/Linux/week10$ make
+gcc 10-1.c -o 10-1
+python@ubuntu:~/Linux/week10$ ./10-1
+child 2: pid = 20479,ppid = 20477
+child 3: pid = 20480,ppid = 20477
+child11 : pid = 20481,ppid = 20478
+child 1: pid = 20478,ppid = 20477,r11 = 20481
+parent : pid = 20477,r1 = 20478,r2 = 20479,r3 = 20480
+python@ubuntu:~/Linux/week10$ vi test.c
+python@ubuntu:~/Linux/week10$ make
+gcc test.c -o test
+test.c: In function ‘main’:
+test.c:5:42: error: expected ‘)’ before ‘getpid’
+     printf("test : pid = %d, ppid = %d\n"getpid(),getppid());
+                                          ^
+test.c:5:12: warning: format ‘%d’ expects a matching ‘int’ argument [-Wformat=]
+     printf("test : pid = %d, ppid = %d\n"getpid(),getppid());
+            ^
+test.c:5:12: warning: format ‘%d’ expects a matching ‘int’ argument [-Wformat=]
+test.c:7:33: error: expected ‘)’ before ‘i’
+         printf("argv[%d] = %s\n"i,argv[i]);
+                                 ^
+test.c:7:16: warning: format ‘%d’ expects a matching ‘int’ argument [-Wformat=]
+         printf("argv[%d] = %s\n"i,argv[i]);
+                ^
+test.c:7:16: warning: format ‘%s’ expects a matching ‘char *’ argument [-Wformat=]
+makefile:7: recipe for target 'test' failed
+make: *** [test] Error 1
+python@ubuntu:~/Linux/week10$ vi test.c
+python@ubuntu:~/Linux/week10$ make
+gcc test.c -o test
+python@ubuntu:~/Linux/week10$ ./test hello world
+test : pid = 20502, ppid = 13436
+argv[0] = ./test
+argv[1] = hello
+argv[2] = world
+python@ubuntu:~/Linux/week10$ cat 10-1.c test.c
+#include "ch.h"
+int main()
+{
+    int r1,r2,r3;
+    r1=fork();
+    if(r1<0)
+    {
+        perror("fork failed!\n");
+        exit(-1);
+    }
+    else if(r1==0)
+    {
+        int r11;
+        r11=fork();
+        if(r11<0)
+        {
+            perror("fail to fork r11");
+            exit(-1);
+        }
+        else if(r11==0)
+        {
+            printf("child11 : pid = %d,ppid = %d\n",getpid(),getppid());
+            exit(0);
+        }
+        else
+        {
+            wait(NULL);
+            printf("child 1: pid = %d,ppid = %d,r11 = %d\n",getpid(),getppid(),r11);   
+            exit(0);
+        }
+    }
+    else
+    {
+        r2=fork();
+        if(r2<0)
+        {
+            perror("fail to fork2!\n");
+            exit(-1);
+        }
+        else if(r2==0)
+        {
+            printf("child 2: pid = %d,ppid = %d\n",getpid(),getppid());
+            exit(0);
+
+        }
+        else
+        {
+            r3 = fork();
+            if(r3<0)
+            {
+                perror("fail to fork3!\n");
+                exit(-1);
+            }
+            else if(r3==0)
+            {
+                printf("child 3: pid = %d,ppid = %d\n",getpid(),getppid());
+                exit(0);
+            }
+            else
+            {
+                wait(NULL);
+                wait(NULL);
+                wait(NULL);
+                printf("parent : pid = %d,r1 = %d,r2 = %d,r3 = %d\n",getpid(),r1,r2,r3);
+                return 0;
+            }
+        }
+    }
+}
+#include "ch.h"
+int main(int argc,char** argv)
+{
+    int i;
+    printf("test : pid = %d, ppid = %d\n",getpid(),getppid());
+    for(i = 0;i<argc;i++)
+        printf("argv[%d] = %s\n",i,argv[i]);
+    return 0;
+}
