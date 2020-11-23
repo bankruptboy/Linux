@@ -565,3 +565,139 @@ Mems_allowed:	00000000,00000001
 Mems_allowed_list:	0
 voluntary_ctxt_switches:	1
 nonvoluntary_ctxt_switches:	0
+python@ubuntu:~/Linux/week10$ ^C
+python@ubuntu:~/Linux/week10$ vi 10-7.c
+python@ubuntu:~/Linux/week10$ make
+gcc 10-6.c -o 10-6
+gcc 10-7.c -o 10-7
+10-7.c: In function ‘main’:
+10-7.c:42:10: error: ‘EXIT_SECCESS’ undeclared (first use in this function)
+     exit(EXIT_SECCESS);
+          ^
+10-7.c:42:10: note: each undeclared identifier is reported only once for each function it appears in
+makefile:7: recipe for target '10-7' failed
+make: *** [10-7] Error 1
+python@ubuntu:~/Linux/week10$ vi 10-7.c
+python@ubuntu:~/Linux/week10$ make
+gcc 10-7.c -o 10-7
+python@ubuntu:~/Linux/week10$ ./10-7
+process 22009 normal termination, exit status = 0
+process 22011 abnormal termination, signal number = 8(core file generated):
+Floating point exception
+process 22010 abnormal termination, signal number = 6(core file generated):
+Aborted
+wait over: No child processes
+python@ubuntu:~/Linux/week10$ vi 10-8.c
+python@ubuntu:~/Linux/week10$ make
+gcc 10-8.c -o 10-8
+python@ubuntu:~/Linux/week10$ ./10-8
+create child process : 22111.
+child process in proces group 22110.
+child process : 22111 calling exit(7).
+Father wait the process 22111 is exit.
+create child process : 22112.
+child process in proces group 22112.
+child process : 22112 calling exit(6).
+^C
+python@ubuntu:~/Linux/week10$ vi 10-9.c
+python@ubuntu:~/Linux/week10$ make
+gcc 10-9.c -o 10-9
+python@ubuntu:~/Linux/week10$ ./10-9
+child 22140 is running!
+parent 22139 will exit now! r= 22140,s = 108
+python@ubuntu:~/Linux/week10$ make
+make: Nothing to be done for 'ALL'.
+python@ubuntu:~/Linux/week10$ vi 10-9.c
+python@ubuntu:~/Linux/week10$ make
+gcc 10-9.c -o 10-9
+10-9.c: In function ‘main’:
+10-9.c:35:73: error: ‘r’ undeclared (first use in this function)
+             printf("parent %d will exit now! r1= %d,s1 = %d\n",getpid(),r,WEXITSTATUS(s1));
+                                                                         ^
+10-9.c:35:73: note: each undeclared identifier is reported only once for each function it appears in
+makefile:7: recipe for target '10-9' failed
+make: *** [10-9] Error 1
+python@ubuntu:~/Linux/week10$ vi 10-9.c
+python@ubuntu:~/Linux/week10$ make
+gcc 10-9.c -o 10-9
+python@ubuntu:~/Linux/week10$ ./10-9
+child2 22176 is running!
+child1 22175 is running!
+parent 22174 will exit now! r1= 22175,s1 = 108
+parent 22174 will exit now! r2= 22176,s2 = 99
+python@ubuntu:~/Linux/week10$ cat 10-9.c
+#include "ch.h"
+int main()
+{
+    pid_t pid;
+    pid = fork();
+    if(pid<0)
+    {
+        printf("error!\n");
+        exit(-1);
+    }
+    else if(pid == 0)
+    {
+        printf("child1 %d is running!\n",getpid());
+        exit(108);
+    }
+    else
+    {
+        int r1,r2,s1,s2,y;
+        y = fork();
+        if(y<0)
+        {
+            printf("error!\n");
+            exit(-1);
+        }
+        else if(y == 0)
+        {
+            printf("child2 %d is running!\n",getpid());
+            exit(99);
+
+        }
+        else
+        {
+            r1 = waitpid(pid,&s1,0);
+            r2 = waitpid(y,&s2,0);
+            printf("parent %d will exit now! r1= %d,s1 = %d\n",getpid(),r1,WEXITSTATUS(s1));
+            printf("parent %d will exit now! r2= %d,s2 = %d\n",getpid(),r2,WEXITSTATUS(s2));
+            exit(0);
+        }
+    }
+}
+python@ubuntu:~/Linux/week10$ ^C
+python@ubuntu:~/Linux/week10$ cat 10-8.c
+#include "ch.h"
+int main(int argc,char *argv[])
+{
+    int pid;
+    int status;
+    if((pid = fork()) < 0)
+    {
+        perror("Fail to fork");
+        exit(-1);
+    }else if(pid == 0){
+        printf("create child process : %d.\n",getpid());
+        printf("child process in proces group %d.\n",getpgid(0));
+        printf("child process : %d calling exit(7).\n",getpid());
+        exit(7);
+    }else{
+        if((pid = fork()) < 0 ){
+            perror("Fail to fork");
+            exit(-1);
+        }else if(pid == 0){
+            sleep(3);
+            printf("create child process : %d.\n",getpid());
+            setpgid(0,0); 
+            printf("child process in proces group %d.\n",getpgid(0));
+            printf("child process : %d calling exit(6).\n",getpid());
+        }else{
+            while(pid = waitpid(0,NULL,0))
+            {
+                printf("Father wait the process %d is exit.\n",pid);
+            }
+        }
+    }
+    exit(0);
+}
