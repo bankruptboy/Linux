@@ -452,3 +452,116 @@ int main()
     printf("recording! ");
     return 0;
 }
+python@ubuntu:~/Linux/week10$ ls
+10-1  10-1.c  10-2  10-2.c  10-3  10-3.c  10-4  10-4.c  ch.h  makefile  test  test.c
+python@ubuntu:~/Linux/week10$ vi 10-5.c
+python@ubuntu:~/Linux/week10$ make
+gcc 10-4.c -o 10-4
+gcc 10-5.c -o 10-5
+python@ubuntu:~/Linux/week10$ ./10-5 exit
+bar say bue!
+foo say bye!
+Oop ~~~~forgot a newline!python@ubuntu:~/Linux/week10$ ./10-5 _exit
+python@ubuntu:~/Linux/week10$ cat 10-5.c
+#include "ch.h"
+void foo()
+{
+    fprintf(stderr,"foo say bye!\n");
+}
+void bar()
+{
+    fprintf(stderr,"bar say bue!\n");
+}
+int main(int argc,char** argv)
+{
+    atexit(foo);
+    atexit(bar);
+    fprintf(stdout,"Oop ~~~~forgot a newline!");
+    sleep(2);
+    if(argc>1 && strcmp(argv[1],"exit")==0)
+    {
+        exit(0);
+    }
+    if(argc>1 && strcmp(argv[1],"_exit")==0)
+    {
+       _exit(0);
+    }
+    return 0;
+}
+python@ubuntu:~/Linux/week10$ vi 10-6.c
+python@ubuntu:~/Linux/week10$ make
+gcc 10-6.c -o 10-6
+python@ubuntu:~/Linux/week10$ ./10-6
+python@ubuntu:~/Linux/week10$ vi 10-6.c
+python@ubuntu:~/Linux/week10$ ./10-6.c
+bash: ./10-6.c: 权限不够
+python@ubuntu:~/Linux/week10$ ./10-6
+python@ubuntu:~/Linux/week10$ 
+python@ubuntu:~/Linux/week10$ ./10-6
+python@ubuntu:~/Linux/week10$ cat 10-6.c
+#include "ch.h"
+int main()
+{
+	pid_t pid;
+	pid = fork();
+	if(pid < 0)
+	{
+		printf("error!\n");
+		exit(-1);
+	}
+	else if(pid == 0)
+	{
+		exit(0);
+	}
+	else
+	{
+		sleep(300);
+		wait(NULL);
+	}
+	return 0;
+}
+python@ubuntu:~$ ps au
+USER        PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root       4404  0.4  2.7 488296 56744 tty7     Rs+  00:42   4:15 /usr/lib/xorg/
+root       4555  0.0  0.0  23008     0 tty1     Ss+  00:42   0:00 /sbin/agetty -
+python    13436  0.0  0.3  30776  6180 pts/1    Ss   09:51   0:01 bash
+python    17831  0.0  0.4  66568  9340 pts/1    T    12:23   0:00 vi haha.c
+python    21574  0.3  0.3  30592  6112 pts/4    Ss   16:03   0:00 bash
+python    21896  0.0  0.0   4224   676 pts/1    S+   16:06   0:00 ./10-6
+python    21897  0.0  0.0      0     0 pts/1    Z+   16:06   0:00 [10-6] <defunc
+python    21904  0.0  0.1  44432  3216 pts/4    R+   16:06   0:00 ps au
+python@ubuntu:~$ cat /proc//21897/status
+Name:	10-6
+State:	Z (zombie)
+Tgid:	21897
+Ngid:	0
+Pid:	21897
+PPid:	21896
+TracerPid:	0
+Uid:	1000	1000	1000	1000
+Gid:	1000	1000	1000	1000
+FDSize:	0
+Groups:	4 24 27 30 46 113 128 1000 
+NStgid:	21897
+NSpid:	21897
+NSpgid:	21896
+NSsid:	13436
+Threads:	1
+SigQ:	0/7781
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000000000
+SigIgn:	0000000000000000
+SigCgt:	0000000000000000
+CapInh:	0000000000000000
+CapPrm:	0000000000000000
+CapEff:	0000000000000000
+CapBnd:	0000003fffffffff
+CapAmb:	0000000000000000
+Seccomp:	0
+Cpus_allowed:	ffffffff,ffffffff,ffffffff,ffffffff
+Cpus_allowed_list:	0-127
+Mems_allowed:	00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	1
+nonvoluntary_ctxt_switches:	0
