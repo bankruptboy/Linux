@@ -394,3 +394,482 @@ int main()
 	}
 
 }
+
+python@ubuntu:~/Linux/week11$ ^C
+python@ubuntu:~/Linux/week11$ cp 11-3.c 11-4.c
+python@ubuntu:~/Linux/week11$ vi 11-4.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-3.c -o 11-3
+gcc 11-4.c -o 11-4
+11-4.c: In function ‘main’:
+11-4.c:31:20: error: ‘pid1’ undeclared (first use in this function)
+       r1 = waitpid(pid1,&s1,0);
+                    ^
+11-4.c:31:20: note: each undeclared identifier is reported only once for each function it appears in
+makefile:7: recipe for target '11-4' failed
+make: *** [11-4] Error 1
+python@ubuntu:~/Linux/week11$ vi 11-4.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-4.c -o 11-4
+python@ubuntu:~/Linux/week11$ ./11-4
+child2 :pid = 24370,ppid = 24368
+child1 :pid = 24369,ppid = 24368
+^C
+python@ubuntu:~/Linux/week11$ ./11-4
+child2 :pid = 24381,ppid = 24379
+child1 :pid = 24380,ppid = 24379
+pid 24380 exit with signal 9
+pid 24381 exit with signal 0
+parent finish!
+python@ubuntu:~/Linux/week11$ vi 11-4.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-4.c -o 11-4
+python@ubuntu:~/Linux/week11$ ./11-4
+child2 :pid = 24405,ppid = 24403
+child1 :pid = 24404,ppid = 24403
+pid 24404 exit with signal 10
+parent wait for child2 0 r2 = 24405
+parent finish!
+python@ubuntu:~/Linux/week11$ vi 11-4.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-4.c -o 11-4
+python@ubuntu:~/Linux/week11$ ./11-4
+child2 :pid = 24434,ppid = 24432
+child1 :pid = 24433,ppid = 24432
+pid 9 exit with signal 24433
+parent wait for child2 24434 r2 = 0
+parent finish!
+python@ubuntu:~/Linux/week11$ vi 11-4.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-4.c -o 11-4
+python@ubuntu:~/Linux/week11$ ./11-4
+child2 :pid = 24463,ppid = 24461
+parent wait for child1 0 r1 = 0
+parent wait for child2 24463 r2 = 0
+parent finish!
+python@ubuntu:~/Linux/week11$ child1 :pid = 24462,ppid = 5331
+^C
+python@ubuntu:~/Linux/week11$ vi 11-4.c
+python@ubuntu:~/Linux/week11$ vi 11-4.c
+python@ubuntu:~/Linux/week11$ ls
+11-1  11-1.c  11-2  11-2.c  11-3  11-3.c  11-4  11-4.c  11-5.c  ch.h  makefile
+python@ubuntu:~/Linux/week11$ make
+gcc 11-5.c -o 11-5
+11-5.c:1:17: fatal error: ch11.h: 没有那个文件或目录
+compilation terminated.
+makefile:7: recipe for target '11-5' failed
+make: *** [11-5] Error 1
+python@ubuntu:~/Linux/week11$ make
+gcc 11-5.c -o 11-5
+gcc 11-4.c -o 11-4
+python@ubuntu:~/Linux/week11$ ./11-5
+fprintf: Success
+fprintf: Success
+after calling 
+after calling 
+fprintf: Success
+after calling 
+fprintf: Success
+after calling 
+child22	24660	Mon Nov 30 16:17:06 2020
+
+child11	24661	Mon Nov 30 16:17:06 2020
+
+child1	24658	Mon Nov 30 16:17:06 2020
+
+child2	24659	Mon Nov 30 16:17:06 2020
+
+after calling 
+python@ubuntu:~/Linux/week11$ ls
+11-1    11-2    11-3    11-4    11-5    ch.h     makefile
+11-1.c  11-2.c  11-3.c  11-4.c  11-5.c  log.dat
+python@ubuntu:~/Linux/week11$ cat log.dat
+child22	24660	Mon Nov 30 16:17:06 2020
+child11	24661	Mon Nov 30 16:17:06 2020
+child1	24658	Mon Nov 30 16:17:06 2020
+child2	24659	Mon Nov 30 16:17:06 2020
+python@ubuntu:~/Linux/week11$ cp 11-5.c haha.c
+python@ubuntu:~/Linux/week11$ vi haha.c
+python@ubuntu:~/Linux/week11$ vi my.h
+python@ubuntu:~/Linux/week11$ vi haha.c
+python@ubuntu:~/Linux/week11$ vi my.h
+python@ubuntu:~/Linux/week11$ vi haha.c
+python@ubuntu:~/Linux/week11$ vi haha.c
+python@ubuntu:~/Linux/week11$ cp haha.c 123.c
+python@ubuntu:~/Linux/week11$ vi 123.c
+python@ubuntu:~/Linux/week11$ make
+gcc haha.c -o haha
+gcc 11-5.c -o 11-5
+gcc 123.c -o 123
+python@ubuntu:~/Linux/week11$ ./123.c
+./123.c: 行 2: 未预期的符号 `(' 附近有语法错误
+./123.c: 行 2: `int main()'
+python@ubuntu:~/Linux/week11$ ./123
+fprintf: Success
+fprintf: Success
+after calling 
+after calling 
+fprintf: Success
+after calling 
+fprintf: Success
+after calling 
+fprintf: Success
+child22	24660	Mon Nov 30 16:17:06 2020
+
+child11	24661	Mon Nov 30 16:17:06 2020
+
+child1	24658	Mon Nov 30 16:17:06 2020
+
+child2	24659	Mon Nov 30 16:17:06 2020
+
+after calling 
+python@ubuntu:~/Linux/week11$ vi 123.c
+python@ubuntu:~/Linux/week11$ vi my.h
+python@ubuntu:~/Linux/week11$ vi 123.c
+^[[Bpython@ubuntu:~/Linux/week11$ make
+gcc 123.c -o 123
+python@ubuntu:~/Linux/week11$ ./123
+after calling 
+after calling 
+after calling 
+after calling 
+child22	24660	Mon Nov 30 16:17:06 2020
+
+child11	24661	Mon Nov 30 16:17:06 2020
+
+child1	24658	Mon Nov 30 16:17:06 2020
+
+child2	24659	Mon Nov 30 16:17:06 2020
+
+child22	24781	Mon Nov 30 16:29:46 2020
+
+after calling 
+python@ubuntu:~/Linux/week11$ vi 123.c
+python@ubuntu:~/Linux/week11$ make
+gcc 123.c -o 123
+python@ubuntu:~/Linux/week11$ ./123
+child22	24660	Mon Nov 30 16:17:06 2020
+
+child11	24661	Mon Nov 30 16:17:06 2020
+
+child1	24658	Mon Nov 30 16:17:06 2020
+
+child2	24659	Mon Nov 30 16:17:06 2020
+
+child22	24781	Mon Nov 30 16:29:46 2020
+
+python@ubuntu:~/Linux/week11$ ls
+11-1    11-2    11-3    11-4    11-5    123    ch.h  haha.c   makefile
+11-1.c  11-2.c  11-3.c  11-4.c  11-5.c  123.c  haha  log.dat  my.h
+python@ubuntu:~/Linux/week11$ cat log.dat
+child22	24660	Mon Nov 30 16:17:06 2020
+child11	24661	Mon Nov 30 16:17:06 2020
+child1	24658	Mon Nov 30 16:17:06 2020
+child2	24659	Mon Nov 30 16:17:06 2020
+child22	24781	Mon Nov 30 16:29:46 2020
+child11	24782	Mon Nov 30 16:29:46 2020
+child1	24779	Mon Nov 30 16:29:46 2020
+child2	24780	Mon Nov 30 16:29:46 2020
+parent	24778	Mon Nov 30 16:29:46 2020
+child22	24844	Mon Nov 30 16:35:53 2020
+child11	24845	Mon Nov 30 16:35:53 2020
+child2	24843	Mon Nov 30 16:35:53 2020
+child1	24842	Mon Nov 30 16:35:53 2020
+parent	24841	Mon Nov 30 16:35:53 2020
+child22	24875	Mon Nov 30 16:37:56 2020
+child11	24876	Mon Nov 30 16:37:56 2020
+child2	24874	Mon Nov 30 16:37:56 2020
+child1	24873	Mon Nov 30 16:37:56 2020
+parent	24872	Mon Nov 30 16:37:56 2020
+python@ubuntu:~/Linux/week11$ vi mt.h
+
+/bin/bash: q: 未找到命令
+
+Shell 已返回127
+
+请按 ENTER 或其它命令继续
+python@ubuntu:~/Linux/week11$ vi my.h
+python@ubuntu:~/Linux/week11$ vi 123.c
+python@ubuntu:~/Linux/week11$ make
+gcc 123.c -o 123
+python@ubuntu:~/Linux/week11$ ./123
+child22	24660	Mon Nov 30 16:17:06 2020
+
+child11	24661	Mon Nov 30 16:17:06 2020
+
+child1	24658	Mon Nov 30 16:17:06 2020
+
+child2	24659	Mon Nov 30 16:17:06 2020
+
+child22	24781	Mon Nov 30 16:29:46 2020
+
+python@ubuntu:~/Linux/week11$ cat log.dat
+child22	24660	Mon Nov 30 16:17:06 2020
+child11	24661	Mon Nov 30 16:17:06 2020
+child1	24658	Mon Nov 30 16:17:06 2020
+child2	24659	Mon Nov 30 16:17:06 2020
+child22	24781	Mon Nov 30 16:29:46 2020
+child11	24782	Mon Nov 30 16:29:46 2020
+child1	24779	Mon Nov 30 16:29:46 2020
+child2	24780	Mon Nov 30 16:29:46 2020
+parent	24778	Mon Nov 30 16:29:46 2020
+child22	24844	Mon Nov 30 16:35:53 2020
+child11	24845	Mon Nov 30 16:35:53 2020
+child2	24843	Mon Nov 30 16:35:53 2020
+child1	24842	Mon Nov 30 16:35:53 2020
+parent	24841	Mon Nov 30 16:35:53 2020
+child22	24875	Mon Nov 30 16:37:56 2020
+child11	24876	Mon Nov 30 16:37:56 2020
+child2	24874	Mon Nov 30 16:37:56 2020
+child1	24873	Mon Nov 30 16:37:56 2020
+parent	24872	Mon Nov 30 16:37:56 2020
+child22	24934	Mon Nov 30 16:40:20 2020
+child2	24933	Mon Nov 30 16:40:20 2020
+child11	24935	Mon Nov 30 16:40:20 2020
+child1	24932	Mon Nov 30 16:40:20 2020
+parent	24931	Mon Nov 30 16:40:20 2020
+python@ubuntu:~/Linux/week11$ make
+make: Nothing to be done for 'ALL'.
+python@ubuntu:~/Linux/week11$ ./123
+child22	24660	Mon Nov 30 16:17:06 2020
+
+child11	24661	Mon Nov 30 16:17:06 2020
+
+child1	24658	Mon Nov 30 16:17:06 2020
+
+child2	24659	Mon Nov 30 16:17:06 2020
+
+child22	24781	Mon Nov 30 16:29:46 2020
+
+python@ubuntu:~/Linux/week11$ cat log.dat
+child22	24660	Mon Nov 30 16:17:06 2020
+child11	24661	Mon Nov 30 16:17:06 2020
+child1	24658	Mon Nov 30 16:17:06 2020
+child2	24659	Mon Nov 30 16:17:06 2020
+child22	24781	Mon Nov 30 16:29:46 2020
+child11	24782	Mon Nov 30 16:29:46 2020
+child1	24779	Mon Nov 30 16:29:46 2020
+child2	24780	Mon Nov 30 16:29:46 2020
+parent	24778	Mon Nov 30 16:29:46 2020
+child22	24844	Mon Nov 30 16:35:53 2020
+child11	24845	Mon Nov 30 16:35:53 2020
+child2	24843	Mon Nov 30 16:35:53 2020
+child1	24842	Mon Nov 30 16:35:53 2020
+parent	24841	Mon Nov 30 16:35:53 2020
+child22	24875	Mon Nov 30 16:37:56 2020
+child11	24876	Mon Nov 30 16:37:56 2020
+child2	24874	Mon Nov 30 16:37:56 2020
+child1	24873	Mon Nov 30 16:37:56 2020
+parent	24872	Mon Nov 30 16:37:56 2020
+child22	24934	Mon Nov 30 16:40:20 2020
+child2	24933	Mon Nov 30 16:40:20 2020
+child11	24935	Mon Nov 30 16:40:20 2020
+child1	24932	Mon Nov 30 16:40:20 2020
+parent	24931	Mon Nov 30 16:40:20 2020
+child11	24949	Mon Nov 30 16:41:23 2020
+child22	24950	Mon Nov 30 16:41:23 2020
+child2	24948	Mon Nov 30 16:41:23 2020
+child1	24947	Mon Nov 30 16:41:23 2020
+parent	24946	Mon Nov 30 16:41:23 2020
+python@ubuntu:~/Linux/week11$ rm log.dat
+python@ubuntu:~/Linux/week11$ ./123
+child22	24960	Mon Nov 30 16:41:58 2020
+
+child2	24959	Mon Nov 30 16:41:58 2020
+
+child11	24961	Mon Nov 30 16:41:58 2020
+
+child1	24958	Mon Nov 30 16:41:58 2020
+
+parent	24956	Mon Nov 30 16:41:58 2020
+
+python@ubuntu:~/Linux/week11$ ./123
+child22	24960	Mon Nov 30 16:41:58 2020
+
+child2	24959	Mon Nov 30 16:41:58 2020
+
+child11	24961	Mon Nov 30 16:41:58 2020
+
+child1	24958	Mon Nov 30 16:41:58 2020
+
+parent	24956	Mon Nov 30 16:41:58 2020
+
+python@ubuntu:~/Linux/week11$ make
+make: Nothing to be done for 'ALL'.
+python@ubuntu:~/Linux/week11$ vi 123.c
+python@ubuntu:~/Linux/week11$ rm log.dat
+python@ubuntu:~/Linux/week11$ ./123
+child22	24995	Mon Nov 30 16:47:16 2020
+
+child2	24993	Mon Nov 30 16:47:16 2020
+
+child11	24994	Mon Nov 30 16:47:16 2020
+
+child1	24992	Mon Nov 30 16:47:16 2020
+
+parent	24991	Mon Nov 30 16:47:16 2020
+
+python@ubuntu:~/Linux/week11$ ./123
+child22	24995	Mon Nov 30 16:47:16 2020
+
+child2	24993	Mon Nov 30 16:47:16 2020
+
+child11	24994	Mon Nov 30 16:47:16 2020
+
+child1	24992	Mon Nov 30 16:47:16 2020
+
+parent	24991	Mon Nov 30 16:47:16 2020
+
+python@ubuntu:~/Linux/week11$ make
+gcc 123.c -o 123
+In file included from 123.c:1:0:
+my.h: In function ‘prtinfo’:
+my.h:12:13: warning: passing argument 1 of ‘fopen’ makes pointer from integer without a cast [-Wint-conversion]
+  fp = fopen(fd,"w+");
+             ^
+In file included from ch.h:1:0,
+                 from my.h:1,
+                 from 123.c:1:
+/usr/include/stdio.h:272:14: note: expected ‘const char * restrict’ but argument is of type ‘int’
+ extern FILE *fopen (const char *__restrict __filename,
+              ^
+python@ubuntu:~/Linux/week11$ make
+make: Nothing to be done for 'ALL'.
+python@ubuntu:~/Linux/week11$ make
+gcc 123.c -o 123
+In file included from 123.c:1:0:
+my.h: In function ‘prtinfo’:
+my.h:12:13: warning: passing argument 1 of ‘fopen’ makes pointer from integer without a cast [-Wint-conversion]
+  fp = fopen(fd,"w+");
+             ^
+In file included from ch.h:1:0,
+                 from my.h:1,
+                 from 123.c:1:
+/usr/include/stdio.h:272:14: note: expected ‘const char * restrict’ but argument is of type ‘int’
+ extern FILE *fopen (const char *__restrict __filename,
+              ^
+python@ubuntu:~/Linux/week11$ make
+make: Nothing to be done for 'ALL'.
+python@ubuntu:~/Linux/week11$ make
+gcc 123.c -o 123
+python@ubuntu:~/Linux/week11$ rm log.dat
+python@ubuntu:~/Linux/week11$ ./123
+child22	26879	Mon Nov 30 16:52:59 2020
+
+child11	26880	Mon Nov 30 16:52:59 2020
+
+child1	26877	Mon Nov 30 16:52:59 2020
+
+child2	26878	Mon Nov 30 16:52:59 2020
+
+parent	26875	Mon Nov 30 16:52:59 2020
+
+python@ubuntu:~/Linux/week11$ cat log.dat
+child22	26879	Mon Nov 30 16:52:59 2020
+child11	26880	Mon Nov 30 16:52:59 2020
+child1	26877	Mon Nov 30 16:52:59 2020
+child2	26878	Mon Nov 30 16:52:59 2020
+parent	26875	Mon Nov 30 16:52:59 2020
+python@ubuntu:~/Linux/week11$ man fdoprn
+没有 fdoprn 的手册页条目
+python@ubuntu:~/Linux/week11$ man fdopen
+python@ubuntu:~/Linux/week11$ cat my.h 123.c
+#include "ch.h"
+void prtinfo(char* description,int fd,pid_t pid)
+{
+	char* current_time;
+	FILE* fp;
+	current_time = (char*)malloc(100);
+	time_t timer;
+	struct tm *tblock;
+	timer = time(NULL);
+	tblock = localtime(&timer);
+	current_time = asctime(tblock);
+	fp = fdopen(fd,"w");
+	if(fp==NULL)
+	{
+		printf("fp is NULL\n");
+		perror("fdopen error!\n");
+	}
+	fprintf(fp,"%s\t%d\t%s",description,pid,current_time);
+	fflush(fp);
+	fclose(fp);
+}
+#include "my.h"
+int main()
+{
+    FILE *fp;
+    int fd;
+    pid_t pid1;
+    char buf[1024]={0};
+
+    fd = open("log.dat",O_RDWR|O_CREAT|O_APPEND,0644);
+    fp = fopen("log.dat","r");
+    pid1=fork();
+    if(pid1<0)
+    {
+        perror("fork1 error!\n");
+    }
+    else if(pid1==0)
+    {
+        pid_t pid11;
+        pid11=fork();
+        if(pid11<0)
+        {
+            perror("fork11 error!\n");
+        }
+        if(pid11==0)
+        {
+            prtinfo("child11",fd,getpid());
+        }
+        else
+        {
+            waitpid(pid11,0,0);
+            prtinfo("child1",fd,getpid());  
+        }
+    }
+    else
+    {
+        pid_t pid2;
+        pid2=fork();
+        int i=0;
+        if(pid2<0)
+        {
+            perror("fork2 error!\n");
+        }
+        if(pid2==0)
+        {
+            pid_t pid22;
+            pid22=fork();
+            if(pid22<0)
+            {
+                perror("fork22 error!\n");
+            }
+            if(pid22==0)
+            {
+                prtinfo("child22",fd,getpid());
+            }
+            else
+            {
+                waitpid(pid22,0,0);
+                prtinfo("child2",fd,getpid());
+
+            }
+a
+        }
+        else
+        {
+            waitpid(pid1,0,0);
+            waitpid(pid2,0,0);
+            prtinfo("parent",fd,getpid());
+            for(int j=0;j<5;j++) 
+            { 
+                fgets(buf,1024,fp); 
+                printf("%s\n", buf); 
+            }
+        }
+
+    }
+    return 0;
+}
+
