@@ -1,0 +1,396 @@
+python@ubuntu:~/Linux/week11$ vi 11-1.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-1.c -o 11-1
+python@ubuntu:~/Linux/week11$ ./11-1
+child :pid = 23055,ppid = 23054
+parent : exit code 88
+python@ubuntu:~/Linux/week11$ cp 11-1.c 11-2.c
+python@ubuntu:~/Linux/week11$ vi 11-2.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-2.c -o 11-2
+python@ubuntu:~/Linux/week11$ ./11-2
+child2 :pid = 23155,ppid = 23153
+child1 :pid = 23154,ppid = 23153
+parent : exit code 0            0
+python@ubuntu:~/Linux/week11$ vi 11-2.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-2.c -o 11-2
+python@ubuntu:~/Linux/week11$ ./11-2
+child2 :pid = 23254,ppid = 23252
+child1 :pid = 23253,ppid = 23252
+parent : exit code 0 r1 = 23254
+parent : exit code 0 r2 = 23253
+python@ubuntu:~/Linux/week11$ vi 11-2.c
+python@ubuntu:~/Linux/week11$ cp 11-2.c haha.c
+python@ubuntu:~/Linux/week11$ vi haha.c
+python@ubuntu:~/Linux/week11$ make
+gcc haha.c -o haha
+gcc 11-2.c -o 11-2
+python@ubuntu:~/Linux/week11$ ./haha
+child2 :pid = 23305,ppid = 23303
+child1 :pid = 23304,ppid = 23303
+parent : exit code 0 r1 = 0
+parent : exit code 0 r2 = 23304
+python@ubuntu:~/Linux/week11$ vi haha.c
+python@ubuntu:~/Linux/week11$ make
+gcc haha.c -o haha
+python@ubuntu:~/Linux/week11$ ./haha
+child2 :pid = 23318,ppid = 23316
+child1 :pid = 23317,ppid = 23316
+4196688   0parent : exit code 0 r1 = 0
+parent : exit code 0 r2 = 23317
+python@ubuntu:~/Linux/week11$ vi haha.c
+python@ubuntu:~/Linux/week11$ rm haha.c haha
+python@ubuntu:~/Linux/week11$ ls
+11-1  11-1.c  11-2  11-2.c  ch.h  makefile
+python@ubuntu:~/Linux/week11$ ./11-2
+child2 :pid = 23324,ppid = 23322
+child1 :pid = 23323,ppid = 23322
+parent : exit code 0 r1 = 23324
+parent : exit code 0 r2 = 23323
+python@ubuntu:~/Linux/week11$ vi 11-2.c
+python@ubuntu:~/Linux/week11$ vi 11-2.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-2.c -o 11-2
+11-2.c: In function ‘main’:
+11-2.c:47:13: error: expected ‘;’ before ‘}’ token
+             }
+             ^
+makefile:7: recipe for target '11-2' failed
+make: *** [11-2] Error 1
+python@ubuntu:~/Linux/week11$ vi 11-2.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-2.c -o 11-2
+python@ubuntu:~/Linux/week11$ ./11-2
+child2 :pid = 23407,ppid = 23405
+child1 :pid = 23406,ppid = 23405
+first is chlid1second is child2parent : exit code 0 r1 = 23407
+parent : exit code 0 r2 = 23406
+python@ubuntu:~/Linux/week11$ vi 11-2.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-2.c -o 11-2
+python@ubuntu:~/Linux/week11$ ./11-2
+child2 :pid = 23425,ppid = 23423
+child1 :pid = 23424,ppid = 23423
+first is chlid1
+second is child2
+parent : exit code 0 r1 = 23425
+parent : exit code 0 r2 = 23424
+python@ubuntu:~/Linux/week11$ vi 11-2.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-2.c -o 11-2
+python@ubuntu:~/Linux/week11$ ./11-2
+child2 :pid = 23438,ppid = 23436
+child1 :pid = 23437,ppid = 23436
+first is chlid1
+second is child2
+parent : exit code 0 r1 = 23438
+parent : exit code 0 r2 = 23437
+python@ubuntu:~/Linux/week11$ vi 11-2.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-2.c -o 11-2
+python@ubuntu:~/Linux/week11$ ./11-2
+child2 :pid = 23450,ppid = 23448
+child1 :pid = 23449,ppid = 23448
+first is chlid2
+parent : exit code 0 r1 = 23450
+parent : exit code 0 r2 = 23449
+python@ubuntu:~/Linux/week11$ vi 11-2.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-2.c -o 11-2
+python@ubuntu:~/Linux/week11$ ./11-2
+child2 :pid = 23464,ppid = 23462
+child1 :pid = 23463,ppid = 23462
+first is chlid1
+second is child2
+parent : exit code 0 r1 = 23463
+parent : exit code 0 r2 = 23464
+python@ubuntu:~/Linux/week11$ vi 11-2.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-2.c -o 11-2
+python@ubuntu:~/Linux/week11$ ./11-2
+child2 :pid = 23623,ppid = 23621
+child1 :pid = 23622,ppid = 23621
+first is chlid2
+second is child2
+parent : exit code 0 r1 = 23623
+parent : exit code 0 r2 = 23622
+python@ubuntu:~/Linux/week11$ vi 11-2.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-2.c -o 11-2
+11-2.c: In function ‘main’:
+11-2.c:48:30: error: ‘s’ undeclared (first use in this function)
+             while(r1 = wait(&s)!= -1)
+                              ^
+11-2.c:48:30: note: each undeclared identifier is reported only once for each function it appears in
+makefile:7: recipe for target '11-2' failed
+make: *** [11-2] Error 1
+python@ubuntu:~/Linux/week11$ vi 11-2.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-2.c -o 11-2
+python@ubuntu:~/Linux/week11$ ./11-2
+child2 :pid = 23661,ppid = 23659
+child1 :pid = 23660,ppid = 23659
+--------
+parent : exit code 0 r1 = 0
+parent : exit code 0 r2 = 23661
+python@ubuntu:~/Linux/week11$ ./11-2
+child2 :pid = 23664,ppid = 23662
+child1 :pid = 23663,ppid = 23662
+--------
+parent : exit code 0 r1 = 0
+parent : exit code 0 r2 = 23664
+python@ubuntu:~/Linux/week11$ vi 11-2.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-2.c -o 11-2
+python@ubuntu:~/Linux/week11$ ./11-2
+child2 :pid = 23678,ppid = 23676
+child1 :pid = 23677,ppid = 23676
+--------
+--------
+parent : exit code 0 r1 = 0
+parent : exit code 8 r2 = 0
+python@ubuntu:~/Linux/week11$ vi 11-2.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-2.c -o 11-2
+python@ubuntu:~/Linux/week11$ ./11-2
+child2 :pid = 23701,ppid = 23699
+--------
+child1 :pid = 23700,ppid = 23699
+--------
+parent : exit code 0 r1 = 0
+parent : exit code 8 r2 = 0
+python@ubuntu:~/Linux/week11$ vi 11-2.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-2.c -o 11-2
+python@ubuntu:~/Linux/week11$ ./11-2
+child2 :pid = 23714,ppid = 23712
+child1 :pid = 23713,ppid = 23712
+--------
+parent : exit code 0 r1 = 0
+parent : exit code 0 r2 = 23714
+python@ubuntu:~/Linux/week11$ vi 11-2.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-2.c -o 11-2
+python@ubuntu:~/Linux/week11$ ./11-2
+child2 :pid = 23732,ppid = 23730
+child1 :pid = 23731,ppid = 23730
+--------
+parent : exit code 0 r1 = 0
+parent : exit code 0 r2 = 23732
+python@ubuntu:~/Linux/week11$ vi 11-2.c
+^[[Bpython@ubuntu:~/Linux/week11$ make
+gcc 11-2.c -o 11-2
+python@ubuntu:~/Linux/week11$ ./11-2
+child2 :pid = 23754,ppid = 23752
+child1 :pid = 23753,ppid = 23752
+--------
+parent : free pid = 0
+python@ubuntu:~/Linux/week11$ vi 11-2.c
+^[[Bpython@ubuntu:~/Linux/week11$ make
+gcc 11-2.c -o 11-2
+python@ubuntu:~/Linux/week11$ ./11-2
+child2 :pid = 23769,ppid = 23767
+child1 :pid = 23768,ppid = 23767
+--------
+parent : free pid = 23768
+python@ubuntu:~/Linux/week11$ vi 11-2.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-2.c -o 11-2
+python@ubuntu:~/Linux/week11$ ./11-2
+parent : free pid = 0
+python@ubuntu:~/Linux/week11$ child2 :pid = 23792,ppid = 5331
+child1 :pid = 23791,ppid = 5331
+^C
+python@ubuntu:~/Linux/week11$ vi 11-2.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-2.c -o 11-2
+python@ubuntu:~/Linux/week11$ ./11-2
+child2 :pid = 23820,ppid = 23818
+child1 :pid = 23819,ppid = 23818
+--------
+parent : free pid = 23819
+python@ubuntu:~/Linux/week11$ vi 11-2.c
+python@ubuntu:~/Linux/week11$ cp 11-2.c 11-3.c
+python@ubuntu:~/Linux/week11$ vi 11-3.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-2.c -o 11-2
+gcc 11-3.c -o 11-3
+11-3.c: In function ‘main’:
+11-3.c:40:28: warning: format ‘%d’ expects a matching ‘int’ argument [-Wformat=]
+                     printf("pid %d exit with signal %d\n",WTERMSIG(s1));
+                            ^
+11-3.c:49:28: warning: format ‘%d’ expects a matching ‘int’ argument [-Wformat=]
+                     printf("pid %d exit with signal %d\n",WTERMSIG(s2));
+                            ^
+python@ubuntu:~/Linux/week11$ vi 11-3.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-3.c -o 11-3
+python@ubuntu:~/Linux/week11$ ./11-2
+child2 :pid = 23878,ppid = 23876
+child1 :pid = 23877,ppid = 23876
+^C
+python@ubuntu:~/Linux/week11$ ./11-3
+child2 :pid = 23883,ppid = 23881
+child1 :pid = 23882,ppid = 23881
+pid 23883 exit with signal 0
+pid 23882 exit with signal 9
+parent finish!python@ubuntu:~/Linux/week11$ vi 11-3.c
+python@ubuntu:~/Linux/week11$ make
+gcc 11-3.c -o 11-3
+python@ubuntu:~/Linux/week11$ ./11-3
+child2 :pid = 23900,ppid = 23898
+child1 :pid = 23899,ppid = 23898
+pid 23900 exit with signal 0
+pid 23899 exit with signal 9
+parent finish!
+python@ubuntu:~/Linux/week11$ vi 11-3.c
+^[[Bpython@ubuntu:~/Linux/week11$ ./11-3
+child2 :pid = 23917,ppid = 23915
+child1 :pid = 23916,ppid = 23915
+^C
+python@ubuntu:~/Linux/week11$ ls
+11-1  11-1.c  11-2  11-2.c  11-3  11-3.c  ch.h  makefile
+python@ubuntu:~/Linux/week11$ cat *.c
+#include "ch.h"
+int main()
+{
+	pid_t pid;
+	pid = fork();
+	if(pid<0)
+	{
+		perror("fork pid error!\n");
+	}
+	else if(pid == 0)
+	{
+		printf("child :pid = %d,ppid = %d\n",getpid(),getppid());
+		exit(88);
+	}
+	else
+	{
+		int s,r;
+		r = wait(&s);
+		printf("parent : exit code %d\n",WEXITSTATUS(s));
+		return 0;
+	}
+
+}
+#include "ch.h"
+int main()
+{
+	pid_t pid;
+	pid = fork();
+	if(pid<0)
+	{
+		perror("fork pid error!\n");
+	}
+	else if(pid == 0)
+	{
+		printf("child1 :pid = %d,ppid = %d\n",getpid(),getppid());
+        while(1);
+        exit(0);
+	}
+	else
+	{
+		int s1,r1,s2,r2,pid2;
+        pid2 = fork();
+        if(pid2<0)
+        {
+	    	perror("fork pid error!\n");
+        }
+        else if(pid2 == 0)
+        {
+	    	printf("child2 :pid = %d,ppid = %d\n",getpid(),getppid());
+	    	exit(0);
+        }
+        else
+        {
+	    	//r1 = wait(&s1);
+           r2 = wait(&s2);
+           /* if(pid == r1)
+            {
+                printf("first is chlid1\n");
+            }
+            else if(pid2 == r1)
+            {
+                printf("first is chlid2\n");
+            }
+            if(pid == r2)
+            {
+                printf("second is child2\n");
+            }
+            else if(pid2 == r2)
+            {
+                printf("second is child2\n");
+            }*/
+
+            while(r1 = wait(&s1)!= -1)
+          //  while((pid = waitpid(pid,NULL,WNOHANG)))
+            {
+                printf("--------\n");
+            }
+	    //	printf("parent : exit code %d r1 = %d\n",WEXITSTATUS(s1),r1);
+	    	printf("parent : free pid = %d\n",pid);
+	    	return 0;
+
+        }
+	}
+
+}
+#include "ch.h"
+int main()
+{
+	pid_t pid;
+	pid = fork();
+	if(pid<0)
+	{
+		perror("fork pid error!\n");
+	}
+	else if(pid == 0)
+	{
+		printf("child1 :pid = %d,ppid = %d\n",getpid(),getppid());
+        while(1);
+        exit(0);
+	}
+	else
+	{
+		int s1,r1,s2,r2,pid2;
+        pid2 = fork();
+        if(pid2<0)
+        {
+	    	perror("fork pid error!\n");
+        }
+        else if(pid2 == 0)
+        {
+	    	printf("child2 :pid = %d,ppid = %d\n",getpid(),getppid());
+	    	exit(0);
+        }
+        else
+        {
+	    	r1 = wait(&s1);
+            r2 = wait(&s2);
+            if(WIFEXITED(&s1))
+            {
+	    	    printf("parent wait for child1 %d r1 = %d\n",WEXITSTATUS(s1),r1);
+            }
+            else
+            {
+                if(WIFSIGNALED(&s1))
+                    printf("pid %d exit with signal %d\n",r1,WTERMSIG(s1));
+            }
+            if(WIFEXITED(&s2))
+            {
+	    	    printf("parent wait for child2 %d r2 = %d\n",WEXITSTATUS(s2),r2);
+            }
+            else
+            {
+                if(WIFSIGNALED(&s2))
+                    printf("pid %d exit with signal %d\n",r2,WTERMSIG(s2));
+            }
+            printf("parent finish!\n");
+	    	return 0;
+
+        }
+	}
+
+}
