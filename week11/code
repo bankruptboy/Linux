@@ -1,0 +1,409 @@
+python@ubuntu:~/Linux/week12$ cat -n *.c
+     1	#include "ch.h"
+     2	int main()
+     3	{
+     4	    int fd[2],i;
+     5	    pid_t k;
+     6	    char buf[100];
+     7	    memset(buf,0,sizeof(buf));
+     8	    if((pipe(fd))<0)
+     9	    {
+    10	        perror("pipe failed!\n");
+    11	        exit(-1);
+    12	    }
+    13	    k = fork();
+    14	    if(k<0)
+    15	    {
+    16	        perror("pipe failed!\n");
+    17	        exit(-1);
+    18	    }
+    19	    else if(k == 0)
+    20	    {
+    21	        close(fd[1]);
+    22	        i = read(fd[0],buf,sizeof(buf));
+    23	        if(i<=0)
+    24	        {
+    25	            printf("child recive failed!\n");
+    26	        }
+    27	        else 
+    28	        {
+    29	            fprintf(stdout,"child %d recive %s from parent! total %lu\n",getpid(),buf,strlen(buf));
+    30	        }
+    31	        close(fd[0]);
+    32	        exit(0);
+    33	    }
+    34	    else
+    35	    {
+    36	        close(fd[0]);
+    37	        sprintf(buf,"%d say hello to %d\n",getpid(),k);
+    38	        i = write(fd[1],buf,sizeof(buf));
+    39	        if(i>0)
+    40	            printf("parent %d send seccess!\n",getpid());
+    41	        wait(NULL);
+    42	        close(fd[1]);
+    43	        return 0;
+    44	    }
+    45	
+    46	
+    47	}
+    48	#include "ch.h"
+    49	int main()
+    50	{
+    51	    int fd[2],i;
+    52	    pid_t k;
+    53	    char buf[100];
+    54	    int fd1[2];
+    55	    memset(buf,0,sizeof(buf));
+    56	    if((pipe(fd))<0 || (pipe(fd1))<0)
+    57	    {
+    58	        perror("pipe failed!\n");
+    59	        exit(-1);
+    60	    }
+    61	    k = fork();
+    62	    if(k<0)
+    63	    {
+    64	        perror("pipe failed!\n");
+    65	        exit(-1);
+    66	    }
+    67	    else if(k == 0)
+    68	    {
+    69	        close(fd[1]);
+    70	        close(fd1[0]);
+    71	        i = read(fd[0],buf,sizeof(buf));
+    72	        if(i<=0)
+    73	        {
+    74	            printf("child recive failed!\n");
+    75	        }
+    76	        else 
+    77	        {
+    78	            fprintf(stdout,"child %d recive %s from parent! total %lu\n",getpid(),buf,strlen(buf));
+    79	        }
+    80	        sprintf(buf,"%d receive %lu from %d\n",getpid(),strlen(buf),getppid());
+    81	        write(fd1[1],buf,strlen(buf));
+    82	        close(fd1[1]);
+    83	        close(fd[0]);
+    84	        exit(0);
+    85	    }
+    86	    else
+    87	    {
+    88	        close(fd[0]);
+    89	        close(fd1[1]);
+    90	        sprintf(buf,"%d say hello to %d\n",getpid(),k);
+    91	        write(fd[1],buf,sizeof(buf));
+    92	        i = read(fd1[0],buf,sizeof(buf));
+    93	        if(i<=0)
+    94	        {
+    95	            printf("parent recive failed!\n");
+    96	        }
+    97	        else 
+    98	        {
+    99	            fprintf(stdout,"parent %d recive %s from child! total %lu\n",getpid(),buf,strlen(buf));
+   100	        }
+   101	        wait(NULL);
+   102	        close(fd1[0]);
+   103	        close(fd[1]);
+   104	        return 0;
+   105	    }
+   106	
+   107	
+   108	}
+   109	#include "ch.h"
+   110	int main()
+   111	{
+   112	    int fd[2],i;
+   113	    pid_t k,k1;
+   114	    char buf[100];
+   115	    int fd1[2];
+   116	    memset(buf,0,sizeof(buf));
+   117	    if((pipe(fd))<0 || (pipe(fd1))<0)
+   118	    {
+   119	        perror("pipe failed!\n");
+   120	        exit(-1);
+   121	    }
+   122	    k = fork();
+   123	    if(k<0 || k1<0)
+   124	    {
+   125	        perror("fork failed!\n");
+   126	        exit(-1);
+   127	    }
+   128	    else if(k == 0)
+   129	    {
+   130	        close(fd[1]);
+   131	        close(fd1[0]);
+   132	        i = read(fd[0],buf,sizeof(buf));
+   133	        if(i<=0)
+   134	        {
+   135	            printf("child recive failed!\n");
+   136	        }
+   137	        else 
+   138	        {
+   139	            fprintf(stdout,"child1 %d recive %s from child2! total %lu\n",getpid(),buf,strlen(buf));
+   140	        }
+   141	        sprintf(buf,"%d send %lu to child2\n",getpid(),strlen(buf));
+   142	        write(fd1[1],buf,strlen(buf));
+   143	        wait(NULL);
+   144	        close(fd1[1]);
+   145	        close(fd[0]);
+   146	        exit(0);
+   147	
+   148	    }
+   149	    else
+   150	    {
+   151	        k1 = fork();
+   152	        if(k1<0)
+   153	        {
+   154	            perror("error!");
+   155	        }
+   156	        if(k1 ==0)
+   157	        {
+   158	            close(fd[0]);
+   159	            close(fd1[1]);
+   160	            sprintf(buf,"%d say hello to %d\n",getpid(),k);
+   161	            write(fd[1],buf,sizeof(buf));
+   162	            i = read(fd1[0],buf,sizeof(buf));
+   163	            if(i<=0)
+   164	            {
+   165	                printf("child2 recive failed!\n");
+   166	            }
+   167	            else 
+   168	            {
+   169	                fprintf(stdout,"child2 %d recive %s from child! total %lu\n",getpid(),buf,strlen(buf));
+   170	            }
+   171	            wait(NULL);
+   172	            close(fd1[0]);
+   173	            close(fd[1]);
+   174	
+   175	        }
+   176	        else
+   177	        {
+   178	            wait(NULL);
+   179	            wait(NULL);
+   180	        }
+   181	        return 0;
+   182	    }
+   183	
+   184	
+   185	}
+   186	#include "ch.h"
+   187	int main()
+   188	{
+   189	    pid_t k1,k2;
+   190	    int fd1[2],fd2[2],i;
+   191	    char buf[100];
+   192	    memset(buf,0,sizeof(buf));
+   193	    if((pipe(fd2))<0 || (pipe(fd1))<0)
+   194	    {
+   195	        perror("pipe failed!\n");
+   196	        exit(-1);
+   197	    }
+   198	    k1 = fork();
+   199	    if(k1<0)
+   200	    {
+   201	        perror("fork1 failed!\n");
+   202	        exit(-1);
+   203	    }
+   204	    else if (k1 ==0)
+   205	    {
+   206	        close(fd1[0]);
+   207	        close(fd2[1]);
+   208	        sprintf(buf,"%d : %d say hello \n",getppid(),getpid());
+   209	        write(fd1[1],buf,sizeof(buf));
+   210	        read(fd2[0],buf,sizeof(buf));
+   211	        printf("%d : %s\n",getppid(),buf);
+   212	        exit(0);
+   213	    }
+   214	    else
+   215	    {
+   216	        k2 = fork();
+   217	        if(k2<0)
+   218	        {
+   219	            perror("fork2 failed!\n");
+   220	            exit(-1);
+   221	        }
+   222	        else if(k2 == 0)
+   223	        {
+   224	            close(fd1[1]);
+   225	            close(fd2[0]);
+   226	            read(fd1[0],buf,sizeof(buf));
+   227	            printf("%d : %s\n",getppid(),buf);
+   228	            sprintf(buf,"%d : %d say haha \n",getppid(),getpid());
+   229	            write(fd2[1],buf,sizeof(buf));
+   230	            exit(0);
+   231	
+   232	        }
+   233	        else
+   234	        {
+   235	            close(fd1[0]);
+   236	            close(fd1[1]);
+   237	            close(fd2[0]);
+   238	            close(fd2[1]);
+   239	            wait(NULL);
+   240	            wait(NULL);
+   241	            return 0;
+   242	        }
+   243	    }
+   244	}
+   245	#include "ch.h"
+   246	int main(int argc,char* argv[])
+   247	{
+   248	    int i,fd;
+   249	    fd = open("out.dat",O_CREAT|O_RDWR|O_APPEND,0644);
+   250	    close(1);
+   251	    dup(fd);
+   252	    printf("dup1 pid = %d\n",getpid());
+   253	    for(i = 0;i<argc;i++)
+   254	        printf("argv[%d] : %s \n",i,argv[i]);
+   255	    return 0;
+   256	}
+   257	#include "ch.h"
+   258	int main()
+   259	{
+   260	    pid_t k1,k2;
+   261	    int fd1[2],fd2[2],i;
+   262	    char buf[100];
+   263	    memset(buf,0,sizeof(buf));
+   264	    if((pipe(fd2))<0 || (pipe(fd1))<0)
+   265	    {
+   266	        perror("pipe failed!\n");
+   267	        exit(-1);
+   268	    }
+   269	    k1 = fork();
+   270	    if(k1<0)
+   271	    {
+   272	        perror("fork1 failed!\n");
+   273	        exit(-1);
+   274	    }
+   275	    else if (k1 ==0)
+   276	    {
+   277	        close(fd1[0]);
+   278	        close(fd2[1]);
+   279	        sprintf(buf,"child1 say hello to child2\n");
+   280	        i = write(fd1[1],buf,sizeof(buf));
+   281	        if(i == 0)
+   282	        {
+   283	            printf("child1 write failed!\n");
+   284	        }
+   285	        else
+   286	        {
+   287	            printf("child1 write to pipe %s\n",buf);
+   288	        }
+   289	        i =  read(fd2[0],buf,sizeof(buf));
+   290	        if(i == 0)
+   291	        {
+   292	            printf("child1 read failed");
+   293	        }
+   294	        else
+   295	        {
+   296	            printf("child1 read to pipe %s\n",buf);
+   297	        }
+   298	        exit(0);
+   299	    }
+   300	    else
+   301	    {
+   302	        k2 = fork();
+   303	        if(k2<0)
+   304	        {
+   305	            perror("fork2 failed!\n");
+   306	            exit(-1);
+   307	        }
+   308	        else if(k2 == 0)
+   309	        {
+   310	            close(fd1[1]);
+   311	            close(fd2[0]);
+   312	            i=read(fd1[0],buf,sizeof(buf));
+   313	            if(i==0)
+   314	            {
+   315	                printf("child2 read failed!\n");
+   316	            }
+   317	            else
+   318	            {
+   319	                printf("child2 read from pipe : %s\n",buf);
+   320	            }
+   321	            sprintf(buf,"child2 say hello to child1!\n");
+   322	            i=write(fd2[1],buf,sizeof(buf));
+   323	            if(i==0)
+   324	            {
+   325	                printf("child2 write failed!\n");
+   326	            }
+   327	            else
+   328	            {
+   329	                printf("child2 write to pipe : %s\n",buf);
+   330	            }
+   331	            exit(0);
+   332	        }
+   333	        else
+   334	        {
+   335	            close(fd1[0]);
+   336	            close(fd1[1]);
+   337	            close(fd2[0]);
+   338	            close(fd2[1]);
+   339	            wait(NULL);
+   340	            wait(NULL);
+   341	            return 0;
+   342	        }
+   343	    }
+   344	}
+   345	#include "ch.h"
+   346	int main()
+   347	{
+   348	    int fd[2],i;
+   349	    pid_t k;
+   350	    char buf[100];
+   351	    memset(buf,0,sizeof(buf));
+   352	    if((pipe(fd))<0)
+   353	    {
+   354	        perror("pipe failed!\n");
+   355	        exit(-1);
+   356	    }
+   357	    k = fork();
+   358	    if(k<0)
+   359	    {
+   360	        perror("fork failed!\n");
+   361	        exit(-1);
+   362	    }
+   363	    else if(k ==0)
+   364	    {
+   365	        close(fd[0]);
+   366	        close(1);
+   367	        dup(fd[1]); 
+   368	        int r = execl("./test","./test","hello","world",NULL);
+   369	        if(r == -1)
+   370	        {
+   371	            perror("execl failed\n");
+   372	            exit(-1);
+   373	        }
+   374	    }
+   375	    else
+   376	    {
+   377	        close(fd[1]);
+   378	        close(0);
+   379	        dup(fd[0]);
+   380	        i = read(0,buf,sizeof(buf));
+   381	        if(i<=0)
+   382	        {
+   383	            perror("read error!\n");
+   384	        }
+   385	        else
+   386	        {
+   387	            printf("pipe read : %s",buf);
+   388	        }
+   389	        return 0;
+   390	    }
+   391	}
+   392	
+   393	#include "ch.h"
+   394	int main()
+   395	{
+   396	    char *arg = "ps -ef";
+   397	    system((const char *)arg);
+   398	    return 0;
+   399	}
+   400	#include "ch.h"
+   401	int main(int argc,char** argv)
+   402	{
+   403	    int i;
+   404	    printf("test : pid = %d, ppid = %d\n",getpid(),getppid());
+   405	    for(i = 0;i<argc;i++)
+   406	        printf("argv[%d] = %s\n",i,argv[i]);
+   407	    return 99;
+   408	}
