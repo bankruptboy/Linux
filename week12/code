@@ -1,0 +1,93 @@
+python@ubuntu:~/Linux/week13$ cat *.c *.h
+#include "ch.h"
+void write_data(FILE *stream)
+{
+    int i;
+    for(i=0;i<50;i++)
+    {
+        fprintf(stream,"line %2d\n",i);
+        if(ferror(stream))
+            err_exit("Output to stream failed!");
+    }
+}
+int main(void)
+{
+    FILE *output;
+    output = popen("more -10","w");
+    if(!output)
+       err_exit("Could not run more!");
+    write_data(output);
+    pclose(output);
+    return 0;
+}#include "ch.h"
+int main(void)
+{
+    int fifo_fd, n, total_bytes = 0;
+    char readbuf[PIPE_BUF];
+    /*如果FIFO不存在，创建它*/
+    if (access(FIFO_FILE, F_OK) == -1)
+        if (mkfifo(FIFO_FILE, 0666) != 0)
+        {
+            printf("Could not create fifo %s\n", FIFO_FILE);
+            exit(0);
+        }
+    if ((fifo_fd = open(FIFO_FILE, O_RDONLY)) < 0)
+    {
+        printf("Could not open fifo %s n", FIFO_FILE);
+        exit(EXIT_FAILURE);
+    }
+    printf("Process %d opened: %s\n", getpid(), FIFO_FILE);
+    while ((n = read(fifo_fd, readbuf, PIPE_BUF)) > 0)
+    {
+        printf("%d received %d bytes\n", getpid(), n);
+        total_bytes += n;
+    }
+    close(fifo_fd);
+    printf("Process %d received total %d bytes \n", getpid(), total_bytes);
+    return 0;
+}
+#include "ch.h"
+int main(void)
+{
+    int fifo_fd, n, total_bytes = 0;
+    char sendbuf[PIPE_BUF];
+    if ((fifo_fd = open(FIFO_FILE, O_WRONLY)) < 0)
+    {
+        printf("Could not open fifo %s n", FIFO_FILE);
+        exit(EXIT_FAILURE);
+    }
+    printf("Process %d opened: %s \n", getpid(), FIFO_FILE);
+    do
+    {
+        if ((n = write(fifo_fd, sendbuf, PIPE_BUF)) == -1)
+            err_exit("FIFO broken");
+        printf("%d write %d bytes\n", getpid(),n);
+        total_bytes += n;
+    } while (total_bytes < TEN_MEG);
+    close(fifo_fd);
+    printf("Process %d finished\n", getpid());
+    return 0;
+}#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <string.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <time.h>
+#include <dlfcn.h>
+#include <setjmp.h>
+#include <wait.h>
+#include <errno.h>
+
+#define PIPE_BUF 100
+#define FIFO_FILE "./testfifo"
+#define TEN_MEG 1000
+#define INFILE "./in.txt"
+#define OUTFILE "./out.txt"
+#define MODE S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP|S_IROTH
+void err_exit(char *s)
+{
+    printf("Usage : *s is faile!\n");
+    exit(1);
+}
