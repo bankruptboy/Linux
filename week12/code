@@ -91,3 +91,93 @@ void err_exit(char *s)
     printf("Usage : *s is faile!\n");
     exit(1);
 }
+python@ubuntu:~/Linux/week13$ cat 13-4-*.c
+#include "ch.h"
+int main()
+{
+    int server_fifo_fd, client_fifo_fd;
+    struct data_to_pass my_request;
+    char client_fifo_name[256];
+    pid_t mypid;
+
+    server_fifo_fd = open(SERVER_FIFO_NAME, O_WRONLY);
+    if (server_fifo_fd == -1)
+        err_exit("Sorry, no server");
+
+    mypid = getpid();
+    sprintf(client_fifo_name, CLIENT_FIFO_NAME, mypid);
+    if (mkfifo(client_fifo_name, 0777) == -1)
+        err_exit(client_fifo_name);
+
+    while (1)
+    {
+        printf("Enter your request:");
+        memset(my_request.data, 0, BUFFER_SIZE);
+        fgets(my_request.data, BUFFER_SIZE, stdin);
+        if (strcmp(my_request.data, "bye\n") == 0 || strcmp(my_request.data, "BYE\n") == 0)
+            break;
+
+        my_request.client_pid = mypid;
+
+        write(server_fifo_fd, &my_request, sizeof(my_request));
+        client_fifo_fd = open(client_fifo_name, O_RDONLY);
+        if (client_fifo_fd != -1)
+        {
+            if (read(client_fifo_fd, &my_request, sizeof(my_request)) > 0)
+            {
+                printf("---I get answer: %s\n", my_request.data);
+            }
+            close(client_fifo_fd);
+        }
+    }
+    close(server_fifo_fd);
+    //unlink(CLIENT_FIFO_NAME);
+    unlink(client_fifo_name);
+    return 0;
+}#include "ch.h"
+int main()
+{
+        int server_fifo_fd, client_fifo_fd;
+        struct data_to_pass my_data;
+        int nbytes;
+        int y = 0;
+        char client_fifo_name[256], *tmp_char_ptr;
+
+        mkfifo(SERVER_FIFO_NAME, 0777);
+        server_fifo_fd = open(SERVER_FIFO_NAME, O_RDONLY);
+        if (server_fifo_fd == -1)
+                err_exit("Server fifo failure");
+        do
+        {
+                memset(my_data.data,0,sizeof(my_data.data)); 
+                nbytes = read(server_fifo_fd, &my_data, sizeof(my_data));
+                if (nbytes > 0)
+                {
+                        tmp_char_ptr = my_data.data;
+                        while (*tmp_char_ptr)
+                        {
+                                if (isupper(*tmp_char_ptr))
+                                        *tmp_char_ptr = tolower(*tmp_char_ptr);
+                                else if (islower(*tmp_char_ptr))
+                                        *tmp_char_ptr = toupper(*tmp_char_ptr);
+                                else if (*tmp_char_ptr == '\n')
+                                        *tmp_char_ptr = '\0';
+                                tmp_char_ptr++;
+                        }
+                        printf("data from client: %s\n", my_data.data);
+                        sprintf(client_fifo_name, CLIENT_FIFO_NAME, my_data.client_pid);
+                        printf("client name: %s\n",client_fifo_name);
+                        client_fifo_fd = open(client_fifo_name, O_WRONLY);
+                        if (client_fifo_fd != -1)
+                        {
+                                write(client_fifo_fd, &my_data, sizeof(my_data));
+                                printf("y = %d\n",y++);
+                                close(client_fifo_fd);
+                        }
+                }
+
+        } while (nbytes > 0);
+        close(server_fifo_fd);
+        unlink(SERVER_FIFO_NAME);
+        return 0;
+}
