@@ -1,0 +1,141 @@
+python@ubuntu:~/Linux/week14$ cat *.c *.h
+#include "ch.h"
+int main(int argc,char* argv[])
+{
+    struct stat stat_buf;
+    if(argc!=2)
+    {
+        fprintf(stderr,"Usage : ftok <pathname>");
+        return -1;
+    }
+    stat(argv[1],&stat_buf);
+    key_t key = ftok(argv[1],0x1234);
+    printf("st_dev = %lx, st_inode = %lx,key = %x\n",stat_buf.st_dev,stat_buf.st_ino,key);
+    return 0;
+}#include "ch.h"
+int main(void)
+{
+    int running = 1,msgid;
+    struct my_msg msgbuf;
+    long int msg_type = -57;
+
+    if((msgid==msgget((key_t)1234,0666|IPC_CREAT))==-1)
+    {
+        err_exit("msgget failed!\n");
+    }
+    while(running)
+    {
+        printf("r1\n");
+        if(msgrcv(msgid,(void*)&msgbuf,BUFSIZ,-57,IPC_NOWAIT)!=-1)
+        {
+            printf("you wrote %s",msgbuf.text);
+        }
+        else if(errno == ENOMSG && msgrcv(msgid,(void*)&msgbuf,BUFSIZ,0,0)!=-1)
+        {
+            printf("you wrote %s",msgbuf.text);
+        }
+        else
+        {
+            err_exit("msgrcv failed!\n");
+        }
+        if(strncmp(msgbuf.text,"end",3)==0)
+            break;
+    }
+    if(msgctl(msgid,IPC_RMID,0) == -1)
+        err_exit("msgct; failed!\n");
+    return 0;
+}#include "ch.h"
+int main(void)
+{
+    int running = 1,msgid;
+    struct my_msg msgbuf;
+    struct msqid_ds buf;
+
+    if((msgid==msgget((key_t)1234,0666|IPC_CREAT))==-1)
+    {
+        err_exit("msgget failed!\n");
+    }
+    while(running)
+    {
+        printf("Enter some text:\t");
+        fgets(msgbuf.text,BUFSIZ,stdin);
+        msgbuf.my_msg_type=(long int)msgbuf.text[0];
+        if(msgsnd(msgid,(void*)&msgbuf,sizeof(msgbuf.text),IPC_NOWAIT)==-1)
+        {
+            err_exit("msgrcv failed!\n");
+        }
+        if(strncmp(msgbuf.text,"end",3)==0)
+            break;
+    }
+    return 0;
+}#include "ch.h"
+int main(void)
+{
+    char *shm,*s;
+    int shmid;
+    if((shmid=shmget(758,SHMSZ,IPC_CREAT|0666))<0)
+        err_exit("shmget failed!\n");
+    if((shm=shmat(shmid,NULL,0)) == (char*)-1)
+        err_exit("shmat!\n");
+    for(s=shm;*s!='\0';s++)
+        putchar(*s);
+    putchar('\n');
+    exit(0);
+}#include "ch.h"
+int main(void)
+{
+    char c,*shm,*s;
+    int shmid;
+    if((shmid=shmget(758,SHMSZ,IPC_CREAT|0666))<0)
+        err_exit("shmget failed!\n");
+    if((shm=shmat(shmid,NULL,0)) == (char*)-1)
+        err_exit("shmat!\n");
+    s=shm;
+    for(c='a';c<='z';c++)
+        *s++=c;
+    *s='\0';
+    exit(0);
+}#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <string.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <time.h>
+#include <dlfcn.h>
+#include <setjmp.h>
+#include <wait.h>
+#include <errno.h>
+#include <ctype.h>
+#include <sys/ipc.h>
+#include <sys/msg.h>
+#include <sys/shm.h>
+
+#define SERVER_FIFO_NAME "./server_fifo"
+#define CLIENT_FIFO_NAME "./client_%d_fifo"
+#define BUFFER_SIZE 132
+
+#define PIPE_BUF 100
+#define FIFO_FILE "./testfifo"
+#define TEN_MEG 1000
+
+#define INFILE "./in.txt"
+#define OUTFILE "./out.txt"
+#define MODE S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP|S_IROTH
+
+#define SHMSZ 27
+struct data_to_pass {  
+    pid_t  client_pid; 
+    char  data[BUFFER_SIZE];
+};
+
+void err_exit(char *s)
+{
+    printf("Usage : %s is faile!\n",s);
+    exit(1);
+}
+struct my_msg{
+    long int my_msg_type;
+    char text[BUFSIZ];
+};
